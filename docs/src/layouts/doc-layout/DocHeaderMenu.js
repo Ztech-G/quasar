@@ -34,7 +34,7 @@ export default {
           )
 
           acc.push(
-            h(QItemSection, { class: 'text-no-wrap' }, () => entry.name)
+            h(QItemSection, { class: 'text-no-wrap' }, () => entry.nameCn ? entry.nameCn : entry.name)
           )
 
           entry.children !== void 0 && acc.push(

@@ -26,7 +26,7 @@ async function run () {
       type: 'select',
       name: 'projectType',
       initial: 0,
-      message: 'What would you like to build?',
+      message: 'What would you like to build?你想要构建什么类型的项目？',
       choices: [
         { title: `App with Quasar CLI, let's go!`, value: 'app', description: 'spa/pwa/ssr/bex/electron/capacitor/cordova' },
         { title: 'AppExtension (AE) for Quasar CLI', value: 'app-extension', description: 'Quasar CLI AE' },

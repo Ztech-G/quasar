@@ -33,47 +33,50 @@ export const versionLinks = [{
 
 const gettingStarted = {
   name: 'Getting Started',
+  nameCn: '新手入门',
   mq: 510,
   children: [
-    { name: 'Quick Start', path: '/start/quick-start' },
+    { name: 'Quick Start', nameCn: '快速开始', path: '/start/quick-start' },
     {
       name: 'Installation',
+      nameCn: '安装',
       children: [
-        { name: 'Pick Quasar Flavour', path: '/start/pick-quasar-flavour' },
+        { name: 'Pick Quasar Flavour', nameCn: '选择Quasar类型', path: '/start/pick-quasar-flavour' },
         {
           separator: true
         },
         { name: 'Quasar CLI', path: '/start/quasar-cli' },
         { name: 'UMD / Standalone', path: '/start/umd' },
-        { name: 'Vue CLI Plugin', path: '/start/vue-cli-plugin' },
-        { name: 'Vite Plugin', path: '/start/vite-plugin' }
+        { name: 'Vue CLI Plugin', nameCn: 'Vue CLI 插件', path: '/start/vue-cli-plugin' },
+        { name: 'Vite Plugin', nameCn: 'Vite 插件', path: '/start/vite-plugin' }
       ]
     },
-    { name: 'How to use Vue', path: '/start/how-to-use-vue' },
-    { name: 'Playground', path: '/start/playground' },
-    { name: 'Upgrade Guide', path: '/start/upgrade-guide' },
-    { name: 'VS Code Configuration', path: '/start/vs-code-configuration' }
+    { name: 'How to use Vue', nameCn: '如何使用Vue', path: '/start/how-to-use-vue' },
+    { name: 'Playground', nameCn: '演示', path: '/start/playground' },
+    { name: 'Upgrade Guide', nameCn: '升级指导', path: '/start/upgrade-guide' },
+    { name: 'VS Code Configuration', nameCn: 'VS Code配置', path: '/start/vs-code-configuration' }
   ]
 }
 
 const tools = {
   name: 'Tools',
+  nameCn: '工具集',
   mq: 600,
   children: [
-    { name: 'Awesome List', icon: mdiFlare, path: 'https://awesome.quasar.dev', external: true },
-    { name: 'Integrations', icon: mdiMathIntegralBox, path: '/integrations' },
-    { name: 'App Extensions', icon: mdiPuzzle, path: '/app-extensions/discover' },
+    { name: 'Awesome List', nameCn: '优秀工具集', icon: mdiFlare, path: 'https://awesome.quasar.dev', external: true },
+    { name: 'Integrations', nameCn: '集成', icon: mdiMathIntegralBox, path: '/integrations' },
+    { name: 'App Extensions', nameCn: 'App扩展', icon: mdiPuzzle, path: '/app-extensions/discover' },
     {
-      header: 'Helpers'
+      header: '帮助'
     },
     { name: 'Icon Genie CLI', icon: mdiStarCircle, path: '/icongenie/introduction' },
-    { name: 'Theme Builder', icon: mdiPaletteSwatch, path: '/style/theme-builder' },
-    { name: 'Dark Mode', icon: mdiThemeLightDark, path: '/style/dark-mode' },
-    { name: 'Layout Builder', icon: mdiViewDashboard, path: '/layout-builder', external: true },
-    { name: 'Layout Gallery', icon: mdiShoppingMusic, path: '/layout/gallery' },
-    { name: 'Flex Playground', icon: mdiFlask, path: '/layout/grid/flex-playground' },
+    { name: 'Theme Builder', nameCn: '主题构建器', icon: mdiPaletteSwatch, path: '/style/theme-builder' },
+    { name: 'Dark Mode', nameCn: '暗黑模式', icon: mdiThemeLightDark, path: '/style/dark-mode' },
+    { name: 'Layout Builder', nameCn: '布局构建器', icon: mdiViewDashboard, path: '/layout-builder', external: true },
+    { name: 'Layout Gallery', nameCn: '布局展示', icon: mdiShoppingMusic, path: '/layout/gallery' },
+    { name: 'Flex Playground', nameCn: 'Flex演示', icon: mdiFlask, path: '/layout/grid/flex-playground' },
     {
-      header: 'Playground'
+      header: '演示'
     },
     { name: 'Codepen', icon: mdiCodepen, path: 'https://codepen.quasar.dev', external: true },
     { name: 'jsFiddle', icon: mdiJsfiddle, path: 'https://jsfiddle.quasar.dev', external: true },
@@ -84,21 +87,21 @@ const tools = {
 }
 
 export const primaryToolbarLinks = [
-  { name: 'Docs', mq: 750, path: '/docs' },
-  { name: 'Components', mq: 860, path: '/components' },
-  { name: 'Sponsors', mq: 1190, path: '/sponsors-and-backers' },
-  { name: 'Team', mq: 1310, path: '/meet-the-team' },
-  { name: 'Blog', mq: 1400, path: 'https://blog.quasar.dev', external: true }
+  { name: 'Docs', nameCn: '文档', mq: 750, path: '/docs' },
+  { name: 'Components', nameCn: '组件', mq: 860, path: '/components' },
+  { name: 'Sponsors', nameCn: '赞助', mq: 1190, path: '/sponsors-and-backers' },
+  { name: 'Team', nameCn: '讨论组', mq: 1310, path: '/meet-the-team' },
+  { name: 'Blog', nameCn: '博客', mq: 1400, path: 'https://blog.quasar.dev', external: true }
 ]
 
 export const secondaryToolbarLinks = [
-  { name: 'Why Quasar?', mq: 750, path: '/introduction-to-quasar' },
+  { name: 'Why Quasar?', nameCn: '为什么用Quasar?', mq: 750, path: '/introduction-to-quasar' },
   gettingStarted,
   tools,
-  { name: 'Announcements', mq: 910, path: 'https://github.com/quasarframework/quasar/discussions/categories/announcements', external: true },
-  { name: 'Roadmap', mq: 1000, path: 'https://roadmap.quasar.dev', external: true },
-  { name: 'Video Tutorials', mq: 1130, path: '/video-tutorials' },
-  { name: 'Brand resources', mq: 1400, path: 'https://github.com/quasarframework/quasar-art', external: true }
+  { name: 'Announcements', nameCn: '注意事项', mq: 910, path: 'https://github.com/quasarframework/quasar/discussions/categories/announcements', external: true },
+  { name: 'Roadmap', nameCn: '路线图', mq: 1000, path: 'https://roadmap.quasar.dev', external: true },
+  { name: 'Video Tutorials', nameCn: '视频教程', mq: 1130, path: '/video-tutorials' },
+  { name: 'Brand resources', nameCn: '品牌资源', mq: 1400, path: 'https://github.com/quasarframework/quasar-art', external: true }
 ]
 
 export const moreLinks = [{

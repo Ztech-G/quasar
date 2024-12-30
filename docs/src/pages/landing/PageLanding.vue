@@ -10,8 +10,12 @@
           The enterprise-ready cross-platform VueJs framework
         </h1>
 
+        <h1 class="letter-spacing-375 landing-my-large text-center text-white text-size-20 primary-line-height">
+          基于VueJs的企业级跨平台框架
+        </h1>
+        <!-- Are you ready to lift off? -->
         <q-btn
-          label="Are you ready to lift off?"
+          label="准备好开始了么?"
           class="call-to-action-btn shadow-bottom-small"
           @click="scrollSectionIntoView.whyQuasar"
         />
@@ -28,6 +32,9 @@
 
         <div class="intro-section__sponsors-heading q-mt-xl text-weight-bold text-brand-primary text-size-16 text-capitalize">
           Our Platinum sponsors
+        </div>
+        <div class="intro-section__sponsors-heading q-mt-xl text-weight-bold text-brand-primary text-size-16 text-capitalize">
+          Quasar的白金赞助商
         </div>
         <div class="row justify-center full-width">
           <sponsor-tile
@@ -51,16 +58,17 @@
 
       <div class="q-my-xl" id="why-quasar-section">
         <h2 class="heading heading--large">Why should you choose Quasar?</h2>
+        <h2 class="heading heading--large">为什么应该选择Quasar?</h2>
 
         <div class="q-gutter-lg row justify-center">
           <why-quasar-card
-            v-for="({ icon, title, body, btnLabel, btnLink }, whyQuasarCardIndex) in whyQuasar"
+            v-for="(item, whyQuasarCardIndex) in whyQuasar"
             :key="whyQuasarCardIndex"
-            :icon="icon"
-            :title="title"
-            :body="body"
-            :btn-label="btnLabel"
-            :btn-link="btnLink"
+            :icon="item.icon"
+            :title="item.titleCn ? item.titleCn : item.title"
+            :body="item.bodyCn ? item.bodyCn : item.body"
+            :btn-label="item.btnLabelCn ? item.btnLabelCn : item.btnLabel"
+            :btn-link="item.btnLink"
           />
         </div>
       </div>
@@ -83,18 +91,27 @@
           <h2
             class="text-uppercase heading--large support-quasar-section__title"
           >SPONSOR QUASAR, HELP THE PROJECT GROW!</h2>
+          <h2
+            class="text-uppercase heading--large support-quasar-section__title"
+          >赞助Quasar, 帮助项目成长!</h2>
 
           <div class="heading--small">
             Working for a company? Are you a freelancer? You can contribute, even a bit,
             and even get something back in return.
           </div>
+          <div class="heading--small">
+            在职人员? 还是自由职业者? 你可以贡献，哪怕一点点，甚至还能得到一些回报。
+          </div>
 
           <q
             class="q-my-md heading--quote primary-line-height landing-my-large"
           >So, um, we think we should discuss the bonus situation</q>
-
+          <q
+            class="q-my-md heading--quote primary-line-height landing-my-large"
+          >所以，嗯，我们觉得应该讨论一下奖金的情况。</q>
+          <!-- Consult tiers -->
           <q-btn
-            label="Consult tiers"
+            label="查阅等级"
             class="call-to-action-btn shadow-bottom-small"
             href="https://donate.quasar.dev"
             target="_blank"
@@ -105,7 +122,9 @@
       <div class="text-center sponsors-section" id="sponsors-section">
         <q-icon size="xl" name="img:https://cdn.quasar.dev/img/custom-svg-icons/medal.svg" />
         <h2 class="heading heading--large">Our Sponsors</h2>
+        <h2 class="heading heading--large">赞助商</h2>
         <div class="heading heading--small">Every space odyssey has its patrons</div>
+        <div class="heading heading--small">每一次太空探索之旅都有其赞助者。</div>
         <div class="q-pt-lg">
           <sponsor-list />
         </div>
@@ -119,7 +138,9 @@
           <div class="bg-transparent absolute-bottom">
             <q-icon size="xl" name="img:https://cdn.quasar.dev/img/custom-svg-icons/satellite.svg" />
             <div class="heading heading--large">Don't miss the news</div>
+            <div class="heading heading--large">别错过新内容！</div>
             <div class="heading heading--small">Follow our social pages to stay up to date</div>
+            <div class="heading heading--small">关注我们的社交媒体页面以获取最新消息</div>
             <div class="landing-mb--large row reverse justify-center q-mt-md q-gutter-md">
               <q-btn
                 v-for="(socialLink, linkIndex) in socialLinks.children.slice(1)"
@@ -160,22 +181,31 @@ const whyQuasar = [
   {
     icon: 'img:https://cdn.quasar.dev/img/custom-svg-icons/components.svg',
     title: 'Top Class Components',
+    titleCn: '高质量组件',
     body: 'A library of more than 70 high performance customizable Material Design web components for all your needs',
+    bodyCn: '一个拥有 70 多个高性能且可定制的 Material Design 网页组件库，满足你的所有需求 。',
     btnLabel: 'Browse components',
+    btnLabelCn: '浏览组件',
     btnLink: '/components'
   },
   {
     icon: 'img:https://cdn.quasar.dev/img/custom-svg-icons/source.svg',
     title: 'One codebase many integrations',
+    titleCn: '一个代码库，多种集成方式',
     body: 'Keep your favorite technology, we provide all the needed integrations out of the box.',
+    bodyCn: '保留你喜爱的技术，我们提供所有开箱即用的必要集成方案。',
     btnLabel: 'Discover Integrations',
+    btnLabelCn: '发现集成方案',
     btnLink: '/integrations'
   },
   {
     icon: 'img:https://cdn.quasar.dev/img/custom-svg-icons/documentation.svg',
     title: 'Great documentation',
+    titleCn: '详尽的文档',
     body: 'All the details you deserve to start working properly. Every star-pilot needs a good manual.',
+    bodyCn: '你理应知晓顺利开展工作所需的所有细节。每位优秀的飞行员都需要一本出色的操作手册。',
     btnLabel: 'Get Started',
+    btnLabelCn: '新手入门',
     btnLink: '/start/quick-start'
   }
 ]

@@ -45,7 +45,7 @@
     "url": "https://github.com/quasarframework/quasar"
   },
   "devDependencies": {
-    "cypress": "^12.10.0",
+    "cypress": "^13.6.1",
     "eslint": "^8.41.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.19.1",

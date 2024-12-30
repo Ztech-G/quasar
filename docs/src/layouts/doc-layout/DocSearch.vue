@@ -12,11 +12,11 @@
         class="col"
         name="search"
         ref="inputRef"
-        placeholder="Search Quasar v2..."
+        placeholder="搜索Quasar V2相关内容..."
         v-model="terms"
         @keydown="onKeydown"
       />
-
+      <!-- Search Quasar v2 -->
       <q-icon class="doc-search__icon cursor-pointer" :name="icon.name" size="24px" @click="icon.onClick" />
       <q-no-ssr v-if="keysLabel">
         <kbd class="doc-search__kbd q-ma-none">{{ keysLabel }}</kbd>

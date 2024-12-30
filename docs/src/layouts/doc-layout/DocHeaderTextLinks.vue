@@ -7,7 +7,7 @@
       class="header-btn doc-header-text-links__item text-weight-bold"
       :class="`${ props.mqPrefix }-${ entry.mq || 'none' } ${ props.navClass }`"
       :padding="entry.children ? '8px 8px 8px 16px' : '8px 12px'"
-      :label="entry.name"
+      :label="entry.nameCn ? entry.nameCn : entry.name"
       no-caps
       no-wrap
       :icon-right="entry.children ? mdiMenuDown : void 0"

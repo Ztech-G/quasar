@@ -19,7 +19,7 @@
       </router-link>
 
       <div class="doc-header__primary-left-spacer gt-lg" />
-
+      <!-- 最顶部按钮 -->
       <doc-header-text-links
         class="doc-header__links col text-size-16 gt-700"
         :menu="primaryToolbarLinks"
