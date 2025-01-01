@@ -1,52 +1,63 @@
 export default [
   {
     name: 'Why donate',
+    nameCn: '为什么捐赠',
     icon: 'assignment_late',
     path: 'why-donate'
   },
   {
     name: 'API Explorer',
+    nameCn: '浏览API',
     icon: 'travel_explore',
     path: 'api-explorer'
   },
   {
     name: 'How to contribute',
+    nameCn: '如何贡献',
     icon: 'code',
     path: 'how-to-contribute',
     children: [
       {
         name: 'Contribution Guide',
+        nameCn: '贡献指导',
         path: 'contribution-guide'
       },
       {
         name: 'Running Projects',
+        nameCn: '运行项目',
         path: 'running-projects'
       },
       {
         name: 'Start a New Project',
+        nameCn: '开始一个新的项目',
         path: 'new-project'
       },
       {
         name: 'Project Maintainer Role',
+        nameCn: '项目维护者',
         path: 'project-maintainer'
       },
       {
         name: 'Commit Conventions',
+        nameCn: '提交规范',
         path: 'commit-conventions'
       }
     ]
   },
   {
     name: 'Options & Helpers',
+    nameCn: '选项与辅助',
     icon: 'tune',
     path: 'options',
     children: [
       {
         name: 'The $q object',
+        nameCn: '$q对象',
         path: 'the-q-object'
       },
       {
         name: 'App Icons',
+        nameCn: 'App图标',
         path: 'app-icons'
       },
       {
@@ -55,482 +66,597 @@ export default [
       },
       {
         name: 'Quasar Language Packs',
+        nameCn: 'Quasar语言包',
         path: 'quasar-language-packs'
       },
       {
         name: 'App Internationalization',
+        nameCn: 'App国际化',
         path: 'app-internationalization'
       },
       {
         name: 'RTL Support',
+        nameCn: '支持RTL',
         path: 'rtl-support'
       },
       {
         name: 'Installing Icon Libraries',
+        nameCn: '安装图标库',
         path: 'installing-icon-libraries'
       },
       {
         name: 'Quasar Icon Sets',
+        nameCn: 'Quasar图标集',
         path: 'quasar-icon-sets'
       },
       {
         name: 'Platform Detection',
+        nameCn: '平台检测',
         path: 'platform-detection'
       },
       {
         name: 'Screen Plugin',
+        nameCn: '屏幕插件',
         path: 'screen-plugin'
       },
       {
         name: 'Animations',
+        nameCn: '动画',
         path: 'animations'
       },
       {
         name: 'Transitions',
+        nameCn: '过渡效果',
         path: 'transitions'
       }
     ]
   },
   {
     name: 'Style & Identity',
+    nameCn: '样式与特性',
     icon: 'style',
     path: 'style',
     children: [
       {
         name: 'Typography',
+        nameCn: '排版',
         path: 'typography'
       },
       {
         name: 'Color Palette',
+        nameCn: '调色板',
         path: 'color-palette'
       },
       {
         name: 'Theme Builder',
+        nameCn: '主题构建器',
         path: 'theme-builder'
       },
       {
         name: 'Dark Mode',
+        nameCn: '暗黑模式',
         path: 'dark-mode'
       },
       {
         name: 'Spacing',
+        nameCn: '间距',
         path: 'spacing'
       },
       {
         name: 'Shadows',
+        nameCn: '阴影',
         path: 'shadows'
       },
       {
         name: 'Breakpoints',
+        nameCn: '断点(CSS Breakpoints)',
         path: 'breakpoints'
       },
       {
         name: 'Body classes',
+        nameCn: '与body相关的CSS类',
         path: 'body-classes'
       },
       {
         name: 'Visibility',
+        nameCn: '可见性',
         path: 'visibility'
       },
       {
         name: 'Positioning',
+        nameCn: '定位',
         path: 'positioning'
       },
       {
         name: 'Sass/SCSS Variables',
+        nameCn: 'Sass/SCSS变量',
         path: 'sass-scss-variables'
       },
       {
         name: 'Other Helper Classes',
+        nameCn: '其他CSS辅助类',
         path: 'other-helper-classes'
       }
     ]
   },
   {
     name: 'Layout and Grid',
+    nameCn: '布局与网格',
     icon: 'view_quilt',
     path: 'layout',
     children: [
       {
         name: 'Flex Grid',
+        nameCn: '弹性网格(Flex Grid)',
         path: 'grid',
         opened: true,
         children: [
           {
             name: 'Introduction to Flexbox',
+            nameCn: 'Flexbox简介',
             path: 'introduction-to-flexbox'
           },
           {
             name: 'Grid Row',
+            nameCn: '网格行(Grid Row)',
             path: 'row'
           },
           {
             name: 'Grid Column',
+            nameCn: '网格列(Grid Column)',
             path: 'column'
           },
           {
             name: 'Grid Gutter',
+            nameCn: '网格间距(Grid Gutter)',
             path: 'gutter'
           },
           {
             name: 'Flexbox patterns',
+            nameCn: 'Flexbox模式',
             path: 'flexbox-patterns'
           },
           {
             name: 'Flex Playground',
+            nameCn: 'Flex演示',
             path: 'flex-playground'
           }
         ]
       },
       {
         name: 'Layout',
+        nameCn: '布局',
         path: 'layout'
       },
       {
         name: 'Routing with Layouts and Pages',
+        nameCn: '与布局和页面相关的路由',
         path: 'routing-with-layouts-and-pages'
       },
       {
         name: 'Layout Header and Footer',
+        nameCn: '布局的页眉与页脚',
         path: 'header-and-footer'
       },
       {
         name: 'Layout Drawer',
+        nameCn: '布局抽屉',
         path: 'drawer'
       },
       {
         name: 'Layout Page',
+        nameCn: '布局页面',
         path: 'page'
       },
       {
         name: 'Layout Builder',
+        nameCn: '布局构建器',
         external: true,
         path: '/layout-builder'
       },
       {
         name: 'Layout Gallery',
+        nameCn: '布局展示',
         path: 'gallery'
       },
       {
         name: 'Page Sticky',
+        nameCn: '粘性页面',
         path: 'page-sticky'
       },
       {
         name: 'Page Scroller',
+        nameCn: '滚动页面',
         path: 'page-scroller'
       }
     ]
   },
   {
     name: 'Vue Components',
+    nameCn: 'Vue组件',
     icon: 'widgets',
     path: 'vue-components',
     children: [
       {
         name: 'Ajax Bar',
+        nameCn: 'Ajax请求栏',
         path: 'ajax-bar'
       },
       {
         name: 'Avatar',
+        nameCn: '头像',
         path: 'avatar'
       },
       {
         name: 'Badge',
+        nameCn: '角标',
         path: 'badge'
       },
       {
         name: 'Banner',
+        nameCn: '横幅(Banner)',
         path: 'banner'
       },
       {
         name: 'Bar',
+        nameCn: '栏',
         path: 'bar'
       },
       {
         name: 'Breadcrumbs',
+        nameCn: '面包屑',
         path: 'breadcrumbs'
       },
       {
         name: 'Buttons',
+        nameCn: '按钮相关',
         listPath: 'buttons',
         children: [
           {
             name: 'Button',
+            nameCn: '按钮',
             path: 'button'
           },
           {
             name: 'Button Group',
+            nameCn: '按钮组',
             path: 'button-group'
           },
           {
             name: 'Button Dropdown',
+            nameCn: '下拉按钮',
             path: 'button-dropdown'
           }
         ]
       },
       {
         name: 'Card',
+        nameCn: '卡片',
         path: 'card'
       },
       {
         name: 'Carousel',
+        nameCn: '轮播',
         path: 'carousel'
       },
       {
         name: 'Chat Message',
+        nameCn: '聊天信息',
         path: 'chat'
       },
       {
         name: 'Chip',
+        nameCn: '碎片(可以叫Tag标签)',
         path: 'chip'
       },
       {
         name: 'Circular Progress',
+        nameCn: '圆形进度条',
         path: 'circular-progress'
       },
       {
         name: 'Color Picker',
+        nameCn: '颜色选择器',
         path: 'color-picker'
       },
       {
         name: 'Dialog',
+        nameCn: '对话框',
         path: 'dialog'
       },
       {
         name: 'Editor - WYSIWYG',
+        nameCn: '编辑器 - 所见即所得',
         path: 'editor'
       },
       {
         name: 'Expansion Item',
+        nameCn: '扩展项',
         path: 'expansion-item'
       },
       {
         name: 'Floating Action Button',
+        nameCn: '浮动按钮(FAB)',
         path: 'floating-action-button'
       },
       {
         name: 'Form Components',
+        nameCn: '表单组件',
         opened: true,
         listPath: 'form-components',
         children: [
           {
             name: 'Input Textfield',
+            nameCn: '输入框',
             path: 'input'
           },
           {
             name: 'Select',
+            nameCn: '选择框',
             path: 'select'
           },
           {
             name: 'File picker',
+            nameCn: '文件选择器',
             path: 'file'
           },
           {
             name: 'Form',
+            nameCn: '表单',
             path: 'form'
           },
           {
             name: 'Field (wrapper)',
+            nameCn: '属性包装器',
             path: 'field'
           },
           {
             name: 'Radio',
+            nameCn: '单选框',
             path: 'radio'
           },
           {
             name: 'Checkbox',
+            nameCn: '选择框',
             path: 'checkbox'
           },
           {
             name: 'Toggle',
+            nameCn: '开关',
             path: 'toggle'
           },
           {
             name: 'Button Toggle',
+            nameCn: '按钮开关',
             path: 'button-toggle'
           },
           {
             name: 'Option Group',
+            nameCn: '选项组',
             path: 'option-group'
           },
           {
             name: 'Slider',
+            nameCn: '滑块',
             path: 'slider'
           },
           {
             name: 'Range',
+            nameCn: '范围选择器',
             path: 'range'
           },
           {
             name: 'Time Picker',
+            nameCn: '时间选择器',
             path: 'time'
           },
           {
             name: 'Date Picker',
+            nameCn: '日期选择器',
             path: 'date'
           }
         ]
       },
       {
         name: 'Icon',
+        nameCn: '图标',
         path: 'icon'
       },
       {
         name: 'Img',
+        nameCn: '图像',
         path: 'img'
       },
       {
         name: 'Infinite Scroll',
+        nameCn: '无线滚动',
         path: 'infinite-scroll'
       },
       {
         name: 'Inner Loading',
+        nameCn: '内部加载',
         path: 'inner-loading'
       },
       {
         name: 'Intersection',
+        nameCn: '交叉',
         path: 'intersection'
       },
       {
         name: 'Knob',
+        nameCn: '旋钮',
         path: 'knob'
       },
       {
         name: 'Linear Progress',
+        nameCn: '线性进度条',
         path: 'linear-progress'
       },
       {
         name: 'List & List Items',
+        nameCn: '列表与列表项',
         path: 'list-and-list-items'
       },
       {
         name: 'Markup Table',
+        nameCn: '标记表格',
         path: 'markup-table'
       },
       {
         name: 'Menu',
+        nameCn: '菜单',
         path: 'menu'
       },
       {
         name: 'No SSR',
+        nameCn: '无SSR',
         path: 'no-ssr'
       },
       {
         name: 'Observers',
+        nameCn: '观察者',
         listPath: 'observers',
         children: [
           {
             name: 'Resize Observer (for Element)',
+            nameCn: '尺寸观察者',
             path: 'resize-observer'
           },
           {
             name: 'Scroll Observer',
+            nameCn: '滑动观察者',
             path: 'scroll-observer'
           }
         ]
       },
       {
         name: 'Pagination',
+        nameCn: '分页',
         path: 'pagination'
       },
       {
         name: 'Parallax',
+        nameCn: '视差',
         path: 'parallax'
       },
       {
         name: 'Popup Edit',
+        nameCn: '弹出编辑',
         path: 'popup-edit'
       },
       {
         name: 'Popup Proxy',
+        nameCn: '弹出代理',
         path: 'popup-proxy'
       },
       {
         name: 'Pull to refresh',
+        nameCn: '下拉刷新',
         path: 'pull-to-refresh'
       },
       {
         name: 'Rating',
+        nameCn: '等级',
         path: 'rating'
       },
       {
         name: 'Responsive',
+        nameCn: '相应式',
         path: 'responsive'
       },
       {
         name: 'Scroll Area',
+        nameCn: '滚动区域',
         path: 'scroll-area'
       },
       {
         name: 'Separator',
+        nameCn: '分隔符',
         path: 'separator'
       },
       {
         name: 'Skeleton',
+        nameCn: '骨架屏',
         path: 'skeleton'
       },
       {
         name: 'Slide Item',
+        nameCn: '滑动项',
         path: 'slide-item'
       },
       {
         name: 'Slide Transition',
+        nameCn: '滑动项变换',
         path: 'slide-transition'
       },
       {
         name: 'Space',
+        nameCn: '间距',
         path: 'space'
       },
       {
         name: 'Spinners',
+        nameCn: '下拉框',
         path: 'spinners'
       },
       {
         name: 'Splitter',
+        nameCn: '拆分器',
         path: 'splitter'
       },
       {
         name: 'Stepper',
+        nameCn: '步进器',
         path: 'stepper'
       },
       {
         name: 'Table',
+        nameCn: '表格',
         path: 'table'
       },
       {
         name: 'Tabs',
+        nameCn: '标签页',
         path: 'tabs'
       },
       {
         name: 'Tab Panels',
+        nameCn: '标签面板',
         path: 'tab-panels'
       },
       {
         name: 'Timeline',
+        nameCn: '时间线',
         path: 'timeline'
       },
       {
         name: 'Toolbar',
+        nameCn: '工具栏',
         path: 'toolbar'
       },
       {
         name: 'Tooltip',
+        nameCn: '提示信息',
         path: 'tooltip'
       },
       {
         name: 'Tree',
+        nameCn: '树',
         path: 'tree'
       },
       {
         name: 'Uploader',
+        nameCn: '上传',
         path: 'uploader'
       },
       {
         name: 'Video',
+        nameCn: '视频',
         path: 'video'
       },
       {
         name: 'Virtual Scroll',
+        nameCn: '虚拟滚动',
         path: 'virtual-scroll'
       }
     ]

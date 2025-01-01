@@ -66,7 +66,7 @@ export default {
             class: 'doc-layout__item non-selectable' + (level !== 0 ? ' doc-page-menu__deep-expansion' : ''),
             ref: vm => { if (vm) { childRefs[ path ] = vm } },
             key: `${menu.name}-${path}`,
-            label: menu.name,
+            label: menu.nameCn ? menu.nameCn : menu.name,
             icon: menu.icon,
             expandIcon: mdiMenuDown,
             defaultOpened: menu.opened || routePath.startsWith(path),
@@ -111,7 +111,7 @@ export default {
       )
 
       child.push(
-        h(QItemSection, () => menu.name)
+        h(QItemSection, () => menu.nameCn ? menu.nameCn : menu.name)
       )
 
       menu.badge !== void 0 && child.push(

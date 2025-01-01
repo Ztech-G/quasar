@@ -15,10 +15,10 @@ export const versionLinks = [{
     {
       header: `Latest (v${Quasar.version})`
     },
-    { name: 'Release notes', icon: mdiClipboardText, path: '/start/release-notes' },
-    { name: 'Report a bug', icon: mdiBug, path: 'https://github.com/quasarframework/quasar/issues', external: true },
-    { name: 'Report a vulnerability', icon: mdiSecurity, path: '/security/report-a-vulnerability', external: true },
-    { name: 'Repository', icon: mdiGithub, path: 'https://github.com/quasarframework', external: true },
+    { name: 'Release notes', nameCn: '发行说明', icon: mdiClipboardText, path: '/start/release-notes' },
+    { name: 'Report a bug', nameCn: '报告Bug', icon: mdiBug, path: 'https://github.com/quasarframework/quasar/issues', external: true },
+    { name: 'Report a vulnerability', nameCn: '报告安全隐患', icon: mdiSecurity, path: '/security/report-a-vulnerability', external: true },
+    { name: 'Repository', nameCn: '仓库', icon: mdiGithub, path: 'https://github.com/quasarframework', external: true },
     {
       header: 'Older Releases'
     },
