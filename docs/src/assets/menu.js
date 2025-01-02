@@ -663,74 +663,91 @@ export default [
   },
   {
     name: 'Vue Directives',
+    nameCn: 'Vue指令',
     icon: 'swap_calls',
     path: 'vue-directives',
     children: [
       {
         name: 'Close Popup',
+        nameCn: '关闭弹窗',
         path: 'close-popup'
       },
       {
         name: 'Intersection',
+        nameCn: '交叉',
         path: 'intersection'
       },
       {
         name: 'Material Ripples',
+        nameCn: 'Material波纹',
         path: 'material-ripples'
       },
       {
         name: 'Mutation',
+        nameCn: '变换',
         path: 'mutation'
       },
       {
         name: 'Morph',
+        nameCn: '形态',
         path: 'morph'
       },
       {
         name: 'Scroll',
+        nameCn: '滚动',
         path: 'scroll'
       },
       {
         name: 'Scroll Fire',
+        nameCn: '滚动触发',
         path: 'scroll-fire'
       },
       {
         name: 'Touch Hold',
+        nameCn: '触摸保持',
         path: 'touch-hold'
       },
       {
         name: 'Touch Pan',
+        nameCn: '触摸平移',
         path: 'touch-pan'
       },
       {
         name: 'Touch Repeat',
+        nameCn: '触摸重复',
         path: 'touch-repeat'
       },
       {
         name: 'Touch Swipe',
+        nameCn: '触摸滑动',
         path: 'touch-swipe'
       }
     ]
   },
   {
     name: 'Quasar Plugins',
+    nameCn: 'Quasar插件',
     icon: 'extension',
     path: 'quasar-plugins',
     children: [
       {
         name: 'Addressbar Color',
+        nameCn: '地址栏颜色',
         path: 'addressbar-color'
       },
       {
         name: 'App Fullscreen',
+        nameCn: 'App全屏',
         path: 'app-fullscreen'
       },
       {
         name: 'App Visibility',
+        nameCn: 'App可见性',
         path: 'app-visibility'
       },
       {
         name: 'Bottom Sheet',
+        nameCn: '底部菜单',
         path: 'bottom-sheet'
       },
       {
@@ -739,36 +756,44 @@ export default [
       },
       {
         name: 'Dark',
+        nameCn: '暗黑',
         path: 'dark'
       },
       {
         name: 'Dialog',
+        nameCn: '对话框',
         path: 'dialog'
       },
       {
         name: 'Loading',
+        nameCn: '加载',
         path: 'loading'
       },
       {
         name: 'Loading Bar',
+        nameCn: '加载栏',
         path: 'loading-bar'
       },
       {
         name: 'Local/Session Storage',
+        nameCn: 'Web本地存储',
         path: 'web-storage'
       },
       {
         name: 'Meta',
+        nameCn: '元数据',
         path: 'meta'
       },
       {
         name: 'Notify',
+        nameCn: '通知',
         path: 'notify'
       }
     ]
   },
   {
     name: 'Vue Composables',
+    nameCn: 'Vue组合式API',
     icon: 'developer_mode',
     path: 'vue-composables',
     children: [
@@ -792,6 +817,7 @@ export default [
   },
   {
     name: 'Security',
+    nameCn: '安全',
     icon: 'security',
     path: 'security',
     children: [
