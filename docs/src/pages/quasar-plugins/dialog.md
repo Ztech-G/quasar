@@ -30,9 +30,9 @@ In order to create #1, the prompting input form, you have the `prompt` property 
 
 In order to create #2, the options selection form, you have the `options` property within the `opts` object.
 
-<doc-api file="Dialog" />
+<DocApi file="Dialog" />
 
-<doc-installation plugins="Dialog" />
+<DocInstallation plugins="Dialog" />
 
 ## Built-in component
 
@@ -61,36 +61,36 @@ For all the examples below, also see the browser console while you check them ou
 This is not an exhaustive list of what you can do with Dialogs as Quasar Plugins. For further exploration check out the API section.
 :::
 
-<doc-example title="Basic" file="Basic" />
+<DocExample title="Basic" file="Basic" />
 
-<doc-example title="Force dark mode" file="Dark" />
+<DocExample title="Force dark mode" file="Dark" />
 
-<doc-example title="Radios, Checkboxes, Toggles" file="Pickers" />
+<DocExample title="Radios, Checkboxes, Toggles" file="Pickers" />
 
-<doc-example title="Other options" file="OtherOptions" />
+<DocExample title="Other options" file="OtherOptions" />
 
 ### Native attributes
 
 You can also supply native HTML attributes to the inner QInput or QOptionGroup components, like in the example below.
 
-<doc-example title="Using native attributes" file="NativeAttributes" />
+<DocExample title="Using native attributes" file="NativeAttributes" />
 
 ### User input validation
 
 There is a basic validation system that you can use so that the user won't be able to submit the dialog (click/tap on "OK" or press <kbd>ENTER</kbd>) until the expected values are filled in.
 
-<doc-example title="Prompt with validation" file="ValidationPrompt" />
+<DocExample title="Prompt with validation" file="ValidationPrompt" />
 
-<doc-example title="Options with validation" file="ValidationOptions" />
+<DocExample title="Options with validation" file="ValidationOptions" />
 
 ### Progress
 
-<doc-example title="Showing progress" file="Progress" />
+<DocExample title="Showing progress" file="Progress" />
 
 ### Using HTML
 You can use HTML on title and message if you specify the `html: true` prop. **Please note that this can lead to XSS attacks**, so make sure that you sanitize the message by yourself.
 
-<doc-example title="Unsafe HTML message" file="UnsafeHtml" />
+<DocExample title="Unsafe HTML message" file="UnsafeHtml" />
 
 ## Invoking custom component
 
@@ -98,7 +98,40 @@ You can also invoke your own custom component rather than relying on the default
 
 This feature is actually the "bread and butter" of the Dialog plugin. It helps you keep your other vue components html templates clean by separating and reusing your dialog's functionality with ease.
 
-```js
+### Triggering the custom component
+
+```tabs
+<<| js By importing Dialog |>>
+/**
+ * This way of using it can reside outside
+ * of a Vue component as well
+ */
+
+import { Dialog } from 'quasar'
+import CustomComponent from '..path.to.component..'
+
+Dialog.create({
+  component: CustomComponent,
+
+  // props forwarded to your custom component
+  componentProps: {
+    text: 'something',
+    persistent: true,
+    // ...more..props...
+  }
+}).onOk(() => {
+  console.log('OK')
+}).onCancel(() => {
+  console.log('Cancel')
+}).onDismiss(() => {
+  console.log('Called on OK or Cancel')
+})
+<<| js With useQuasar() |>>
+/**
+ * This way of using it can reside ONLY
+ * inside of a Vue component
+ */
+
 import { useQuasar } from 'quasar'
 import CustomComponent from '..path.to.component..'
 
@@ -111,6 +144,7 @@ setup () {
     // props forwarded to your custom component
     componentProps: {
       text: 'something',
+      persistent: true,
       // ...more..props...
     }
   }).onOk(() => {
@@ -129,7 +163,9 @@ The equivalent of the above with Options API is by directly using `this.$q.dialo
 Your custom component however must follow the interface described below in order to perfectly hook into the Dialog plugin. **Notice the "REQUIRED" comments** and take it as is -- just a bare-bone example, nothing more.
 :::
 
-#### SFC with script setup (and Composition API) variant
+### Writing the custom component
+
+#### SFC with "script setup" and Composition API variant
 We will be using the [useDialogPluginComponent](/vue-composables/use-dialog-plugin-component) composable.
 
 ```html
@@ -194,7 +230,7 @@ defineEmits({
 })
 ```
 
-#### Composition API variant
+#### SFC with "script" and Composition API variant
 
 We will be using the [useDialogPluginComponent](/vue-composables/use-dialog-plugin-component) composable.
 
@@ -278,7 +314,7 @@ emits: {
 }
 ```
 
-#### Options API variant
+#### SFC with "script" and Options API variant
 
 ```html
 <template>

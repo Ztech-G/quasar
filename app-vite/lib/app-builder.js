@@ -1,4 +1,3 @@
-
 import { lstatSync } from 'node:fs'
 import fse from 'fs-extra'
 import { join, isAbsolute, basename, dirname } from 'node:path'
@@ -37,9 +36,7 @@ export class AppBuilder extends AppTool {
         ? entry.from
         : this.ctx.appPaths.resolve.app(entry.from)
 
-      if (fse.existsSync(from) !== true) {
-        return
-      }
+      if (fse.existsSync(from) !== true) return
 
       const to = isAbsolute(entry.to) === true
         ? entry.to

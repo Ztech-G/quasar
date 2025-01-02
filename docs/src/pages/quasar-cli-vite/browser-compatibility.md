@@ -10,8 +10,8 @@ In order to configure the browser compatibility for your app, you will need to e
 ```js /quasar.config file
 build: {
   target: {
-    browser: [ 'es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1' ],
-    node: 'node16'
+    browser: [ 'es2022', 'firefox115', 'chrome115', 'safari14' ],
+    node: 'node20'
   }
 }
 ```
@@ -26,10 +26,10 @@ build: {
 }
 ```
 
-Furthermore, based on your `/postcss.config.cjs` file content, your CSS will also pass through `autoprefixer` for which you can configure the browser levels that you are interested in:
+Furthermore, based on your `/postcss.config.js` file content, your CSS will also pass through `autoprefixer` for which you can configure the browser levels that you are interested in:
 
-```js /postcss.config.cjs
-require('autoprefixer')({
+```js /postcss.config.js
+autoprefixer({
   overrideBrowserslist: [
     'last 4 Chrome versions',
     'last 4 Firefox versions',

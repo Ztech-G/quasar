@@ -2,17 +2,17 @@ import { h, ref, computed, watch, Transition, nextTick, getCurrentInstance } fro
 
 import QBtn from '../btn/QBtn.js'
 
-import useDark, { useDarkProps } from '../../composables/private/use-dark.js'
-import useCache from '../../composables/private/use-cache.js'
-import { useFormProps, useFormAttrs, useFormInject } from '../../composables/private/use-form.js'
+import useDark, { useDarkProps } from '../../composables/private.use-dark/use-dark.js'
+import useRenderCache from '../../composables/use-render-cache/use-render-cache.js'
+import { useFormProps, useFormAttrs, useFormInject } from '../../composables/use-form/private.use-form.js'
 import useDatetime, { useDatetimeProps, useDatetimeEmits, getDayHash } from './use-datetime.js'
 
-import { createComponent } from '../../utils/private/create.js'
-import { hSlot } from '../../utils/private/render.js'
-import { formatDate, __splitDate, getDateDiff } from '../../utils/date.js'
-import { pad } from '../../utils/format.js'
-import { jalaaliMonthLength, toGregorian } from '../../utils/private/date-persian.js'
-import { isObject } from '../../utils/is.js'
+import { createComponent } from '../../utils/private.create/create.js'
+import { hSlot } from '../../utils/private.render/render.js'
+import { formatDate, __splitDate, getDateDiff } from '../../utils/date/date.js'
+import { pad } from '../../utils/format/format.js'
+import { jalaaliMonthLength, toGregorian } from '../../utils/date/private.persian.js'
+import { isObject } from '../../utils/is/is.js'
 
 const yearsInterval = 20
 const views = [ 'Calendar', 'Years', 'Months' ]
@@ -32,6 +32,11 @@ export default createComponent({
     ...useFormProps,
     ...useDarkProps,
 
+    modelValue: {
+      required: true,
+      validator: val => (typeof val === 'string' || Array.isArray(val) === true || Object(val) === val || val === null)
+    },
+
     multiple: Boolean,
     range: Boolean,
 
@@ -39,6 +44,7 @@ export default createComponent({
     subtitle: String,
 
     mask: {
+      ...useDatetimeProps.mask,
       // this mask is forced
       // when using persian calendar
       default: 'YYYY/MM/DD'
@@ -90,7 +96,7 @@ export default createComponent({
     const { $q } = proxy
 
     const isDark = useDark(props, $q)
-    const { getCache } = useCache()
+    const { getCache } = useRenderCache()
     const { tabindex, headerClass, getLocale, getCurrentDate } = useDatetime(props, $q)
 
     let lastEmitValue
@@ -112,7 +118,7 @@ export default createComponent({
 
     const view = ref(props.defaultView)
 
-    const direction = $q.lang.rtl === true ? 'right' : 'left'
+    const direction = computed(() => ($q.lang.rtl === true ? 'right' : 'left'))
     const monthDirection = ref(direction.value)
     const yearDirection = ref(direction.value)
 
@@ -428,9 +434,7 @@ export default createComponent({
     })
 
     const rangeView = computed(() => {
-      if (editRange.value === null) {
-        return
-      }
+      if (editRange.value === null) return
 
       const { init, initHash, final, finalHash } = editRange.value
 
@@ -441,9 +445,10 @@ export default createComponent({
       const fromHash = getMonthHash(from)
       const toHash = getMonthHash(to)
 
-      if (fromHash !== viewMonthHash.value && toHash !== viewMonthHash.value) {
-        return
-      }
+      if (
+        fromHash !== viewMonthHash.value
+        && toHash !== viewMonthHash.value
+      ) return
 
       const view = {}
 
@@ -694,7 +699,7 @@ export default createComponent({
     const attributes = computed(() => (
       props.disable === true
         ? { 'aria-disabled': 'true' }
-        : (props.readonly === true ? { 'aria-readonly': 'true' } : {})
+        : {}
     ))
 
     watch(() => props.modelValue, v => {
@@ -1037,9 +1042,7 @@ export default createComponent({
     }
 
     function removeFromModel (date) {
-      if (props.noUnset === true) {
-        return
-      }
+      if (props.noUnset === true) return
 
       let model = null
 
@@ -1081,7 +1084,7 @@ export default createComponent({
     }
 
     function getHeader () {
-      if (props.minimal === true) { return }
+      if (props.minimal === true) return
 
       return h('div', {
         class: 'q-date__header ' + headerClass.value

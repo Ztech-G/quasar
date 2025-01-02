@@ -100,17 +100,18 @@ If your objective is to install a 3rd-party library into Vue, then it depends up
 $ yarn create quasar
 # then pick the AppExtension option
 <<| bash NPM |>>
-$ npm init quasar
+$ npm init quasar@latest
 # then pick the AppExtension option
 <<| bash PNPM |>>
-# experimental support
-$ pnpm create quasar
+$ pnpm create quasar@latest
 # then pick the AppExtension option
 <<| bash Bun |>>
 # experimental support
-$ bun create quasar
+$ bun create quasar@latest
 # then pick the AppExtension option
 ```
+
+<!-- TODO: Add pnpm and bun instructions in relevant sections below -->
 
 It will prompt you about your specific needs. Do you need an install script, an uninstall script, will you be prompting the user with some questions? Pick only what you will be using. You can manually add these later if you decide otherwise.
 
@@ -120,11 +121,11 @@ Based on your response, Quasar CLI will create a folder for your App Extensionâ€
 
 The app-extension kit:
 
-<doc-tree :def="scope.appExtensionTree" />
+<DocTree :def="scope.appExtensionTree" />
 
 The ui kit:
 
-<doc-tree :def="scope.uiKitTree" />
+<DocTree :def="scope.uiKitTree" />
 
 Except for `src/index.js` (from the `app-extension` kit) or `app-extension/src/index.js` (from the `ui` kit) , all the other files are optional. You can manually add or remove them at any point in time.
 
@@ -156,7 +157,7 @@ We need to create a Quasar project folder to be able to test it while we develop
 ```bash
 $ yarn create quasar
 # or
-$ npm init quasar
+$ npm init quasar@latest
 
 # pick "App with Quasar CLI"
 ```
@@ -173,6 +174,8 @@ Inside the testing Quasar project folder, we manually add our App Extension. Not
 $ yarn add --dev file://path/to/our/app/ext/app-extension
 # or
 $ yarn add --dev link://path/to/our/app/ext/app-extension
+# or
+$ npm add --save-dev file://path/to/our/app/ext/app-extension
 ```
 
 You will need to figure out which command works best for your environment.
@@ -221,7 +224,7 @@ chainWebpack (chain) {
 
 #### @quasar/app-vite
 
-You might want to extend the Vite config. Assuming you are using the [`extendViteConf`](/quasar-cli-vite/handling-vite#usage-with-quasar-conf-js) method, your `quasar.config file > build > extendViteConf` should look like this:
+You might want to extend the Vite config. Assuming you are using the [`extendViteConf`](/quasar-cli-vite/handling-vite#updating-vite-config) method, your `quasar.config file > build > extendViteConf` should look like this:
 
 ```js
 extendViteConf (viteConf, { isClient, isServer }) {

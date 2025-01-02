@@ -22,7 +22,7 @@ You'll notice that changing any of these settings does not require you to manual
 :::
 
 ::: warning
-The `/quasar.config` file is run by the Quasar CLI build system, so this code runs under Node directly, not in the context of your app. This means you can require modules like 'fs', 'path', Vite plugins, and so on. Make sure the ES features that you want to use in this file are [supported by your Node version](https://node.green/) (which should be >= 14.19.0).
+The `/quasar.config` file is run by the Quasar CLI build system, so this code runs under Node directly, not in the context of your app. This means you can require modules like `node:fs`, `node:path`, Vite plugins, and so on.
 :::
 
 ## Structure
@@ -32,10 +32,13 @@ The `/quasar.config` file is run by the Quasar CLI build system, so this code ru
 You'll notice that the `/quasar.config` file exports a function that takes a `ctx` (context) parameter and returns an Object. This allows you to dynamically change your website/app config based on this context:
 
 ```js /quasar.config file
-module.exports = function (ctx) { // can be async too
+import { defineConfig } from '#q-app/wrappers'
+
+export default defineConfig((ctx) => { // can be async too
   console.log(ctx)
 
   // Example output on console:
+  /*
   {
     dev: true,
     prod: false,
@@ -47,16 +50,21 @@ module.exports = function (ctx) { // can be async too
     archName: undefined,
     debug: undefined
   }
+  */
 
   // context gets generated based on the parameters
   // with which you run "quasar dev" or "quasar build"
-}
+
+  return {
+    // ... your config
+  }
+})
 ```
 
 What this means is that, as an example, you can load a font when building for a certain mode (like PWA), and pick another one for the others:
 
 ```js /quasar.config file
-module.exports = function (ctx) {
+{
   extras: [
     ctx.mode.pwa // we're adding only if working on a PWA
       ? 'roboto-font'
@@ -68,7 +76,7 @@ module.exports = function (ctx) {
 Or you can use a global CSS file for SPA mode and another one for Cordova mode while avoiding loading any such file for the other modes.
 
 ```js /quasar.config file
-module.exports = function (ctx) {
+{
   css: [
     ctx.mode.spa ? 'app-spa.sass' : null, // looks for /src/css/app-spa.sass
     ctx.mode.cordova ? 'app-cordova.sass' : null  // looks for /src/css/app-cordova.sass
@@ -79,7 +87,7 @@ module.exports = function (ctx) {
 Or you can configure the dev server to run on port 8000 for SPA mode, on port 9000 for PWA mode or on port 9090 for the other modes:
 
 ```js /quasar.config file
-module.exports = function (ctx) {
+{
   devServer: {
     port: ctx.mode.spa
       ? 8000
@@ -91,15 +99,17 @@ module.exports = function (ctx) {
 You can also do async work before returning the quasar configuration:
 
 ```js /quasar.config file
-module.exports = async function (ctx) {
+import { defineConfig } from '#q-app/wrappers'
+
+export default async defineConfig((ctx) => {
   const data = await someAsyncFunction()
   return {
     // ... use "data"
   }
-}
+})
 
 // or:
-module.exports = function (ctx) {
+export default defineConfig((ctx) => {
   return new Promise(resolve => {
     // some async work then:
     // resolve() with the quasar config
@@ -107,19 +117,19 @@ module.exports = function (ctx) {
       //
     })
   })
-}
+})
 ```
 
 The possibilities are endless.
 
 ### IDE autocompletion
 
-You can wrap the returned function with `configure()` helper to get a better IDE autocomplete experience (through Typescript):
+Notice the `defineConfig` import from `#q-app/wrappers`. This is essentially a no-op function but what it does is it helps with the IDE autocomplete experience.
 
 ```js /quasar.config file
-const { configure } = require('quasar/wrappers')
+import { defineConfig } from '#q-app/wrappers'
 
-module.exports = configure(function (ctx) {
+export default defineConfig((ctx) => {
   /* configuration options */
 })
 ```
@@ -139,7 +149,7 @@ css?: string[];
 Example:
 
 ```js /quasar.config file
-return {
+{
   css: [
     'app.sass', // referring to /src/css/app.sass
     '~some-library/style.css' // referring to node_modules/some-library/style.css
@@ -148,6 +158,8 @@ return {
 ```
 
 ### boot
+
+More on [Boot Files](/quasar-cli-vite/boot-files).
 
 ```js
 /** Boot files to load. Order is important. */
@@ -164,55 +176,11 @@ type QuasarBootConfiguration = (string | BootConfigurationItem)[];
 
 ### preFetch
 
-More on the [PreFetch Feature](/quasar-cli-vite/prefetch-feature).
+More on the [PreFetch Feature](/quasar-cli-vite/prefetch-feature) page.
 
 ```js
 /** Enable the preFetch feature. */
 preFetch?: boolean;
-```
-
-### eslint
-
-You will need the linting files already installed. If you don't know which those are, scaffold a new Quasar project folder (`yarn create quasar` or `npm init quasar` or the experimental `pnpm create quasar`) and pick "Linting" when asked about it.
-
-```js
-/** Options with which Quasar CLI will use ESLint */
-eslint?: QuasarEslintConfiguration;
-
-interface QuasarEslintConfiguration {
-  /**
-   * Should it report warnings?
-   * @default true
-   */
-  warnings?: boolean;
-
-  /**
-   * Should it report errors?
-   * @default true
-   */
-  errors?: boolean;
-
-  /**
-   * Fix on save
-   */
-  fix?: boolean;
-
-  /**
-   * Raw options to send to ESLint
-   */
-  rawOptions?: object;
-
-  /**
-   * Files to include (can be in glob format)
-   */
-  include?: string[];
-
-  /**
-   * Files to exclude (can be in glob format).
-   * Recommending to use .eslintignore file instead.
-   */
-  exclude?: string[];
-}
 ```
 
 ### extras
@@ -230,54 +198,104 @@ extras?: (QuasarIconSets | QuasarFonts)[];
 ```js
 /**
  * What Quasar language pack to use, what Quasar icon
- * set to use for Quasar components.
+ * set to use for Quasar components, etc.
  */
-framework?: QuasarFrameworkConfiguration;
-
-interface QuasarFrameworkConfiguration {
-  config?: /* Quasar UI config -- you'll notice in docs when you need it */;
-
+framework?: {
   /**
-   * one of the Quasar IconSets (see specific docs page)
+   * @see - QuasarConfOptions tab in API cards throughout the docs
+   */
+  config?: SerializableConfiguration<QuasarUIConfiguration>;
+  /**
+   * One of the Quasar IconSets
+   *
+   * @see https://v2.quasar.dev/options/quasar-icon-sets
+   *
    * @example 'material-icons'
    */
   iconSet?: QuasarIconSets;
-
   /**
-   * one of the Quasar language pack in String format (see specific docs page)
-   * @example 'en-US' / 'es' / 'he' / ...
+   * One of the Quasar language packs
+   *
+   * @see https://v2.quasar.dev/options/quasar-language-packs
+   *
+   * @example 'en-US'
+   * @example 'es'
    */
   lang?: QuasarLanguageCodes;
-
-  /* if you want the Quasar CSS Addons (see specific docs page) */
+  /**
+   * Quasar CSS addons have breakpoint aware versions of flex and spacing classes
+   *
+   * @see https://v2.quasar.dev/layout/grid/introduction-to-flexbox#flex-addons
+   * @see https://v2.quasar.dev/style/spacing#flex-addons
+   */
   cssAddon?: boolean;
 
   /**
-   * Format in which you will write your Vue templates when
-   * using Quasar components.
+   * Auto import - how to detect components in your vue files
+   *   "kebab": q-carousel q-page
+   *   "pascal": QCarousel QPage
+   *   "combined": q-carousel QPage
    *
    * @default 'kebab'
    */
   autoImportComponentCase?: "kebab" | "pascal" | "combined";
+  /**
+   * Auto import - which file extensions should be interpreted as referring to Vue SFC?
+   *
+   * @default ['vue']
+   */
+  autoImportVueExtensions?: string[];
+  /**
+   * Auto import - which file extensions should be interpreted as referring to script files?
+   *
+   * @default ['js', 'jsx', 'ts', 'tsx']
+   */
+  autoImportScriptExtensions?: string[];
+  /**
+   * Treeshake Quasar's UI on dev too?
+   * Recommended to leave this as false for performance reasons.
+   *
+   * @default false
+   */
+  devTreeshaking?: boolean;
 
   /**
-   * For special cases outside of where the auto-import strategy can have an impact
-   * (like plain .js or .ts files),
-   * you can manually specify Quasar components/directives to be available everywhere.
-   * @example [ 'QAvatar', 'QChip' ]
+   * Quasar will auto import components based on your usage.
+   * But, in case you have a special case, you can manually specify Quasar components to be available everywhere.
+   *
+   * An example case would be having custom component definitions with plain string templates, inside .js or .ts files,
+   * in which you are using Quasar components (e.g. q-avatar).
+   *
+   * Another example would be that dynamically rendering components depending on an API response or similar (e.g. in a CMS),
+   * something like `<component :is="dynamicName">` where `dynamicName` is a string that matches a Quasar component name.
+   *
+   * @example ['QAvatar', 'QChip']
    */
-  components?: (keyof QuasarPluginOptions["components"])[];
-  directives?: (keyof QuasarPluginOptions["directives"])[];
-
+  components?: (keyof QuasarComponents)[];
   /**
-   * Quasar plugins.
-   * @example [ 'Notify', 'Loading', 'Meta', 'AppFullscreen' ]
+   * Quasar will auto import directives based on your usage.
+   * But, in case you have a special case, you can manually specify Quasar directives to be available everywhere.
+   *
+   * An example case would be having custom component definitions with plain string templates, inside .js or .ts files,
+   * in which you are using Quasar directives (e.g. v-intersection).
+   *
+   * @example ['Intersection', 'Mutation']
    */
-  plugins?: (keyof QuasarPluginOptions["plugins"])[];
+  directives?: (keyof QuasarDirectives)[];
+  /**
+   * Quasar plugins to be installed. Specify the ones you are using in your app.
+   *
+   * @example ['Notify', 'Loading', 'Meta', 'AppFullscreen']
+   */
+  plugins?: (keyof QuasarPlugins)[];
 }
 ```
 
-More on cssAddon [here](/layout/grid/introduction-to-flexbox#flex-addons).
+See these references for more info:
+- [Quasar Language Packs](/options/quasar-language-packs)
+- [Quasar Icon Sets](/options/quasar-icon-sets)
+- [Quasar CSS Addons - Flex](/layout/grid/introduction-to-flexbox#flex-addons)
+- [Quasar CSS Addons - Spacing](/style/spacing#flex-addons)
 
 ### animations
 
@@ -285,7 +303,7 @@ More on [CSS animations](/options/animations).
 
 ```js
 /**
- * What Quasar CSS animations](/options/animations) to import.
+ * What Quasar CSS animations to import.
  * @example [ 'bounceInLeft', 'bounceOutRight' ]
  * */
 animations?: QuasarAnimationsConfiguration | 'all';
@@ -332,7 +350,7 @@ devServer: {
 }
 
 // opens Google Chrome and automatically deals with cross-platform issues:
-const open = require('open')
+import open from 'open'
 
 devServer: {
   open: {
@@ -365,66 +383,163 @@ interface InvokeParams {
 
 interface BuildTargetOptions {
   /**
-   * @default ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1']
+   * @default ['es2022', 'firefox115', 'chrome115', 'safari14']
    */
   browser?: string[];
   /**
-   * @example 'node16'
+   * @example 'node20'
    */
-  node: string;
+  node?: string;
+}
+
+interface PluginEntryRunOptions {
+  server?: boolean;
+  client?: boolean;
 }
 
 type PluginEntry =
-  | [pluginName: string, options?: any]
-  | [pluginFactory: (options?: any) => Plugin, options?: any]
+  | [pluginName: string, options?: any, runOptions?: PluginEntryRunOptions]
+  | [pluginFactory: (options?: any) => Plugin, options?: any, runOptions?: PluginEntryRunOptions]
   | Plugin
   | null
   | undefined
   | false;
 
-interface QuasarStaticBuildConfiguration {
+interface QuasarBuildConfiguration {
   /**
    * @example
-   *    {
-   *      browser: ['es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
-   *      node: 'node16'
-   *    }
+   * {
+   *   browser: ['es2022', 'firefox115', 'chrome115', 'safari14'],
+   *   node: 'node20'
+   * }
    */
   target?: BuildTargetOptions;
-
   /**
    * Extend Vite config generated by Quasar CLI.
+   *
+   * You can either return overrides or directly modify the config object.
+   *
+   * @example
+   * ```js
+   * // return overrides
+   * extendViteConf: (config) => ({
+   *   optimizeDeps: {
+   *     include: ['some-package']
+   *   }
+   * })
+   * ```
+   *
+   * @example
+   * ```js
+   * // directly modify the config object
+   * import { mergeConfig } from 'vite'
+   * // ...
+   * extendViteConf(config) {
+   *   config.optimizeDeps = mergeConfig(config.optimizeDeps, {
+   *     include: ['some-package']
+   *   }, false)
+   * }
+   * ```
    */
   extendViteConf?: (
     config: ViteUserConfig,
     invokeParams: InvokeParams
-  ) => void;
-
+  ) => ViteUserConfig | void;
   /**
    * Options to supply to @vitejs/plugin-vue
+   *
+   * @see https://v2.quasar.dev/quasar-cli-vite/handling-vite#vite-vue-plugin-options
    */
   viteVuePluginOptions?: VuePluginOptions;
-
   /**
    * Vite plugins
    *
+   * @see https://v2.quasar.dev/quasar-cli-vite/handling-vite#adding-vite-plugins
+   *
    * @example
-   *   [
-   *     [ 'package-name', { ..options.. } ],
-   *     [ require('some-plugin'), { ...options... } ]
-   *   ]
+   * // ESM
+   * import { somePlugin } from 'some-plugin'
+   * // ...
+   * [
+   *   [ 'some-plugin', { ...pluginOptions... } ],
+   *
+   *   // disable running on client or server threads (set server/client to false):
+   *   [ 'some-plugin', { ...pluginOptions... }, { server: true, client: true } ],
+   *
+   *   [ somePlugin, { ...pluginOptions... } ],
+   *
+   *   // disable running on client or server threads (set server/client to false):
+   *   [ somePlugin, { ...pluginOptions... }, { server: true, client: true } ],
+   *
+   *   somePlugin({ ...pluginOptions... })
+   * ]
+   *
+   * @example
+   * // CJS
+   * [
+   *   [ 'some-plugin', { ...pluginOptions... } ],
+   *
+   *   // disable running on client or server threads (set server/client to false):
+   *   [ 'some-plugin', { ...pluginOptions... }, { server: true, client: true } ],
+   *
+   *   [ require('some-plugin'), { ...pluginOptions... } ],
+   *
+   *   // disable running on client or server threads (set server/client to false):
+   *   [ require('some-plugin'), { ...pluginOptions... }, { server: true, client: true } ],
+   *
+   *   require('some-plugin')({ ...pluginOptions... })
+   * ]
    */
   vitePlugins?: PluginEntry[];
-
   /**
+   * @see https://v2.quasar.dev/quasar-cli-vite/handling-vite#folder-aliases
+   *
    * @example
    * {
-   *   // const { ... } = require('locales/...')
+   *   // import { ... } from 'locales/...'
    *   locales: path.join(__dirname, 'src/locales')
    * }
    */
   alias?: { [key: string]: string };
+  /**
+   * Configuration for TypeScript integration.
+   */
+  typescript?: {
+    /**
+     * Once your codebase is fully using TypeScript and all team members are comfortable with it,
+     * you can set this to `true` to enforce stricter type checking.
+     * It is recommended to set this to `true` and use stricter typescript-eslint rules.
+     *
+     * It will set the following TypeScript options:
+     * - "strict": true
+     * - "allowUnreachableCode": false
+     * - "allowUnusedLabels": false
+     * - "noImplicitOverride": true
+     * - "exactOptionalPropertyTypes": true
+     * - "noUncheckedIndexedAccess": true
+     *
+     * @see https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html#getting-stricter-checks
+     */
+    strict?: boolean;
 
+    /**
+     * Extend the generated `.quasar/tsconfig.json` file.
+     *
+     * If you don't have dynamic logic, you can directly modify your `tsconfig.json` file instead.
+     */
+    extendTsConfig?: (tsConfig: TSConfig) => void;
+
+    /**
+     * Generate a shim file for `*.vue` files to process them as plain Vue component instances.
+     *
+     * Vue Language Tools VS Code extension can analyze `*.vue` files in a better way, without the shim file.
+     * So, you can disable the shim file generation and let the extension handle the types.
+     *
+     * However, some tools like ESLint can't work with `*.vue` files without the shim file.
+     * So, if your tooling is not properly working, enable this option.
+     */
+    vueShim?: boolean;
+  };
   /**
    * Public path of your app.
    * Use it when your public path is something else,
@@ -434,7 +549,6 @@ interface QuasarStaticBuildConfiguration {
    * @default '/'
    */
   publicPath?: string;
-
   /**
    * Sets [Vue Router mode](https://router.vuejs.org/guide/essentials/history-mode.html).
    * History mode requires configuration on your deployment web server too.
@@ -442,7 +556,6 @@ interface QuasarStaticBuildConfiguration {
    * @default 'hash'
    */
   vueRouterMode?: "hash" | "history";
-
   /**
    * Sets Vue Router base.
    * Should not need to configure this, unless absolutely needed.
@@ -459,20 +572,13 @@ interface QuasarStaticBuildConfiguration {
    * @default true
    */
   vueOptionsAPI?: boolean;
-
-  /**
-   * Should we invalidate the Vite and ESLint cache on startup?
-   * @default false
-   */
-  rebuildCache?: boolean;
-
   /**
    * Do you want to analyze the production bundles?
-   * Generates and opens an html report.
+   * Generates and opens an HTML report.
+   *
    * @default false
    */
   analyze?: boolean;
-
   /**
    * Folder where Quasar CLI should generate the distributables.
    * Relative path to project root directory.
@@ -485,20 +591,35 @@ interface QuasarStaticBuildConfiguration {
   /**
    * Add properties to `process.env` that you can use in your website/app JS code.
    *
+   * @see https://v2.quasar.dev/quasar-cli-vite/handling-process-env
+   *
    * @example { SOMETHING: 'someValue' }
    */
-  env?: { [index: string]: string };
-
+  env?: { [index: string]: string | boolean | undefined | null };
   /**
    * Defines constants that get replaced in your app.
+   * Unlike `env`, you will need to use JSON.stringify() on the values yourself except for booleans.
+   * Also, these will not be prefixed with `process.env.`.
    *
    * @example { SOMETHING: JSON.stringify('someValue') } -> console.log(SOMETHING) // console.log('someValue')
    */
-  rawDefine?: { [index: string]: string };
+  rawDefine?: { [index: string]: string | boolean | undefined | null };
+  /**
+   * Folder where Quasar CLI should look for .env* files.
+   * Can be an absolute path or a relative path to project root directory.
+   *
+   * @default project root directory
+   */
+  envFolder?: string;
+  /**
+   * Additional .env* files to be loaded.
+   * Each entry can be an absolute path or a relative path to quasar.config > build > envFolder.
+   *
+   * @example ['.env.somefile', '../.env.someotherfile']
+   */
+  envFiles?: string[];
 
   /**
-   * (requires @quasar/app-vite v1.1+)
-   *
    * Build production assets with or without the hash part in filenames.
    * Example: "454d87bd" in "assets/index.454d87bd.js"
    *
@@ -524,12 +645,45 @@ interface QuasarStaticBuildConfiguration {
    * @default false
    */
   polyfillModulePreload?: boolean;
-
   /**
    * Ignores the public folder.
    * @default false
    */
   ignorePublicFolder?: boolean;
+
+  /**
+   * Prepare external services before `$ quasar dev` command runs
+   * like starting some backend or any other service that the app relies on.
+   * Can use async/await or directly return a Promise.
+   */
+  beforeDev?: (params: QuasarHookParams) => void;
+  /**
+   * Run hook after Quasar dev server is started (`$ quasar dev`).
+   * At this point, the dev server has been started and is available should you wish to do something with it.
+   * Can use async/await or directly return a Promise.
+   */
+  afterDev?: (params: QuasarHookParams) => void;
+  /**
+   * Run hook before Quasar builds app for production (`$ quasar build`).
+   * At this point, the distributables folder hasn’t been created yet.
+   * Can use async/await or directly return a Promise.
+   */
+  beforeBuild?: (params: QuasarHookParams) => void;
+  /**
+   * Run hook after Quasar built app for production (`$ quasar build`).
+   * At this point, the distributables folder has been created and is available
+   *  should you wish to do something with it.
+   * Can use async/await or directly return a Promise.
+   */
+  afterBuild?: (params: QuasarHookParams) => void;
+  /**
+   * Run hook if publishing was requested (`$ quasar build -P`),
+   *  after Quasar built app for production and the afterBuild hook (if specified) was executed.
+   * Can use async/await or directly return a Promise.
+   * `opts` is Object of form `{arg, distDir}`,
+   * where “arg” is the argument supplied (if any) to -P parameter.
+   */
+  onPublish?: (ops: { arg: string; distDir: string }) => void;
 
   /**
    * Set to `false` to disable minification, or specify the minifier to use.
@@ -539,11 +693,11 @@ interface QuasarStaticBuildConfiguration {
    * @default 'esbuild'
    */
   minify?: boolean | 'terser' | 'esbuild';
-
   /**
-   * (requires @quasar/app-vite v1.5.2+)
+   * Minification options for html-minifier-terser.
    *
-   * Minification options for html-minifier. [Full list](https://github.com/kangax/html-minifier)
+   * @see https://github.com/terser/html-minifier-terser?tab=readme-ov-file#options-quick-reference for complete list of options
+   *
    * @default
    *  {
    *    removeComments: true,
@@ -554,7 +708,6 @@ interface QuasarStaticBuildConfiguration {
    *  }
    */
   htmlMinifyOptions?: HtmlMinifierOptions;
-
   /**
    * If `true`, a separate sourcemap file will be created. If 'inline', the
    * sourcemap will be appended to the resulting output file as data URI.
@@ -563,52 +716,20 @@ interface QuasarStaticBuildConfiguration {
    * @default false
    */
   sourcemap?: boolean | 'inline' | 'hidden';
-
-  /**
-   * Prepare external services before `$ quasar dev` command runs
-   * like starting some backend or any other service that the app relies on.
-   * Can use async/await or directly return a Promise.
-   */
-  beforeDev?: (params: QuasarHookParams) => void;
-
-  /**
-   * Run hook after Quasar dev server is started (`$ quasar dev`).
-   * At this point, the dev server has been started and is available should you wish to do something with it.
-   * Can use async/await or directly return a Promise.
-   */
-  afterDev?: (params: QuasarHookParams) => void;
-
-  /**
-   * Run hook before Quasar builds app for production (`$ quasar build`).
-   * At this point, the distributables folder hasn’t been created yet.
-   * Can use async/await or directly return a Promise.
-   */
-  beforeBuild?: (params: QuasarHookParams) => void;
-
-  /**
-   * Run hook after Quasar built app for production (`$ quasar build`).
-   * At this point, the distributables folder has been created and is available
-   *  should you wish to do something with it.
-   * Can use async/await or directly return a Promise.
-   */
-  afterBuild?: (params: QuasarHookParams) => void;
-
-  /**
-   * Run hook if publishing was requested (`$ quasar build -P`),
-   *  after Quasar built app for production and the afterBuild hook (if specified) was executed.
-   * Can use async/await or directly return a Promise.
-   * `opts` is Object of form `{arg, distDir}`,
-   * where “arg” is the argument supplied (if any) to -P parameter.
-   */
-  onPublish?: (ops: { arg: string; distDir: string }) => void;
 }
 ```
+
+See these references for more info:
+- [Vite server options](https://vitejs.dev/config/#server-options)
+- [Vite Vue Plugin options](/quasar-cli-vite/handling-vite#vite-vue-plugin-options)
+- [Adding Vite plugins](/quasar-cli-vite/handling-vite#adding-vite-plugins)
+- [Folder Aliases](/quasar-cli-vite/handling-vite#folder-aliases)
+- [Handling Process Env](/quasar-cli-vite/handling-process-env)
+- [html-minifier-terser options](https://github.com/terser/html-minifier-terser?tab=readme-ov-file#options-quick-reference)
 
 ### sourceFiles
 
 ```js
-sourceFiles?: QuasarSourceFilesConfiguration;
-
 /**
  * Use this property to change the default names of some files of your website/app if you have to.
  * All paths must be relative to the root folder of your project.
@@ -617,16 +738,15 @@ sourceFiles?: QuasarSourceFilesConfiguration;
  * {
  *  rootComponent: 'src/App.vue',
  *  router: 'src/router/index',
- *  store: 'src/stores/index', // for Pinia
- *  // store: 'src/store/index' // for Vuex
+ *  store: 'src/stores/index',
  *  pwaRegisterServiceWorker: 'src-pwa/register-service-worker',
  *  pwaServiceWorker: 'src-pwa/custom-service-worker',
  *  pwaManifestFile: 'src-pwa/manifest.json',
  *  electronMain: 'src-electron/electron-main',
- *  electronPreload: 'src-electron/electron-preload'
+ *  bexManifestFile: 'src-bex/manifest.json'
  * }
  */
-interface QuasarSourceFilesConfiguration {
+sourceFiles?: {
   rootComponent?: string;
   router?: string;
   store?: string;
@@ -634,7 +754,7 @@ interface QuasarSourceFilesConfiguration {
   pwaServiceWorker?: string;
   pwaManifestFile?: string;
   electronMain?: string;
-  electronPreload?: string;
+  bexManifestFile?: string;
 }
 ```
 
@@ -642,17 +762,26 @@ interface QuasarSourceFilesConfiguration {
 
 ```js
 /** Add variables that you can use in /index.html. */
-htmlVariables?: { [index: string]: string };
+htmlVariables?: Record<string, any>;
 ```
 
 You can define and then reference variables in `/index.html`, like this:
 
-```js
-htmlVariables: {
-  myVar: 'some-content'
-}
+```js /quasar.config file
+import { defineConfig } from '#q-app/wrappers'
 
-// then in /index.html
+export default defineConfig((ctx) => {
+  return {
+    htmlVariables: {
+      myVar: 'some-content'
+    }
+  }
+})
+```
+
+Then, as an example:
+
+```html /index.html
 <%= myVar %>
 <% if (myVar) { %>something<% } %>
 ```
@@ -660,21 +789,20 @@ htmlVariables: {
 One more example:
 
 ```js /quasar.config file
-module.exports = function (ctx) {
-  return {
-    htmlVariables: {
-      title: 'test name',
-      some: {
-        prop: 'my-prop'
-      }
-    }
+htmlVariables: {
+  title: 'test name',
+  some: {
+    prop: 'my-prop'
+  }
+}
 ```
 
-Then (just an example showing you how to reference a variable defined above, in this case `title`):
+Then, as an example:
 
 ```html /index.html
 <%= title %>
 <%= some.prop %>
+<% if (some.prop) { %><%= title %><% } %>
 ```
 
 ### Quasar Mode Specific

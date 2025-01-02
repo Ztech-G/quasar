@@ -133,9 +133,7 @@ export class InstallAPI extends BaseAPI {
    * @param {object|string} extPkg - Object to extend with or relative path to a JSON file
    */
   extendPackageJson (extPkg) {
-    if (!extPkg) {
-      return
-    }
+    if (!extPkg) return
 
     if (typeof extPkg === 'string') {
       const dir = getCallerPath()
@@ -166,9 +164,10 @@ export class InstallAPI extends BaseAPI {
       }
     }
 
-    if (Object(extPkg) !== extPkg || Object.keys(extPkg).length === 0) {
-      return
-    }
+    if (
+      Object(extPkg) !== extPkg
+      || Object.keys(extPkg).length === 0
+    ) return
 
     const pkg = merge({}, this.ctx.pkg.appPkg, extPkg)
 
@@ -177,9 +176,6 @@ export class InstallAPI extends BaseAPI {
       JSON.stringify(pkg, null, 2),
       'utf-8'
     )
-
-    // we mingled with it, time to notify there's a need to update it
-    this.ctx.pkg.updateAppPackageJson()
 
     if (
       extPkg.dependencies

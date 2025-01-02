@@ -1,6 +1,4 @@
-const logUpdate = require('log-update')
-const logLine = logUpdate.create(process.stdout, { showCursor: true })
-
+let logLine
 let lastLog
 let consoleLog, consoleWarn, consoleError
 
@@ -12,9 +10,7 @@ function progressLog (str) {
 progressLog.isActive = false
 
 progressLog.start = function () {
-  if (progressLog.isActive === true) {
-    return
-  }
+  if (progressLog.isActive === true) return
 
   progressLog.isActive = true
 
@@ -42,9 +38,7 @@ progressLog.start = function () {
 }
 
 progressLog.stop = function () {
-  if (progressLog.isActive === false) {
-    return
-  }
+  if (progressLog.isActive === false) return
 
   progressLog.isActive = false
 
@@ -53,6 +47,18 @@ progressLog.stop = function () {
   console.log = consoleLog
   console.warn = consoleWarn
   console.error = consoleError
+}
+
+progressLog.init = function () {
+  return logLine !== void 0
+    ? Promise.resolve()
+    : import('log-update')
+      .then(({ createLogUpdate }) => {
+        // if it's still the case to create the logLine
+        if (logLine === void 0) {
+          logLine = createLogUpdate(process.stdout, { showCursor: true })
+        }
+      })
 }
 
 module.exports.progressLog = progressLog

@@ -12,7 +12,7 @@ related:
 
 The QForm component renders a `<form>` DOM element and allows you to easily validate child form components (like [QInput](/vue-components/input#Internal-validation), [QSelect](/vue-components/select) or your [QField](/vue-components/field) wrapped components) that have the **internal validation** (NOT the external one) through `rules` associated with them.
 
-<doc-api file="QForm" />
+<DocApi file="QForm" />
 
 ## Usage
 
@@ -23,7 +23,7 @@ Please be aware of the following:
 * If you want to take advantage of the `reset` functionality, then be sure to also capture the `@reset` event on QForm and make its handler reset all of the wrapped components models.
 :::
 
-<doc-example title="Basic" file="Basic" />
+<DocExample title="Basic" file="Basic" />
 
 In order for the user to be able to activate the `@submit` or `@reset` events on the form, create a QBtn with `type` set to `submit` or `reset`:
 
@@ -37,7 +37,7 @@ In order for the user to be able to activate the `@submit` or `@reset` events on
 Alternatively, you can give the QForm a Vue ref name and call the `validate` and `resetValidation` functions directly:
 
 ```tabs
-<<| js Composition API variant |>>
+<<| js Composition API |>>
 // <q-form ref="myForm">
 
 setup () {
@@ -65,7 +65,7 @@ setup () {
     // ...
   }
 }
-<<| js Options API variant |>>
+<<| js Options API |>>
 // <q-form ref="myForm">
 
 this.$refs.myForm.validate().then(success => {
@@ -127,7 +127,7 @@ methods: {
 By default, all the Quasar form components communicate with the parent QForm instance. If, for some reason, you are creating your own form component (**that doesn't wrap a Quasar form component**), then you can make QForm aware of it by using:
 
 ```tabs
-<<| js Composition API variant |>>
+<<| js Composition API |>>
 import { useFormChild } from 'quasar'
 
 setup () {
@@ -140,7 +140,7 @@ setup () {
     requiresQForm: true // should it error out if no parent QForm is found?
   })
 }
-<<| js Options API variant |>>
+<<| js Options API |>>
 import { QFormChildMixin } from 'quasar'
 
 // some component

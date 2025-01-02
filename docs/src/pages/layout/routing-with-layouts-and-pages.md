@@ -43,12 +43,27 @@ $ quasar new page Profile Posts
 
 The commands above create the following folder structure:
 
-<doc-tree :def="scope.tree" />
+<DocTree :def="scope.tree" />
 
 ## Defining Routes
 Your Pages (`/src/pages`) and Layouts (`/src/layouts`) are injected into your website/app (and also managed) through Vue Router in `/src/router/routes.js`. Each Page and Layout needs to be referenced there.
 
 Example of `routes.js` using lazy-loading:
+
+```js
+// we define our routes in this file
+
+const routes = [
+  {
+    path: '/',
+    component: () => import('pages/Landing')
+  }
+]
+
+export default routes
+```
+
+Example of `routes.js` using eager loading:
 
 ```js
 // we define our routes in this file
@@ -59,21 +74,6 @@ const routes = [
   {
     path: '/',
     component: LandingPage
-  }
-]
-
-export default routes
-```
-
-Example of `routes.js` using on-demand loading:
-
-```js
-// we define our routes in this file
-
-const routes = [
-  {
-    path: '/',
-    component: () => import('pages/Landing')
   }
 ]
 

@@ -1,8 +1,6 @@
 ---
 title: Vite plugin for Quasar
 desc: How to embed Quasar into a Vite app.
-components:
-  - ./VitePluginUsage
 ---
 
 If you want to embed Quasar into your existing [Vite](https://vitejs.dev) project then follow this guide to install and use the `@quasar/vite-plugin`.
@@ -37,31 +35,35 @@ Navigate to your Vite project folder and install the necessary packages.
 
 ::: tip
 * Notice that `@quasar/extras` is optional.
-* Also, if you want to use the Quasar Sass/SCSS variables then you need to add the `sass` dependency, based on your version of Quasar UI:
-  * For Quasar >= v2.14 then add `sass@^1.33.0`
+* Also, if you want to use the Quasar Sass/SCSS variables then you need to add the Sass dependency, based on your version of Quasar UI:
+  * For Quasar >= v2.14 then add `sass-embedded@^1.80.2`
   * For Quasar <= v2.13 add `sass@1.32.12` (**_notice the exact pinned version_**)
 :::
 
 ```tabs
 <<| bash Yarn |>>
 $ yarn add quasar @quasar/extras
-$ yarn add --dev @quasar/vite-plugin sass@^1.33.0
+$ yarn add --dev @quasar/vite-plugin sass-embedded@^1.80.2
 <<| bash NPM |>>
 $ npm install --save quasar @quasar/extras
-$ npm install --save-dev @quasar/vite-plugin sass@^1.33.0
+$ npm install --save-dev @quasar/vite-plugin sass-embedded@^1.80.2
 <<| bash PNPM |>>
 $ pnpm add quasar @quasar/extras
-$ pnpm add -D @quasar/vite-plugin sass@^1.33.0
+$ pnpm add -D @quasar/vite-plugin sass-embedded@^1.80.2
 <<| bash Bun |>>
 $ bun add quasar @quasar/extras
-$ bun add --dev @quasar/vite-plugin sass@^1.33.0
+$ bun add --dev @quasar/vite-plugin sass-embedded@^1.80.2
 ```
 
 ## Using Quasar
 
 We have built a configurator to help you get started as quickly as possible:
 
-<vite-plugin-usage />
+<script doc>
+import VitePluginUsage from './VitePluginUsage.vue'
+</script>
+
+<VitePluginUsage />
 
 ## @quasar/vite-plugin options
 
@@ -70,16 +72,3 @@ The full list of options can be found [here](https://github.com/quasarframework/
 ## RTL support
 
 For enabling, please check out our [RTL Support](/options/rtl-support) page and follow the instructions.
-
-## Warning when building for production
-
-When building for production, you may notice the warning below. You can safely ignore it. This is a known [Vite issue](https://github.com/vitejs/vite/issues/4625).
-
-```
-warnings when minifying css:
- > <stdin>:32:0: warning: "@charset" must be the first rule in the file
-    32 │ @charset "UTF-8";
-       ╵ ~~~~~~~~
-   <stdin>:9:0: note: This rule cannot come before a "@charset" rule
-     9 │ .material-icons {
-```

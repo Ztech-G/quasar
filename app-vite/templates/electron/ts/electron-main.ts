@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url'
 // needed in case process is undefined under Linux
 const platform = process.platform || os.platform();
 
-const currentDir = fileURLToPath(new URL('.', import.meta.url))
+const currentDir = fileURLToPath(new URL('.', import.meta.url));
 
 let mainWindow: BrowserWindow | undefined;
 
@@ -22,7 +22,10 @@ function createWindow() {
     webPreferences: {
       contextIsolation: true,
       // More info: https://v2.quasar.dev/quasar-cli-vite/developing-electron-apps/electron-preload-script
-      preload: path.resolve(currentDir, process.env.QUASAR_ELECTRON_PRELOAD),
+      preload: path.resolve(
+        currentDir,
+        path.join(process.env.QUASAR_ELECTRON_PRELOAD_FOLDER, 'electron-preload' + process.env.QUASAR_ELECTRON_PRELOAD_EXTENSION)
+      ),
     },
   });
 

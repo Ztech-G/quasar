@@ -1,8 +1,44 @@
-const { join } = require('node:path')
+const { join, basename } = require('node:path')
 
 const { createWebpackChain, extendWebpackChain, extendEsbuildConfig, createNodeEsbuildConfig } = require('../../config-tools.js')
 const { getBuildSystemDefine } = require('../../utils/env.js')
 const { injectWebpackHtml } = require('../../utils/html-template.js')
+
+async function preloadScript (quasarConf, name) {
+  /**
+   * We will be compiling to commonjs format because Electron requires
+   * ESM preload scripts to run with sandbox disabled, which is a security risk
+   * (Sandboxed preload scripts are run as plain JavaScript without an ESM context)
+   *
+   * However, should we decide going with ESM preload scripts at some point,
+   * we need to change the compiled file extension to .mjs (which is also an Electron requirement)
+   */
+
+  const scriptName = basename(name)
+  const cfg = await createNodeEsbuildConfig(quasarConf, { compileId: `node-electron-preload-${ scriptName }`, format: 'cjs' })
+  const { appPaths } = quasarConf.ctx
+
+  cfg.entryPoints = [ appPaths.resolve.electron(name) ]
+  cfg.outfile = quasarConf.ctx.dev === true
+    ? appPaths.resolve.entry(`preload/${ scriptName }.cjs`)
+    : join(quasarConf.build.distDir, `UnPackaged/preload/${ scriptName }.cjs`)
+
+  cfg.define = {
+    ...cfg.define,
+    ...getBuildSystemDefine({
+      buildEnv: {
+        QUASAR_PUBLIC_FOLDER: quasarConf.ctx.dev === true
+          ? appPaths.publicDir
+          : '.'
+      }
+    })
+  }
+
+  return {
+    scriptName,
+    esbuildConfig: await extendEsbuildConfig(cfg, quasarConf.electron, quasarConf.ctx, 'extendElectronPreloadConf')
+  }
+}
 
 const quasarElectronConfig = {
   webpack: async quasarConf => {
@@ -27,19 +63,21 @@ const quasarElectronConfig = {
 
     cfg.entryPoints = [ quasarConf.sourceFiles.electronMain ]
     cfg.outfile = quasarConf.ctx.dev === true
-      ? appPaths.resolve.entry('electron-main.mjs')
-      : join(quasarConf.build.distDir, 'UnPackaged/electron-main.mjs')
+      ? appPaths.resolve.entry('electron-main.js')
+      : join(quasarConf.build.distDir, 'UnPackaged/electron-main.js')
 
     cfg.define = {
       ...cfg.define,
       ...getBuildSystemDefine({
         buildEnv: quasarConf.ctx.dev === true
           ? {
-              QUASAR_ELECTRON_PRELOAD: appPaths.resolve.entry('electron-preload.cjs'),
+              QUASAR_ELECTRON_PRELOAD_FOLDER: appPaths.resolve.entry('preload'),
+              QUASAR_ELECTRON_PRELOAD_EXTENSION: '.cjs',
               QUASAR_PUBLIC_FOLDER: appPaths.publicDir
             }
           : {
-              QUASAR_ELECTRON_PRELOAD: 'electron-preload.cjs',
+              QUASAR_ELECTRON_PRELOAD_FOLDER: 'preload',
+              QUASAR_ELECTRON_PRELOAD_EXTENSION: '.cjs',
               QUASAR_PUBLIC_FOLDER: '.'
             }
       })
@@ -48,40 +86,16 @@ const quasarElectronConfig = {
     return extendEsbuildConfig(cfg, quasarConf.electron, quasarConf.ctx, 'extendElectronMainConf')
   },
 
-  preload: async quasarConf => {
-    /**
-     * We will be compiling to commonjs format because Electron requires
-     * ESM preload scripts to run with sandbox disabled, which is a security risk
-     * (Sandboxed preload scripts are run as plain JavaScript without an ESM context)
-     *
-     * However, should we decide going with ESM preload scripts at some point,
-     * we need to change the compiled file extension to .mjs (which is also an Electron requirement)
-     */
+  async preloadScriptList (quasarConf) {
+    const list = []
 
-    const cfg = await createNodeEsbuildConfig(quasarConf, { compileId: 'node-electron-preload', format: 'cjs' })
-    const { appPaths } = quasarConf.ctx
-
-    cfg.entryPoints = [ quasarConf.sourceFiles.electronPreload ]
-    cfg.outfile = quasarConf.ctx.dev === true
-      ? appPaths.resolve.entry('electron-preload.cjs')
-      : join(quasarConf.build.distDir, 'UnPackaged/electron-preload.cjs')
-
-    cfg.define = {
-      ...cfg.define,
-      ...getBuildSystemDefine({
-        buildEnv: quasarConf.ctx.dev === true
-          ? {
-              QUASAR_ELECTRON_PRELOAD: appPaths.resolve.entry('electron-preload.cjs'),
-              QUASAR_PUBLIC_FOLDER: appPaths.publicDir
-            }
-          : {
-              QUASAR_ELECTRON_PRELOAD: 'electron-preload.cjs',
-              QUASAR_PUBLIC_FOLDER: '.'
-            }
-      })
+    for (const name of quasarConf.electron.preloadScripts) {
+      list.push(
+        await preloadScript(quasarConf, name)
+      )
     }
 
-    return extendEsbuildConfig(cfg, quasarConf.electron, quasarConf.ctx, 'extendElectronPreloadConf')
+    return list
   }
 }
 

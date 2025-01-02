@@ -106,7 +106,7 @@ function fetchQuery (val, onResult, onError) {
   clearTimeout(fetchTimer)
 
   fetchTimer = setTimeout(() => {
-    if (localRequestId !== requestId) { return }
+    if (localRequestId !== requestId) return
 
     const xhr = new XMLHttpRequest()
     const data = JSON.stringify({
@@ -123,7 +123,7 @@ function fetchQuery (val, onResult, onError) {
 
     xhr.open('POST', `https://search.quasar.dev/indexes/${ process.env.SEARCH_INDEX }/search`)
     xhr.setRequestHeader('Content-Type', 'application/json')
-    xhr.setRequestHeader('Authorization', 'Bearer 50dc8e7bbf5818999851a134539ff47e544e352b275ad9cd124a95d60aec36cf')
+    xhr.setRequestHeader('Authorization', 'Bearer b7a6ea9a9978a4e4d994c1f9451210327f207441adbcf04a4aada3d17d829359')
     xhr.send(data)
   }, 400)
 }
@@ -133,9 +133,7 @@ const startsWithRE = /^[a-z0-9]/
 const endsWithRE = /[a-z0-9]$/
 
 function parseContent (content) {
-  if (!content) {
-    return
-  }
+  if (!content) return
 
   let inToken = false
 
@@ -176,9 +174,7 @@ function parseResults (hits) {
 
   hits.forEach(hit => {
     // if we don't know how to display this API type then just abort
-    if (supportedHitTypes.includes(hit.type) === false) {
-      return
-    }
+    if (supportedHitTypes.includes(hit.type) === false) return
 
     const entry = {
       page: hit.menu.join(' » '),

@@ -28,15 +28,13 @@ type QuasarAnimationsConfiguration = "all" | QuasarAnimations[];
  * {
  *  rootComponent: 'src/App.vue',
  *  router: 'src/router/index',
- *  store: 'src/stores/index', // for Pinia
- *  // store: 'src/store/index' // for Vuex
+ *  store: 'src/stores/index',
  *  indexHtmlTemplate: 'index.html',
  *  pwaRegisterServiceWorker: 'src-pwa/register-service-worker',
  *  pwaServiceWorker: 'src-pwa/custom-service-worker',
  *  pwaManifestFile: 'src-pwa/manifest.json',
  *  electronMain: 'src-electron/electron-main',
- *  electronPreload: 'src-electron/electron-preload'
- *  bexManifestFile: 'src-bex/manifest.json
+ *  bexManifestFile: 'src-bex/manifest.json'
  * }
  * ```
  */
@@ -49,7 +47,6 @@ interface QuasarSourceFilesConfiguration {
   pwaServiceWorker?: string;
   pwaManifestFile?: string;
   electronMain?: string;
-  electronPreload?: string;
   bexManifestFile?: string;
 }
 
@@ -64,7 +61,7 @@ interface BaseQuasarConfiguration {
    * except for theme files, which are included by default.
    */
   css?: string[];
-  /** Enable [PreFetch Feature](/quasar-cli/prefetch-feature). */
+  /** Enable [PreFetch Feature](https://v2.quasar.dev/quasar-cli-webpack/prefetch-feature). */
   preFetch?: boolean;
   /**
    * What to import from [@quasar/extras](https://github.com/quasarframework/quasar/tree/dev/extras) package.
@@ -76,15 +73,15 @@ interface BaseQuasarConfiguration {
     add: string[];
     remove: string[];
   };
-  /** Add variables that you can use in index.template.html. */
-  htmlVariables?: { [index: string]: string };
+  /** Add variables that you can use in index.html */
+  htmlVariables?: Record<string, any>;
   /**
    * What Quasar language pack to use, what Quasar icon
    * set to use for Quasar components.
    */
   framework?: QuasarFrameworkConfiguration;
   /**
-   * What [CSS animations](/options/animations) to import.
+   * What [CSS animations](https://v2.quasar.dev/options/animations) to import.
    * @example: [ 'bounceInLeft', 'bounceOutRight' ]
    */
   animations?: QuasarAnimationsConfiguration | 'all';
@@ -107,21 +104,21 @@ export interface QuasarHookParams {
 }
 
 export type QuasarConf = BaseQuasarConfiguration & QuasarMobileConfiguration & {
-  /** PWA specific [config](/quasar-cli/developing-pwa/configuring-pwa). */
+  /** PWA specific [config](https://v2.quasar.dev/quasar-cli-webpack/developing-pwa/configuring-pwa). */
   pwa?: QuasarPwaConfiguration;
 } & {
-  /** SSR specific [config](/quasar-cli/developing-ssr/configuring-ssr). */
+  /** SSR specific [config](https://v2.quasar.dev/quasar-cli-webpack/developing-ssr/configuring-ssr). */
   ssr?: QuasarSsrConfiguration;
 } & {
-  /** Capacitor specific [config](/quasar-cli/developing-capacitor-apps/configuring-capacitor). */
+  /** Capacitor specific [config](https://v2.quasar.dev/quasar-cli-webpack/developing-capacitor-apps/configuring-capacitor). */
   capacitor?: QuasarCapacitorConfiguration;
 } & {
-  /** Cordova specific [config](/quasar-cli/developing-cordova-apps/configuring-cordova). */
+  /** Cordova specific [config](https://v2.quasar.dev/quasar-cli-webpack/developing-cordova-apps/configuring-cordova). */
   cordova?: QuasarCordovaConfiguration;
 } & {
-  /** Electron specific [config](/quasar-cli/developing-electron-apps/configuring-electron). */
+  /** Electron specific [config](https://v2.quasar.dev/quasar-cli-webpack/developing-electron-apps/configuring-electron). */
   electron?: QuasarElectronConfiguration;
 } & {
-  /** Bex specific [config](/quasar-cli/developing-bex/configuring-bex). */
+  /** Bex specific [config](https://v2.quasar.dev/quasar-cli-webpack/developing-bex/configuring-bex). */
   bex?: QuasarBexConfiguration;
 };

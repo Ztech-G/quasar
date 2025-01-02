@@ -1,14 +1,14 @@
 import { h, ref, computed, onBeforeUnmount, getCurrentInstance } from 'vue'
 
-import TouchPan from '../../directives/TouchPan.js'
+import TouchPan from '../../directives/touch-pan/TouchPan.js'
 
-import useDark, { useDarkProps } from '../../composables/private/use-dark.js'
-import { useFormProps, useFormInject } from '../../composables/private/use-form.js'
+import useDark, { useDarkProps } from '../../composables/private.use-dark/use-dark.js'
+import { useFormProps, useFormInject } from '../../composables/use-form/private.use-form.js'
 
-import { between } from '../../utils/format.js'
-import { position } from '../../utils/event.js'
-import { isNumber, isObject } from '../../utils/is.js'
-import { hDir } from '../../utils/private/render.js'
+import { between } from '../../utils/format/format.js'
+import { position } from '../../utils/event/event.js'
+import { isNumber, isObject } from '../../utils/is/is.js'
+import { hDir } from '../../utils/private.render/render.js'
 
 const markerPrefixClass = 'q-slider__marker-labels'
 const defaultMarkerConvertFn = v => ({ value: v })
@@ -46,8 +46,6 @@ export const useSliderProps = {
 
   vertical: Boolean,
   reverse: Boolean,
-
-  hideSelection: Boolean,
 
   color: String,
   markerLabelsClass: String,
@@ -129,8 +127,16 @@ export default function ({ updateValue, updatePosition, getDragging, formAttrs }
     && innerMin.value < innerMax.value
   ))
 
-  const decimals = computed(() => (String(props.step).trim().split('.')[ 1 ] || '').length)
-  const step = computed(() => (props.step === 0 ? 1 : props.step))
+  const roundValueFn = computed(() => {
+    if (props.step === 0) {
+      return v => v
+    }
+
+    const decimals = (String(props.step).trim().split('.')[ 1 ] || '').length
+    return v => parseFloat(v.toFixed(decimals))
+  })
+
+  const keyStep = computed(() => (props.step === 0 ? 1 : props.step))
   const tabindex = computed(() => (editable.value === true ? props.tabindex || 0 : -1))
 
   const trackLen = computed(() => props.max - props.min)
@@ -242,9 +248,7 @@ export default function ({ updateValue, updatePosition, getDragging, formAttrs }
       model += (Math.abs(modulo) >= step / 2 ? (modulo < 0 ? -1 : 1) * step : 0) - modulo
     }
 
-    if (decimals.value > 0) {
-      model = parseFloat(model.toFixed(decimals.value))
-    }
+    model = roundValueFn.value(model)
 
     return between(model, innerMin.value, innerMax.value)
   }
@@ -270,7 +274,7 @@ export default function ({ updateValue, updatePosition, getDragging, formAttrs }
   }
 
   const markerStep = computed(() => (
-    isNumber(props.markers) === true ? props.markers : step.value)
+    isNumber(props.markers) === true ? props.markers : keyStep.value)
   )
 
   const markerTicks = computed(() => {
@@ -630,8 +634,8 @@ export default function ({ updateValue, updatePosition, getDragging, formAttrs }
       tabindex,
       attributes,
 
-      step,
-      decimals,
+      roundValueFn,
+      keyStep,
       trackLen,
       innerMin,
       innerMinRatio,

@@ -7,9 +7,9 @@
   "module": "src/index.js",
   "scripts": {
     "lint": "eslint ./ --ext .js,.vue --fix --report-unused-disable-directives",
-    "dev": "cd src-ui && quasar dev",
-    "build": "yarn build:ui && yarn build:package",
-    "build:ui": "cd src-ui && quasar build",
+    "dev": "cd src-ui && vite",
+    "build": "pnpm build:ui && pnpm build:package",
+    "build:ui": "cd src-ui && vite build",
     "build:package": "node ./build/index.js"
   },
   "author": {
@@ -38,20 +38,17 @@
     "stack-trace": "^1.0.0-pre2"
   },
   "devDependencies": {
-    "@quasar/app-vite": "^2.0.0-alpha.0",
-    "@quasar/extras": "^1.16.6",
-    "autoprefixer": "^10.4.15",
-    "eslint": "^8.49.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-n": "^16.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-vue": "^9.17.0",
-    "fs-extra": "^11.1.1",
-    "postcss": "^8.4.31",
+    "@quasar/extras": "workspace:*",
+    "@quasar/vite-plugin": "workspace:^",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.0",
+    "eslint-config-quasar": "workspace:*",
+    "fs-extra": "^11.2.0",
+    "postcss": "^8.4.45",
     "prismjs": "^1.29.0",
-    "quasar": "^2.6.0",
-    "vue": "^3.0.0",
-    "vue-router": "^4.2.4"
+    "quasar": "workspace:*",
+    "vite": "^6.0.3",
+    "vue": "^3.5.5",
+    "vue-router": "^4.4.5"
   }
 }

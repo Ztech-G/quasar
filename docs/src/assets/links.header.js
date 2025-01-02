@@ -12,15 +12,17 @@ import { socialLinks } from './links.social.js'
 export const versionLinks = [{
   name: `v${Quasar.version}`,
   children: [
-    {
-      header: `Latest (v${Quasar.version})`
-    },
     { name: 'Release notes', nameCn: '发行说明', icon: mdiClipboardText, path: '/start/release-notes' },
     { name: 'Report a bug', nameCn: '报告Bug', icon: mdiBug, path: 'https://github.com/quasarframework/quasar/issues', external: true },
     { name: 'Report a vulnerability', nameCn: '报告安全隐患', icon: mdiSecurity, path: '/security/report-a-vulnerability', external: true },
     { name: 'Repository', nameCn: '仓库', icon: mdiGithub, path: 'https://github.com/quasarframework', external: true },
     {
-      header: 'Older Releases'
+      header: 'Older CLI Releases'
+    },
+    { name: '@quasar/app-vite v1', path: 'https://legacy-app.quasar.dev/', external: true },
+    { name: '@quasar/app-webpack v3', path: 'https://legacy-app.quasar.dev/', external: true },
+    {
+      header: 'Older UI Releases'
     },
     { name: 'v1', path: 'https://v1.quasar.dev/', external: true },
     { name: 'v0.17', path: 'https://v0-17.quasar-framework.org/', external: true },
@@ -46,9 +48,9 @@ const gettingStarted = {
           separator: true
         },
         { name: 'Quasar CLI', path: '/start/quasar-cli' },
+        { name: 'Vite Plugin', path: '/start/vite-plugin' },
         { name: 'UMD / Standalone', path: '/start/umd' },
-        { name: 'Vue CLI Plugin', nameCn: 'Vue CLI 插件', path: '/start/vue-cli-plugin' },
-        { name: 'Vite Plugin', nameCn: 'Vite 插件', path: '/start/vite-plugin' }
+        { name: 'Vue CLI Plugin', nameCn: 'Vue CLI 插件', path: '/start/vue-cli-plugin' }
       ]
     },
     { name: 'How to use Vue', nameCn: '如何使用Vue', path: '/start/how-to-use-vue' },
@@ -99,8 +101,8 @@ export const secondaryToolbarLinks = [
   gettingStarted,
   tools,
   { name: 'Announcements', nameCn: '注意事项', mq: 910, path: 'https://github.com/quasarframework/quasar/discussions/categories/announcements', external: true },
-  { name: 'Roadmap', nameCn: '路线图', mq: 1000, path: 'https://roadmap.quasar.dev', external: true },
   { name: 'Video Tutorials', nameCn: '视频教程', mq: 1130, path: '/video-tutorials' },
+  { name: 'Roadmap', nameCn: '路线图', mq: 1000, path: 'https://roadmap.quasar.dev', external: true },
   { name: 'Brand resources', nameCn: '品牌资源', mq: 1400, path: 'https://github.com/quasarframework/quasar-art', external: true }
 ]
 
@@ -108,9 +110,7 @@ export const moreLinks = [{
   name: 'More',
   children: [
     ...primaryToolbarLinks,
-    {
-      separator: true
-    },
+    { separator: true },
     ...secondaryToolbarLinks,
     socialLinks
   ]

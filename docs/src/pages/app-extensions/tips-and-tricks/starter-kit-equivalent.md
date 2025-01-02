@@ -68,7 +68,7 @@ We'll be creating an example App Extension which does the following:
 
 For the intents of this example, we'll be creating the following folder structure:
 
-<doc-tree :def="scope.tree" />
+<DocTree :def="scope.tree" />
 
 ## The install script
 
@@ -83,10 +83,10 @@ export default function (api) {
   api.compatibleWith('quasar', '^2.0.0')
 
   if (api.hasVite === true) {
-    api.compatibleWith('@quasar/app-vite', '^1.0.0-beta.0')
+    api.compatibleWith('@quasar/app-vite', '^2.0.0')
   }
   else { // api.hasWebpack === true
-    api.compatibleWith('@quasar/app-webpack', '^3.0.0')
+    api.compatibleWith('@quasar/app-webpack', '^4.0.0')
   }
 
   // We render some files into the hosting project
@@ -123,10 +123,10 @@ export default function (api) {
   api.compatibleWith('quasar', '^2.0.0')
 
   if (api.hasVite === true) {
-    api.compatibleWith('@quasar/app-vite', '^1.0.0-beta.0')
+    api.compatibleWith('@quasar/app-vite', '^2.0.0')
   }
   else { // api.hasWebpack === true
-    api.compatibleWith('@quasar/app-webpack', '^3.0.0')
+    api.compatibleWith('@quasar/app-webpack', '^4.0.0')
   }
 
   // Here we extend the /quasar.config file;
@@ -216,7 +216,7 @@ When the App Extension gets uninstall, we need to do some cleanup. But beware wh
 ```js
 // we yarn added it to our App Extension,
 // so we can import the following:
-const rimraf = require('rimraf')
+import rimraf from 'rimraf'
 
 export default function (api) {
   // Careful when you remove folders!
