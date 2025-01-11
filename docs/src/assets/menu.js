@@ -858,10 +858,12 @@ export default [
     children: [
       {
         name: "DO's and DON'Ts",
+        nameCn: "注意事项",
         path: 'dos-and-donts'
       },
       {
         name: 'Report a vulnerability',
+        nameCn: '报告安全隐患',
         path: 'report-a-vulnerability'
       }
     ]
@@ -873,95 +875,118 @@ export default [
     children: [
       {
         name: 'Upgrade guide',
+        nameCn: '升级指导',
         badge: 'NEW!',
         path: 'upgrade-guide'
       },
       {
         name: 'The quasar.config file',
+        nameCn: 'quasar.config文件',
         path: 'quasar-config-file'
       },
       {
         name: 'Convert project to CLI with Vite',
+        nameCn: '使用Vite将项目转换成CLI',
         path: 'convert-to-quasar-cli-with-vite'
       },
       {
         name: 'Browser Compatibility',
+        nameCn: '浏览器兼容性',
         path: 'browser-compatibility'
       },
       {
         name: 'Supporting TypeScript',
+        nameCn: '支持TypeScript',
         path: 'supporting-ts'
       },
       {
         name: 'Directory Structure',
+        nameCn: '目录结构',
         path: 'directory-structure'
       },
       {
         name: 'Commands List',
+        nameCn: '命令列表',
         path: 'commands-list'
       },
       {
         name: 'CSS Preprocessors',
+        nameCn: 'CSS预处理器',
         path: 'css-preprocessors'
       },
       {
         name: 'Routing',
+        nameCn: '路由',
         path: 'routing'
       },
       {
         name: 'Lazy Loading - Code Splitting',
+        nameCn: '懒加载 - 代码拆分',
         path: 'lazy-loading'
       },
       {
         name: 'Handling Assets',
+        nameCn: '处理资源',
         path: 'handling-assets'
       },
       {
         name: 'Boot Files',
+        nameCn: 'Boot文件',
         path: 'boot-files'
       },
       {
         name: 'Prefetch Feature',
+        nameCn: '预加载特性',
         path: 'prefetch-feature'
       },
       {
         name: 'API Proxying',
+        nameCn: 'API代理',
         path: 'api-proxying'
       },
       {
         name: 'Handling Vite',
+        nameCn: '处理Vite',
         path: 'handling-vite'
       },
       {
         name: 'Handling process.env',
+        nameCn: '处理process.env',
         path: 'handling-process-env'
       },
       {
         name: 'State Management with Pinia',
+        nameCn: '使用Pinia进行状态管理',
         path: 'state-management-with-pinia'
       },
       {
         name: 'Linter',
+        nameCn: '代码检查器',
         path: 'linter'
       },
       {
         name: 'Testing & Auditing',
+        nameCn: '测试 & 审查',
         path: 'testing-and-auditing'
       },
       {
         name: 'SPA mode',
+        nameCn: 'SPA模式',
         path: 'developing-spa',
         children: [
           {
             name: 'Introduction',
+            nameCn: '介绍',
             path: 'introduction'
           },
           {
             name: 'App Icons for SPA',
+            nameCn: 'SPA的App图标',
             path: 'app-icons-spa'
           },
           {
             name: 'Build Commands',
+            nameCn: '构建命令',
             path: 'build-commands'
           },
           {
