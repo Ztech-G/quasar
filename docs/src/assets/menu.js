@@ -53,21 +53,25 @@ export default [
       {
         name: 'The $q object',
         nameCn: '$q对象',
-        path: 'the-q-object'
+        path: 'the-q-object',
+        pathCn: 'the-q-object-cn'
       },
       {
         name: 'App Icons',
         nameCn: 'App图标',
-        path: 'app-icons'
+        path: 'app-icons',
+        pathCn: 'app-icons-cn'
       },
       {
         name: 'SEO',
-        path: 'seo'
+        path: 'seo',
+        pathCn: 'seo-cn'
       },
       {
         name: 'Quasar Language Packs',
         nameCn: 'Quasar语言包',
-        path: 'quasar-language-packs'
+        path: 'quasar-language-packs',
+        pathCn: 'quasar-language-packs-cn'
       },
       {
         name: 'App Internationalization',

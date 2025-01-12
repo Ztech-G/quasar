@@ -25,6 +25,7 @@
         "isoName": {
           "type": "String",
           "desc": "The ISO name of the Quasar language pack",
+          "descCn": "Quasar语言包的ISO名称（标准名称）",
           "examples": [ "'en-US'" ]
         },
         "nativeName": {
