@@ -76,7 +76,8 @@ export default [
       {
         name: 'App Internationalization',
         nameCn: 'App国际化',
-        path: 'app-internationalization'
+        path: 'app-internationalization',
+        pathCn: 'app-internationalization-cn'
       },
       {
         name: 'RTL Support',

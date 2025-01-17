@@ -313,11 +313,19 @@ const inputIcon = computed(() => filter.value !== '' ? mdiClose : mdiMagnify)
 const filteredApi = computed(() => getFilteredApi(apiDef.value, filter.value.toLowerCase(), tabsList.value, innerTabsList.value))
 const filteredApiCount = computed(() => getApiCount(filteredApi.value, tabsList.value, innerTabsList.value))
 
+/**
+ * 解析API文件
+ * @param {string} name JSON文件名
+ * @param {Object} param JSON文件内容，把type, behavior, meta, addedIn这几个单独提出来，其他的属性都放到api中
+ */
 function parseApiFile (name, { type, behavior, meta, addedIn, ...api }) {
   nameBanner.value = `${ name } API`
   docPath.value = meta.docsUrl.replace(/^https:\/\/v[\d]+\.quasar\.dev/, '')
 
+  // internal提出来
   const { internal: _, ...apiSections } = api
+
+  // 剩余的属性变成tab标签
   const tabs = Object.keys(apiSections)
 
   if (tabs.length === 0) {

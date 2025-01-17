@@ -7,7 +7,8 @@ function copyPropName (propName) {
   copyToClipboard(propName)
 
   Notify.create({
-    message: `"${ propName }" has been copied to clipboard.`,
+    // message: `"${ propName }" has been copied to clipboard.`,
+    message: `"${ propName }" 已复制到剪切板.`,
     position: 'top',
     actions: [{ icon: 'cancel', color: 'white', dense: true, round: true }],
     timeout: 2000
@@ -326,7 +327,7 @@ function getProp (openState, masterKey, prop, propName, level, onlyChildren) {
   child.push(
     ...getExpandable(
       openState,
-      prop.desc,
+      prop.descCn ? prop.descCn : prop.desc,
       isExpandable,
       childKey,
       () => getPropDetails(openState, childKey, prop, level + 1)
@@ -372,7 +373,7 @@ describe.events = (openState, events) => {
 
         ...getExpandable(
           openState,
-          event.desc,
+          event.descCn ? event.descCn : event.desc,
           event.params !== void 0 && event.params !== null,
           masterKey,
           () => {
@@ -406,7 +407,7 @@ describe.methods = (openState, methods) => {
     const masterKey = `method|${ methodName }`
 
     const alias = method.alias ? `Alias: "${ method.alias }"; ` : ''
-    const desc = `${ alias }${ method.desc }`
+    const desc = `${ alias }${ method.descCn ? method.descCn : method.desc }`
 
     const methodNode = h('div', { class: 'doc-api-entry row' }, [
       getNameDiv(method, methodName, 0, `${ getMethodParams(method) }${ getMethodReturnValue(method) }`),

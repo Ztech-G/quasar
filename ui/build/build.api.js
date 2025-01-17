@@ -168,73 +168,73 @@ const nativeTypes = [ 'Component', 'Error', 'Element', 'File', 'FileList', 'Even
 
 const objectTypes = {
   Boolean: {
-    props: [ 'tsInjectionPoint', 'tsType', 'desc', 'required', 'reactive', 'sync', 'syncable', 'link', 'default', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
+    props: [ 'tsInjectionPoint', 'tsType', 'desc', 'descCn', 'required', 'reactive', 'sync', 'syncable', 'link', 'default', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
     required: [ 'desc' ],
     isBoolean: [ 'tsInjectionPoint', 'required', 'reactive', 'sync', 'syncable', 'internal' ],
     isArray: [ 'examples' ],
-    isString: [ 'tsType', 'desc', 'category', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'category', 'addedIn' ]
   },
 
   String: {
-    props: [ 'tsInjectionPoint', 'tsType', 'desc', 'required', 'reactive', 'sync', 'syncable', 'link', 'values', 'default', 'examples', 'category', 'addedIn', 'transformAssetUrls', 'passthrough', 'internal' ],
+    props: [ 'tsInjectionPoint', 'tsType', 'desc', 'descCn', 'required', 'reactive', 'sync', 'syncable', 'link', 'values', 'default', 'examples', 'category', 'addedIn', 'transformAssetUrls', 'passthrough', 'internal' ],
     required: [ 'desc' ],
     isBoolean: [ 'tsInjectionPoint', 'required', 'reactive', 'sync', 'syncable', 'transformAssetUrls', 'internal' ],
     isArray: [ 'examples', 'values' ],
-    isString: [ 'tsType', 'desc', 'category', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'category', 'addedIn' ]
   },
 
   Number: {
-    props: [ 'tsInjectionPoint', 'tsType', 'desc', 'required', 'reactive', 'sync', 'syncable', 'link', 'values', 'default', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
+    props: [ 'tsInjectionPoint', 'tsType', 'desc', 'descCn', 'required', 'reactive', 'sync', 'syncable', 'link', 'values', 'default', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
     required: [ 'desc' ],
     isBoolean: [ 'tsInjectionPoint', 'required', 'reactive', 'sync', 'syncable', 'internal' ],
     isArray: [ 'examples', 'values' ],
-    isString: [ 'tsType', 'desc', 'category', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'category', 'addedIn' ]
   },
 
   Object: {
-    props: [ 'tsInjectionPoint', 'tsType', 'autoDefineTsType', 'desc', 'required', 'reactive', 'sync', 'syncable', 'link', 'values', 'default', 'definition', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
+    props: [ 'tsInjectionPoint', 'tsType', 'autoDefineTsType', 'desc', 'descCn', 'required', 'reactive', 'sync', 'syncable', 'link', 'values', 'default', 'definition', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
     required: [ 'desc' ],
     recursive: [ 'definition' ],
     isBoolean: [ 'tsInjectionPoint', 'required', 'reactive', 'sync', 'syncable', 'internal' ],
     isObject: [ 'definition' ],
     isArray: [ 'examples', 'values' ],
-    isString: [ 'tsType', 'desc', 'category', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'category', 'addedIn' ]
   },
 
   Array: {
-    props: [ 'tsInjectionPoint', 'tsType', 'autoDefineTsType', 'desc', 'required', 'reactive', 'sync', 'syncable', 'link', 'values', 'default', 'definition', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
+    props: [ 'tsInjectionPoint', 'tsType', 'autoDefineTsType', 'desc', 'descCn', 'required', 'reactive', 'sync', 'syncable', 'link', 'values', 'default', 'definition', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
     required: [ 'desc' ],
     isBoolean: [ 'tsInjectionPoint', 'required', 'reactive', 'sync', 'syncable', 'internal' ],
     isObject: [ 'definition' ],
     isArray: [ 'examples', 'values' ],
-    isString: [ 'tsType', 'desc', 'category', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'category', 'addedIn' ]
   },
 
   Promise: {
-    props: [ 'tsInjectionPoint', 'tsType', 'desc', 'required', 'reactive', 'sync', 'syncable', 'link', 'default', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
+    props: [ 'tsInjectionPoint', 'tsType', 'desc', 'descCn', 'required', 'reactive', 'sync', 'syncable', 'link', 'default', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
     required: [ 'desc' ],
     isBoolean: [ 'tsInjectionPoint', 'required', 'reactive', 'sync', 'syncable', 'internal' ],
     isObject: [ 'definition' ],
     isArray: [ 'examples' ],
-    isString: [ 'tsType', 'desc', 'category', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'category', 'addedIn' ]
   },
 
   Function: {
-    props: [ 'tsInjectionPoint', 'tsType', 'autoDefineTsType', 'desc', 'required', 'reactive', 'sync', 'syncable', 'link', 'default', 'params', 'returns', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
+    props: [ 'tsInjectionPoint', 'tsType', 'autoDefineTsType', 'desc', 'descCn', 'required', 'reactive', 'sync', 'syncable', 'link', 'default', 'params', 'returns', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
     required: [ 'desc', 'params', 'returns' ],
     isBoolean: [ 'tsInjectionPoint', 'required', 'reactive', 'sync', 'syncable', 'internal' ],
     isObject: [ 'params', 'returns' ],
     isArray: [ 'examples' ],
-    isString: [ 'tsType', 'desc', 'category', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'category', 'addedIn' ]
   },
 
   MultipleTypes: {
-    props: [ 'tsInjectionPoint', 'tsType', 'autoDefineTsType', 'desc', 'required', 'reactive', 'sync', 'syncable', 'link', 'values', 'default', 'definition', 'params', 'returns', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
+    props: [ 'tsInjectionPoint', 'tsType', 'autoDefineTsType', 'desc', 'descCn', 'required', 'reactive', 'sync', 'syncable', 'link', 'values', 'default', 'definition', 'params', 'returns', 'examples', 'category', 'addedIn', 'passthrough', 'internal' ],
     required: [ 'desc' ],
     isBoolean: [ 'tsInjectionPoint', 'required', 'reactive', 'sync', 'syncable', 'internal' ],
     isObject: [ 'definition', 'params', 'returns' ],
     isArray: [ 'examples', 'values' ],
-    isString: [ 'tsType', 'desc', 'category', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'category', 'addedIn' ]
   },
 
   meta: {
@@ -244,54 +244,54 @@ const objectTypes = {
 
   // component only
   slots: {
-    props: [ 'tsType', 'desc', 'link', 'scope', 'addedIn', 'internal' ],
+    props: [ 'tsType', 'desc', 'descCn', 'link', 'scope', 'addedIn', 'internal' ],
     required: [ 'desc' ],
     isObject: [ 'scope' ],
     isBoolean: [ 'internal' ],
-    isString: [ 'tsType', 'desc', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'addedIn' ]
   },
 
   // component only
   events: {
-    props: [ 'tsType', 'desc', 'link', 'params', 'addedIn', 'passthrough', 'internal' ],
+    props: [ 'tsType', 'desc', 'descCn', 'link', 'params', 'addedIn', 'passthrough', 'internal' ],
     required: [ 'desc' ],
     isObject: [ 'params' ],
     isBoolean: [ 'internal' ],
-    isString: [ 'tsType', 'desc', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'addedIn' ]
   },
 
   // component only
   computedProps: {
-    props: [ 'desc', 'tsType', 'examples', 'addedIn', 'internal' ],
+    props: [ 'desc', 'descCn', 'tsType', 'examples', 'addedIn', 'internal' ],
     required: [ 'desc' ],
     isBoolean: [ 'internal' ],
     isArray: [ 'examples' ],
-    isString: [ 'tsType', 'desc', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'addedIn' ]
   },
 
   methods: {
-    props: [ 'tsInjectionPoint', 'tsType', 'desc', 'link', 'params', 'returns', 'addedIn', 'alias' ],
+    props: [ 'tsInjectionPoint', 'tsType', 'desc', 'descCn', 'link', 'params', 'returns', 'addedIn', 'alias' ],
     required: [ 'desc', 'params', 'returns' ],
     isBoolean: [ 'tsInjectionPoint' ],
     isObject: [ 'params', 'returns' ],
-    isString: [ 'tsType', 'desc', 'link', 'addedIn', 'alias' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'link', 'addedIn', 'alias' ]
   },
 
   quasarConfOptions: {
-    props: [ 'tsType', 'desc', 'propName', 'definition', 'values', 'examples', 'link', 'addedIn' ],
+    props: [ 'tsType', 'desc', 'descCn', 'propName', 'definition', 'values', 'examples', 'link', 'addedIn' ],
     required: [ 'propName' ],
     isObject: [ 'definition' ],
     isArray: [ 'values' ],
-    isString: [ 'tsType', 'desc', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'addedIn' ]
   }
 }
 
 nativeTypes.forEach(name => {
   objectTypes[ name ] = {
-    props: [ 'tsType', 'desc', 'required', 'category', 'examples', 'addedIn', 'internal' ],
+    props: [ 'tsType', 'desc', 'descCn', 'required', 'category', 'examples', 'addedIn', 'internal' ],
     required: [ 'desc' ],
     isBoolean: [ 'internal', 'required' ],
-    isString: [ 'tsType', 'desc', 'category', 'addedIn' ]
+    isString: [ 'tsType', 'desc', 'descCn', 'category', 'addedIn' ]
   }
 })
 
