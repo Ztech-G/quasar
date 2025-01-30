@@ -16,15 +16,15 @@ export const flatMenu = {}
  */
 function menuWalk (node, path, parentName) {
   const newPath = path + (node.pathCn ? `/${node.pathCn}` : (node.path ? `/${node.path}` : ''))
-  console.log('新路径',newPath)
+
   if (node.children !== void 0) {
     node.children.forEach(n => {
-      menuWalk(n, newPath, node.name)
+      menuWalk(n, newPath, node.nameCn ? node.nameCn : node.name)
     })
   }
   else if (!node.external) {
     const current = {
-      name: node.name,
+      name: node.nameCn ? node.nameCn : node.name,
       category: parentName,
       path: newPath
     }

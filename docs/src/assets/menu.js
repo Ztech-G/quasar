@@ -87,32 +87,38 @@ export default [
       {
         name: 'Installing Icon Libraries',
         nameCn: '安装图标库',
-        path: 'installing-icon-libraries'
+        path: 'installing-icon-libraries',
+        pathCn: 'installing-icon-libraries-cn'
       },
       {
         name: 'Quasar Icon Sets',
         nameCn: 'Quasar图标集',
-        path: 'quasar-icon-sets'
+        path: 'quasar-icon-sets',
+        pathCn: 'quasar-icon-sets-cn'
       },
       {
         name: 'Platform Detection',
         nameCn: '平台检测',
-        path: 'platform-detection'
+        path: 'platform-detection',
+        pathCn: 'platform-detection-cn'
       },
       {
         name: 'Screen Plugin',
         nameCn: '屏幕插件',
-        path: 'screen-plugin'
+        path: 'screen-plugin',
+        pathCn: 'screen-plugin-cn'
       },
       {
         name: 'Animations',
         nameCn: '动画',
-        path: 'animations'
+        path: 'animations',
+        pathCn: 'animations-cn'
       },
       {
         name: 'Transitions',
         nameCn: '过渡效果',
-        path: 'transitions'
+        path: 'transitions',
+        pathCn: 'transitions-cn'
       }
     ]
   },

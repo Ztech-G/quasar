@@ -8,22 +8,25 @@
   "props": {
     "props": {
       "type": "Object",
-      "desc": "Contents (icons) of the Quasar icon set",
+      "desc": "Quasar图标集的内容（图标）",
       "required": true,
       "definition": {
         "name": {
           "type": "String",
           "desc":  "Name of the Quasar icon set",
+          "descCn":  "Quasar图标集的名称",
           "required": true,
           "examples": [ "'material-icons'", "'eva-icons'" ]
         },
         "type": {
           "type": "Object",
           "desc": "Generic types",
+          "descCn": "通用类型",
           "definition": {
             "positive": {
               "type": "String",
               "desc":  "Icon name following Quasar convention",
+              "descCn":  "图标名称遵循Quasar规定",
               "examples": [ "'check_circle'" ]
             },
             "negative": {
@@ -46,6 +49,7 @@
         "arrow": {
           "type": "Object",
           "desc": "Arrow types",
+          "descCn": "箭头类型",
           "definition": {
             "up": {
               "type": "String",
@@ -77,6 +81,7 @@
         "chevron": {
           "type": "Object",
           "desc": "Chevron types",
+          "descCn": "Chevron类型",
           "definition": {
             "left": {
               "type": "String",
@@ -92,7 +97,7 @@
         },
         "colorPicker": {
           "type": "Object",
-          "desc": "Used by QColorPicker",
+          "desc": "用于QColorPicker",
           "definition": {
             "spectrum": {
               "type": "String",
@@ -113,7 +118,7 @@
         },
         "pullToRefresh": {
           "type": "Object",
-          "desc": "Used by QPullToRefresh",
+          "desc": "用于PullToRefresh",
           "definition": {
             "icon": {
               "type": "String",
@@ -124,7 +129,7 @@
         },
         "carousel": {
           "type": "Object",
-          "desc": "Used by QCarousel",
+          "desc": "用于QCarousel",
           "definition": {
             "left": {
               "type": "String",

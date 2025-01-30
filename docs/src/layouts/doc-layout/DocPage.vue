@@ -66,7 +66,7 @@
 
       <div class="q-mb-md">
         <span>Caught a mistake?</span>
-        <doc-link class="q-ml-xs" :to="editHref">Edit this page in browser</doc-link>
+        <doc-link class="q-ml-xs" :to="editHref">在浏览器中编辑此页面</doc-link>
       </div>
     </div>
   </div>
