@@ -53,26 +53,31 @@ export default [
       {
         name: 'The $q object',
         nameCn: '$q对象',
-        path: 'the-q-object'
+        path: 'the-q-object',
+        pathCn: 'the-q-object-cn'
       },
       {
         name: 'App Icons',
         nameCn: 'App图标',
-        path: 'app-icons'
+        path: 'app-icons',
+        pathCn: 'app-icons-cn'
       },
       {
         name: 'SEO',
-        path: 'seo'
+        path: 'seo',
+        pathCn: 'seo-cn'
       },
       {
         name: 'Quasar Language Packs',
         nameCn: 'Quasar语言包',
-        path: 'quasar-language-packs'
+        path: 'quasar-language-packs',
+        pathCn: 'quasar-language-packs-cn'
       },
       {
         name: 'App Internationalization',
         nameCn: 'App国际化',
-        path: 'app-internationalization'
+        path: 'app-internationalization',
+        pathCn: 'app-internationalization-cn'
       },
       {
         name: 'RTL Support',
@@ -82,32 +87,38 @@ export default [
       {
         name: 'Installing Icon Libraries',
         nameCn: '安装图标库',
-        path: 'installing-icon-libraries'
+        path: 'installing-icon-libraries',
+        pathCn: 'installing-icon-libraries-cn'
       },
       {
         name: 'Quasar Icon Sets',
         nameCn: 'Quasar图标集',
-        path: 'quasar-icon-sets'
+        path: 'quasar-icon-sets',
+        pathCn: 'quasar-icon-sets-cn'
       },
       {
         name: 'Platform Detection',
         nameCn: '平台检测',
-        path: 'platform-detection'
+        path: 'platform-detection',
+        pathCn: 'platform-detection-cn'
       },
       {
         name: 'Screen Plugin',
         nameCn: '屏幕插件',
-        path: 'screen-plugin'
+        path: 'screen-plugin',
+        pathCn: 'screen-plugin-cn'
       },
       {
         name: 'Animations',
         nameCn: '动画',
-        path: 'animations'
+        path: 'animations',
+        pathCn: 'animations-cn'
       },
       {
         name: 'Transitions',
         nameCn: '过渡效果',
-        path: 'transitions'
+        path: 'transitions',
+        pathCn: 'transitions-cn'
       }
     ]
   },
@@ -120,22 +131,26 @@ export default [
       {
         name: 'Typography',
         nameCn: '排版',
-        path: 'typography'
+        path: 'typography',
+        pathCn: 'typography-cn'
       },
       {
         name: 'Color Palette',
         nameCn: '调色板',
-        path: 'color-palette'
+        path: 'color-palette',
+        pathCn: 'color-palette-cn'
       },
       {
         name: 'Theme Builder',
         nameCn: '主题构建器',
-        path: 'theme-builder'
+        path: 'theme-builder',
+        pathCn: 'theme-builder-cn'
       },
       {
         name: 'Dark Mode',
         nameCn: '暗黑模式',
-        path: 'dark-mode'
+        path: 'dark-mode',
+        pathCn: 'dark-mode-cn'
       },
       {
         name: 'Spacing',
@@ -858,10 +873,12 @@ export default [
     children: [
       {
         name: "DO's and DON'Ts",
+        nameCn: '注意事项',
         path: 'dos-and-donts'
       },
       {
         name: 'Report a vulnerability',
+        nameCn: '报告安全隐患',
         path: 'report-a-vulnerability'
       }
     ]
@@ -873,153 +890,190 @@ export default [
     children: [
       {
         name: 'Upgrade guide',
+        nameCn: '升级指导',
         badge: 'NEW!',
         path: 'upgrade-guide'
       },
       {
         name: 'The quasar.config file',
+        nameCn: 'quasar.config文件',
         path: 'quasar-config-file'
       },
       {
         name: 'Convert project to CLI with Vite',
+        nameCn: '使用Vite将项目转换成CLI',
         path: 'convert-to-quasar-cli-with-vite'
       },
       {
         name: 'Browser Compatibility',
+        nameCn: '浏览器兼容性',
         path: 'browser-compatibility'
       },
       {
         name: 'Supporting TypeScript',
+        nameCn: '支持TypeScript',
         path: 'supporting-ts'
       },
       {
         name: 'Directory Structure',
+        nameCn: '目录结构',
         path: 'directory-structure'
       },
       {
         name: 'Commands List',
+        nameCn: '命令列表',
         path: 'commands-list'
       },
       {
         name: 'CSS Preprocessors',
+        nameCn: 'CSS预处理器',
         path: 'css-preprocessors'
       },
       {
         name: 'Routing',
+        nameCn: '路由',
         path: 'routing'
       },
       {
         name: 'Lazy Loading - Code Splitting',
+        nameCn: '懒加载 - 代码拆分',
         path: 'lazy-loading'
       },
       {
         name: 'Handling Assets',
+        nameCn: '处理资源',
         path: 'handling-assets'
       },
       {
         name: 'Boot Files',
+        nameCn: 'Boot文件',
         path: 'boot-files'
       },
       {
         name: 'Prefetch Feature',
+        nameCn: '预加载特性',
         path: 'prefetch-feature'
       },
       {
         name: 'API Proxying',
+        nameCn: 'API代理',
         path: 'api-proxying'
       },
       {
         name: 'Handling Vite',
+        nameCn: '处理Vite',
         path: 'handling-vite'
       },
       {
         name: 'Handling process.env',
+        nameCn: '处理process.env',
         path: 'handling-process-env'
       },
       {
         name: 'State Management with Pinia',
+        nameCn: '使用Pinia进行状态管理',
         path: 'state-management-with-pinia'
       },
       {
         name: 'Linter',
+        nameCn: '代码检查器',
         path: 'linter'
       },
       {
         name: 'Testing & Auditing',
+        nameCn: '测试 & 审查',
         path: 'testing-and-auditing'
       },
       {
         name: 'SPA mode',
+        nameCn: 'SPA模式',
         path: 'developing-spa',
         children: [
           {
             name: 'Introduction',
+            nameCn: '介绍',
             path: 'introduction'
           },
           {
             name: 'App Icons for SPA',
+            nameCn: 'SPA的App图标',
             path: 'app-icons-spa'
           },
           {
             name: 'Build Commands',
+            nameCn: '构建命令',
             path: 'build-commands'
           },
           {
             name: 'Deploying',
+            nameCn: '部署/发布',
             path: 'deploying'
           }
         ]
       },
       {
         name: 'SSR mode',
+        nameCn: 'SSR模式',
         path: 'developing-ssr',
         children: [
           {
             name: 'Introduction',
+            nameCn: '介绍',
             path: 'introduction'
           },
           {
             name: 'Writing Universal Code',
+            nameCn: '编写通用代码',
             path: 'writing-universal-code'
           },
           {
             name: 'Preparation',
+            nameCn: '准备',
             path: 'preparation'
           },
           {
             name: 'Configuring SSR',
+            nameCn: '配置SSR',
             path: 'configuring-ssr'
           },
           {
             name: 'ssrContext',
+            nameCn: 'ssr上下文',
             path: 'ssr-context'
           },
           {
             name: 'SSR Middleware',
+            nameCn: 'SSR中间件',
             path: 'ssr-middleware'
           },
           {
             name: 'SSR Webserver',
+            nameCn: 'SSR Webserver',
             path: 'ssr-webserver'
           },
           {
             name: 'Vue SSR Directives',
+            nameCn: 'Vue SSR 指令',
             path: 'vue-ssr-directives'
           },
           {
             name: 'App Icons for SSR',
+            nameCn: 'SSR的App图标',
             path: 'app-icons-ssr'
           },
           {
             name: 'SEO for SSR',
+            nameCn: 'SSR的SEO',
             path: 'seo-for-ssr'
           },
           {
             name: 'Client Side Hydration',
+            nameCn: '客户端混合',
             path: 'client-side-hydration'
           },
           {
             name: 'Handling 404 and 500 Errors',
+            nameCn: '处理404和500错误',
             path: 'handling-404-and-500-errors'
           },
           {
@@ -1028,40 +1082,49 @@ export default [
           },
           {
             name: 'SSR FAQ',
+            nameCn: '关于SSR的问答',
             path: 'ssr-frequently-asked-questions'
           },
           {
             name: 'Build Commands',
+            nameCn: '构建命令',
             path: 'build-commands'
           },
           {
             name: 'SSR with Typescript',
+            nameCn: 'SSR与Typescript',
             path: 'ssr-with-typescript'
           },
           {
             name: 'Deploying',
+            nameCn: '部署/发布',
             path: 'deploying'
           }
         ]
       },
       {
         name: 'PWA mode',
+        nameCn: 'PWA模式',
         path: 'developing-pwa',
         children: [
           {
             name: 'Introduction',
+            nameCn: '介绍',
             path: 'introduction'
           },
           {
             name: 'Preparation',
+            nameCn: '准备',
             path: 'preparation'
           },
           {
             name: 'Build Commands',
+            nameCn: '构建命令',
             path: 'build-commands'
           },
           {
             name: 'Configuring PWA',
+            nameCn: '配置PWA',
             path: 'configuring-pwa'
           },
           {
@@ -1070,44 +1133,54 @@ export default [
           },
           {
             name: 'App Icons for PWA',
+            nameCn: 'PWA的App图标',
             path: 'app-icons-pwa'
           },
           {
             name: 'Handling Service Worker',
+            nameCn: '处理Service Worker',
             path: 'handling-service-worker'
           },
           {
             name: 'PWA with Typescript',
+            nameCn: 'PWA与Typescript',
             path: 'pwa-with-typescript'
           }
         ]
       },
       {
         name: 'Developing Mobile Apps',
+        nameCn: '开发移动应用',
         path: 'developing-mobile-apps'
       },
       {
         name: 'Capacitor mode',
+        nameCn: 'Capacitor模式',
         path: 'developing-capacitor-apps',
         children: [
           {
             name: 'Introduction',
+            nameCn: '介绍',
             path: 'introduction'
           },
           {
             name: 'Preparation',
+            nameCn: '准备',
             path: 'preparation'
           },
           {
             name: 'Capacitor versions',
+            nameCn: 'Capacitor版本',
             path: 'capacitor-version-support'
           },
           {
             name: 'Configuring Capacitor',
+            nameCn: '配置Capacitor',
             path: 'configuring-capacitor'
           },
           {
             name: 'App Icons for Capacitor',
+            nameCn: 'Capacitor的App图标',
             path: 'app-icons-capacitor'
           },
           {
@@ -1116,170 +1189,210 @@ export default [
           },
           {
             name: 'Build Commands',
+            nameCn: '构建命令',
             path: 'build-commands'
           },
           {
             name: 'Troubleshooting and Tips',
+            nameCn: '故障排查和提示',
             path: 'troubleshooting-and-tips'
           },
           {
             name: 'Managing Google Analytics',
+            nameCn: '管理Google Analytics',
             path: 'managing-google-analytics'
           },
           {
             name: 'Publishing to Store',
+            nameCn: '发布到商店',
             path: 'publishing-to-store'
           }
         ]
       },
       {
         name: 'Cordova mode',
+        nameCn: 'Cordova模式',
         path: 'developing-cordova-apps',
         children: [
           {
             name: 'Introduction',
+            nameCn: '介绍',
             path: 'introduction'
           },
           {
             name: 'Preparation',
+            nameCn: '准备',
             path: 'preparation'
           },
           {
             name: 'Configuring Cordova',
+            nameCn: '配置Cordova',
             path: 'configuring-cordova'
           },
           {
             name: 'App Icons for Cordova',
+            nameCn: 'Cordova的App图标',
             path: 'app-icons-cordova'
           },
           {
             name: 'Cordova Plugins',
+            nameCn: 'Cordova插件',
             path: 'cordova-plugins'
           },
           {
             name: 'Build Commands',
+            nameCn: '构建命令',
             path: 'build-commands'
           },
           {
             name: 'Troubleshooting and Tips',
+            nameCn: '故障排查和提示',
             path: 'troubleshooting-and-tips'
           },
           {
             name: 'Managing Google Analytics',
+            nameCn: '管理Google Analytics',
             path: 'managing-google-analytics'
           },
           {
             name: 'Publishing to Store',
+            nameCn: '发布到商店',
             path: 'publishing-to-store'
           }
         ]
       },
       {
         name: 'Electron mode',
+        nameCn: 'Electron模式',
         path: 'developing-electron-apps',
         children: [
           {
             name: 'Introduction',
+            nameCn: '介绍',
             path: 'introduction'
           },
           {
             name: 'Upgrade guide',
+            nameCn: '升级指导',
             path: 'electron-upgrade-guide'
           },
           {
             name: 'Preparation',
+            nameCn: '准备',
             path: 'preparation'
           },
           {
             name: 'Configuring Electron',
+            nameCn: '配置Electron',
             path: 'configuring-electron'
           },
           {
             name: 'App Icons for Electron',
+            nameCn: 'Electron的App图标',
             path: 'app-icons-electron'
           },
           {
             name: 'Build Commands',
+            nameCn: '构建命令',
             path: 'build-commands'
           },
           {
             name: 'Preload Script',
+            nameCn: '预加载脚本',
             path: 'electron-preload-script'
           },
           {
             name: 'Electron Packages',
+            nameCn: 'Electron的三方包',
             path: 'electron-packages'
           },
           {
             name: 'Accessing files',
+            nameCn: '访问文件',
             path: 'electron-accessing-files'
           },
           {
             name: 'Frameless Electron Window',
+            nameCn: '无框架的Electron Window',
             path: 'frameless-electron-window'
           },
           {
             name: 'Electron with Typescript',
+            nameCn: 'Electron与Typescript',
             path: 'electron-with-typescript'
           },
           {
             name: 'Electron Security Concerns',
+            nameCn: 'Electron安全问题',
             path: 'electron-security-concerns'
           },
           {
             name: 'Troubleshooting and Tips',
+            nameCn: '故障排查与提示',
             path: 'troubleshooting-and-tips'
           }
         ]
       },
       {
         name: 'Browser Extensions mode',
+        nameCn: '浏览器扩展模式',
         path: 'developing-browser-extensions',
         children: [
           {
             name: 'Introduction',
+            nameCn: '介绍',
             path: 'introduction'
           },
           {
             name: 'Preparation',
+            nameCn: '准备',
             path: 'preparation'
           },
           {
             name: 'Configuring BEX',
+            nameCn: '配置BEX',
             path: 'configuring-bex'
           },
           {
             name: 'App Icons for BEX',
+            nameCn: 'BEX的App图标',
             path: 'app-icons-browser-extension'
           },
           {
             name: 'Build Commands',
+            nameCn: '构建命令',
             path: 'build-commands'
           },
           {
             name: 'Types of BEX',
+            nameCn: 'BEX的类型',
             path: 'types-of-bex'
           },
           {
             name: 'BEX Bridge Communication',
+            nameCn: 'BEX Bridge',
             path: 'bex-bridge'
           },
           {
             name: 'Background Script',
+            nameCn: '后台脚本',
             path: 'background-script'
           },
           {
             name: 'Content Scripts',
+            nameCn: '内容脚本',
             path: 'content-scripts'
           }
         ]
       },
       {
         name: 'Ajax Requests',
+        nameCn: 'Ajax请求',
         path: 'ajax-requests'
       },
       {
         name: 'Opening Dev Server To Public',
+        nameCn: '向公众开放开发服务器',
         path: 'opening-dev-server-to-public'
       }
     ]
@@ -1704,98 +1817,119 @@ export default [
   },
   {
     name: 'Icon Genie CLI',
+    nameCn: '图标生成CLI',
     icon: 'stars',
     path: 'icongenie',
     children: [
       {
         name: 'Introduction',
+        nameCn: '介绍',
         path: 'introduction'
       },
 
       {
         name: 'Installation / Upgrade notes',
+        nameCn: '安装/升级注意事项',
         path: 'installation'
       },
 
       {
         name: 'Command list',
+        nameCn: '命令列表',
         path: 'command-list'
       },
 
       {
         name: 'App Icons List',
+        nameCn: 'App图标集合',
         path: 'app-icons-list'
       },
 
       {
         name: 'Profile files',
+        nameCn: '配置文件',
         path: 'profile-files'
       }
     ]
   },
   {
     name: 'App Extensions',
+    nameCn: '应用扩展',
     icon: 'note_add',
     path: 'app-extensions',
     children: [
       {
         name: 'Introduction',
+        nameCn: '介绍',
         path: 'introduction'
       },
       {
         name: 'Discover App Extensions',
+        nameCn: '查找应用扩展',
         path: 'discover'
       },
       {
         name: 'Development Guide',
+        nameCn: '开发指导',
         path: 'development-guide',
         opened: true,
         children: [
           {
             name: 'Introduction',
+            nameCn: '介绍',
             path: 'introduction'
           },
           {
             name: 'Prompts API',
+            nameCn: '提示API',
             path: 'prompts-api'
           },
           {
             name: 'Install API',
+            nameCn: '安装API',
             path: 'install-api'
           },
           {
             name: 'Index API',
+            nameCn: '索引API',
             path: 'index-api'
           },
           {
             name: 'Uninstall API',
+            nameCn: '卸载API',
             path: 'uninstall-api'
           }
         ]
       },
       {
         name: 'Tips and Tricks',
+        nameCn: '提示与技巧',
         path: 'tips-and-tricks',
         opened: true,
         children: [
           {
             name: 'Introduction',
+            nameCn: '介绍',
             path: 'introduction'
           },
           {
             name: 'Provide a UI component',
+            nameCn: '提供一个UI组件',
             path: 'provide-a-ui-component'
           },
           {
             name: 'Provide a directive',
+            nameCn: '提供一个指令',
             path: 'provide-a-directive'
           },
           {
             name: 'Inject Quasar Plugin',
+            nameCn: '注入Quasar插件',
             path: 'inject-quasar-plugin'
           },
           {
             name: 'Starter kit equivalent',
+            nameCn: '等效入门工具包',
             path: 'starter-kit-equivalent'
           },
           {
@@ -1808,43 +1942,53 @@ export default [
   },
   {
     name: 'Quasar Utils',
+    nameCn: 'Quasar工具集',
     icon: 'healing',
     path: 'quasar-utils',
     children: [
       {
         name: 'Date Utils',
+        nameCn: '日期工具集',
         path: 'date-utils'
       },
       {
         name: 'Color Utils',
+        nameCn: '颜色工具集',
         path: 'color-utils'
       },
       {
         name: 'DOM Utils',
+        nameCn: 'DOM工具集',
         path: 'dom-utils'
       },
       {
         name: 'Morph Utils',
+        nameCn: '变形工具集',
         path: 'morph-utils'
       },
       {
         name: 'Formatter Utils',
+        nameCn: '格式化工具集',
         path: 'formatter-utils'
       },
       {
         name: 'Scrolling Utils',
+        nameCn: '滚动工具集',
         path: 'scrolling-utils'
       },
       {
         name: 'Type Checking Utils',
+        nameCn: '类型检查工具集',
         path: 'type-checking-utils'
       },
       {
         name: 'EventBus Util',
+        nameCn: '事件总线工具集',
         path: 'event-bus-util'
       },
       {
         name: 'Other Utils',
+        nameCn: '其他工具集',
         path: 'other-utils'
       }
     ]

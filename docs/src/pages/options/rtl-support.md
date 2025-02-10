@@ -1,5 +1,5 @@
 ---
-title: RTL Support
+title: 支持RTL
 desc: Right to left support in a Quasar app.
 related:
   - /options/quasar-language-packs

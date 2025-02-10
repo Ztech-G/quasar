@@ -12,7 +12,8 @@
       "noHtmlAttrs": {
         "type": "Boolean",
         "addedIn": "v2.11.3",
-        "desc": "Whether to disable 'dir' and 'lang' HTML attributes getting added to the '<html>' tag. The 'dir' attribute is crucial when using RTL support. Disable this only if you need to handle these yourself for some reason."
+        "desc": "Whether to disable 'dir' and 'lang' HTML attributes getting added to the '<html>' tag. The 'dir' attribute is crucial when using RTL support. Disable this only if you need to handle these yourself for some reason.",
+        "descCn": "是否禁用'dir'和'lang' HTML属性添加到'<html>'上。'当使用RTL时dir'属性非常有用。只有在一些原因下才禁用。"
       }
     }
   },
@@ -21,34 +22,41 @@
     "props": {
       "type": "Object",
       "desc": "Quasar language pack",
+      "descCn": "Quasar语言包",
       "definition": {
         "isoName": {
           "type": "String",
           "desc": "The ISO name of the Quasar language pack",
+          "descCn": "Quasar语言包的ISO名称（标准名称）",
           "examples": [ "'en-US'" ]
         },
         "nativeName": {
           "type": "String",
           "desc": "The native name of the Quasar language pack",
+          "descCn": "Quasar语言包的原生名字",
           "examples": [ "'English (US)'" ]
         },
         "rtl": {
           "type": "Boolean",
           "desc": "Whether the language is RTL (right-to-left)",
+          "descCn": "语言是否为RTL（从右向左书写）",
           "examples": [ "false" ]
         },
         "label": {
           "type": "Object",
           "desc": "Generic labels",
+          "descCn": "通用标签",
           "definition": {
             "clear": {
               "type": "String",
               "desc": "Label",
+              "descCn": "标签",
               "examples": [ "'Clear'" ]
             },
             "ok": {
               "type": "String",
               "desc": "Label",
+              "descCn": "标签",
               "examples": [ "'OK'" ]
             },
             "cancel": {
@@ -109,15 +117,18 @@
             "expand": {
               "type": "Function",
               "desc": "Label function",
+              "descCn": "标签函数",
               "params": {
                 "label": {
                   "type": "String",
-                  "desc": "Item to expand"
+                  "desc": "Item to expand",
+                  "descCn": "要展开的项目"
                 }
               },
               "returns": {
                 "type": "String",
                 "desc": "Label",
+                "descCn": "标签",
                 "examples": [ "'Expand'" ]
               },
               "examples": [ "label => (label ? `Expand '${ label }'` : 'Expand')" ]
@@ -125,15 +136,18 @@
             "collapse": {
               "type": "Function",
               "desc": "Label function",
+              "descCn": "标签函数",
               "params": {
                 "label": {
                   "type": "String",
-                  "desc": "Item to collapse"
+                  "desc": "Item to collapse",
+                  "descCn": "要折叠的项目"
                 }
               },
               "returns": {
                 "type": "String",
                 "desc": "Label",
+                "descCn": "标签",
                 "examples": [ "'Collapse'" ]
               },
               "examples": [ "label => (label ? `Collapse '${ label }'` : 'Collapse')" ]
@@ -143,6 +157,7 @@
         "date": {
           "type": "Object",
           "desc": "QDate labels",
+          "descCn": "QDate标签",
           "definition": {
             "days": {
               "type": "Array",
@@ -183,6 +198,7 @@
         "table": {
           "type": "Object",
           "desc": "QTable labels",
+          "descCn": "QTable标签",
           "definition": {
             "noData": {
               "type": "String",
@@ -508,21 +524,25 @@
   "methods": {
     "set": {
       "desc":  "Set another Quasar Language Pack",
+      "descCn":  "设置另一个Quasar语言",
       "params": {
         "quasarLanguagePack": {
           "type": "Object",
           "desc":  "Usually you will import such an object directly from quasar (eg: import qIconSet from 'quasar/lang/<lang-name>')",
+          "descCn":  "通常你将直接从quasar导入一个对象 (比如: import qIconSet from 'quasar/lang/<lang-name>')",
           "required": true,
           "definition": {
             "isoName": {
               "type": "String",
               "desc": "The ISO name of the Quasar language pack",
+              "descCn": "Quasar语言包的标准名称",
               "required": true,
               "examples": [ "'en-US'" ]
             },
             "nativeName": {
               "type": "String",
               "desc": "The native name of the Quasar language pack",
+              "descCn": "Quasar语言包的原生名字",
               "required": true,
               "examples": [ "'English (US)'" ]
             },
@@ -530,11 +550,13 @@
               "type": "Boolean",
               "default": "true",
               "desc": "Whether the language is RTL (right-to-left)",
+              "descCn": "当前语言是否为RTL (right-to-left)",
               "examples": [ "false" ]
             },
             "label": {
               "type": "Object",
               "desc": "Generic labels",
+              "descCn": "通用标签",
               "required": true,
               "definition": {
                 "clear": {
@@ -1081,6 +1103,7 @@
         "ssrContent": {
           "type": "Object",
           "desc": "Required for SSR only",
+          "descCn": "仅适用于SSR",
           "__exemption": [ "examples" ]
         }
       },
@@ -1089,10 +1112,12 @@
 
     "getLocale": {
       "desc": "Get the browser locale ISO name; Returns undefined when it cannot determine current browser locale or when running on server in SSR mode",
+      "descCn": "获取浏览器本地ISO名称; 当无法确定浏览器本地设置或者运行在服务器的SSR将会返回undefined。",
       "params": null,
       "returns": {
         "type": [ "String", "undefined" ],
         "desc": "Browser locale ISO name",
+        "descCn": "浏览器本地ISO名称",
         "examples": [ "'en-US'" ]
       }
     }

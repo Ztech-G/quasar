@@ -76,7 +76,7 @@ export default {
           },
           () => menu.children.map(item => getDrawerMenu(
             item,
-            path + (item.path !== void 0 ? '/' + item.path : ''),
+            path + (item.pathCn !== void 0 ? `/${item.pathCn}` : (item.path !== void 0 ? '/' + item.path : '')),
             (level / 2) + 0.1
           ))
         )
@@ -127,7 +127,7 @@ export default {
     }
 
     return () => h(QList, { ref: rootRef, class: 'doc-page-menu', dense: true }, () => Menu.map(
-      item => getDrawerMenu(item, '/' + item.path, 0)
+      item => getDrawerMenu(item, '/' + (item.pathCn ? item.pathCn : item.path), 0)
     ))
   }
 }
