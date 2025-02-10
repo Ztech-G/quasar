@@ -11,39 +11,48 @@
     "definition": {
       "primary": {
         "type": "String",
-        "desc": "Main color of your app"
+        "desc": "Main color of your app",
+        "descCn": "应用的主颜色"
       },
       "secondary": {
         "type": "String",
-        "desc": "Secondary color of your app"
+        "desc": "Secondary color of your app",
+        "descCn": "应用的次级颜色"
       },
       "accent": {
         "type": "String",
-        "desc": "Accent color of your app"
+        "desc": "Accent color of your app",
+        "descCn": "应用的强调色"
       },
       "dark": {
         "type": "String",
-        "desc": "Dark color of your app"
+        "desc": "Dark color of your app",
+        "descCn": "应用的按黑色"
       },
       "positive": {
         "type": "String",
-        "desc": "Positive color of your app"
+        "desc": "Positive color of your app",
+        "descCn": "应用的表示肯定时用的颜色"
       },
       "negative": {
         "type": "String",
-        "desc": "Negative color of your app"
+        "desc": "Negative color of your app",
+        "descCn": "应用的表示否定时用的颜色"
       },
       "info": {
         "type": "String",
-        "desc": "Info color of your app"
+        "desc": "Info color of your app",
+        "descCn": "应用的普通信息颜色"
       },
       "warning": {
         "type": "String",
-        "desc": "Warning color of your app"
+        "desc": "Warning color of your app",
+        "descCn": "应用的警告色"
       },
       "...customColors": {
         "type": "String",
-        "desc": "Custom colors of your app, if any"
+        "desc": "Custom colors of your app, if any",
+        "descCn": "应用的自定义颜色"
       }
     }
   }

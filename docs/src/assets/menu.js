@@ -131,22 +131,26 @@ export default [
       {
         name: 'Typography',
         nameCn: '排版',
-        path: 'typography'
+        path: 'typography',
+        pathCn: 'typography-cn'
       },
       {
         name: 'Color Palette',
         nameCn: '调色板',
-        path: 'color-palette'
+        path: 'color-palette',
+        pathCn: 'color-palette-cn'
       },
       {
         name: 'Theme Builder',
         nameCn: '主题构建器',
-        path: 'theme-builder'
+        path: 'theme-builder',
+        pathCn: 'theme-builder-cn'
       },
       {
         name: 'Dark Mode',
         nameCn: '暗黑模式',
-        path: 'dark-mode'
+        path: 'dark-mode',
+        pathCn: 'dark-mode-cn'
       },
       {
         name: 'Spacing',
