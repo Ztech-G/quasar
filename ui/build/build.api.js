@@ -16,7 +16,6 @@ import {
   capitalize,
   plural
 } from './build.utils.js'
-import { pathToFileURL } from 'node:url'
 
 const dest = resolveToRoot('dist/api')
 
@@ -930,7 +929,7 @@ function fillAPI (apiType, list, encodeFn) {
 
     if (apiType === 'component') {
       let hasError = false
-      const componentPath = pathToFileURL(file.replace('.json', '.js'))
+      const componentPath = file.replace('.json', '.js')
       const componentName = name.replace('.json', '.js')
       const componentContent = fse.readFileSync(componentPath, 'utf-8')
 
