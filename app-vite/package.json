@@ -1,6 +1,6 @@
 {
   "name": "@quasar/app-vite",
-  "version": "2.0.5",
+  "version": "2.0.8",
   "description": "Quasar Framework App CLI with Vite",
   "bin": {
     "quasar": "./bin/quasar.js"
@@ -94,6 +94,7 @@
     "chokidar": "^3.6.0",
     "ci-info": "^4.0.0",
     "compression": "^1.7.5",
+    "confbox": "^0.1.8",
     "cross-spawn": "^7.0.6",
     "dot-prop": "9.0.0",
     "dotenv": "^16.4.5",
