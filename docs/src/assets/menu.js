@@ -155,42 +155,50 @@ export default [
       {
         name: 'Spacing',
         nameCn: '间距',
-        path: 'spacing'
+        path: 'spacing',
+        pathCn: 'spacing-cn'
       },
       {
         name: 'Shadows',
         nameCn: '阴影',
-        path: 'shadows'
+        path: 'shadows',
+        pathCn: 'shadows-cn'
       },
       {
         name: 'Breakpoints',
         nameCn: '断点(CSS Breakpoints)',
-        path: 'breakpoints'
+        path: 'breakpoints',
+        pathCn: 'breakpoints-cn'
       },
       {
         name: 'Body classes',
         nameCn: '与body相关的CSS类',
-        path: 'body-classes'
+        path: 'body-classes',
+        pathCn: 'body-classes-cn'
       },
       {
         name: 'Visibility',
         nameCn: '可见性',
-        path: 'visibility'
+        path: 'visibility',
+        pathCn: 'visibility-cn'
       },
       {
         name: 'Positioning',
         nameCn: '定位',
-        path: 'positioning'
+        path: 'positioning',
+        pathCn: 'positioning-cn'
       },
       {
         name: 'Sass/SCSS Variables',
         nameCn: 'Sass/SCSS变量',
-        path: 'sass-scss-variables'
+        path: 'sass-scss-variables',
+        pathCn: 'sass-scss-variables-cn'
       },
       {
         name: 'Other Helper Classes',
         nameCn: '其他CSS辅助类',
-        path: 'other-helper-classes'
+        path: 'other-helper-classes',
+        pathCn: 'other-helper-classes-cn'
       }
     ]
   },
