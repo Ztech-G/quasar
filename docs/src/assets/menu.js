@@ -217,59 +217,70 @@ export default [
           {
             name: 'Introduction to Flexbox',
             nameCn: 'Flexbox简介',
-            path: 'introduction-to-flexbox'
+            path: 'introduction-to-flexbox',
+            pathCn: 'introduction-to-flexbox-cn'
           },
           {
             name: 'Grid Row',
             nameCn: '网格行(Grid Row)',
-            path: 'row'
+            path: 'row',
+            pathCn: 'row-cn'
           },
           {
             name: 'Grid Column',
             nameCn: '网格列(Grid Column)',
-            path: 'column'
+            path: 'column',
+            pathCn: 'column-cn'
           },
           {
             name: 'Grid Gutter',
             nameCn: '网格间距(Grid Gutter)',
-            path: 'gutter'
+            path: 'gutter',
+            pathCn: 'gutter-cn'
           },
           {
             name: 'Flexbox patterns',
             nameCn: 'Flexbox模式',
-            path: 'flexbox-patterns'
+            path: 'flexbox-patterns',
+            pathCn: 'flexbox-patterns-cn'
           },
           {
             name: 'Flex Playground',
             nameCn: 'Flex演示',
-            path: 'flex-playground'
+            path: 'flex-playground',
+            pathCn: 'flex-playground-cn'
           }
         ]
       },
       {
         name: 'Layout',
         nameCn: '布局',
-        path: 'layout'
+        path: 'layout',
+        pathCn: 'layout-cn'
       },
       {
         name: 'Routing with Layouts and Pages',
-        nameCn: '与布局和页面相关的路由',
-        path: 'routing-with-layouts-and-pages'
+        nameCn: '使用布局和页面进行路由管理',
+        path: 'routing-with-layouts-and-pages',
+        pathCn: 'routing-with-layouts-and-pages-cn'
       },
       {
         name: 'Layout Header and Footer',
         nameCn: '布局的页眉与页脚',
-        path: 'header-and-footer'
+        path: 'header-and-footer',
+        pathCn: 'header-and-footer-cn'
       },
       {
         name: 'Layout Drawer',
         nameCn: '布局抽屉',
-        path: 'drawer'
+        path: 'drawer',
+        pathCn: 'drawer-cn'
       },
       {
         name: 'Layout Page',
         nameCn: '布局页面',
-        path: 'page'
+        path: 'page',
+        pathCn: 'page-cn'
       },
       {
         name: 'Layout Builder',
@@ -280,17 +291,20 @@ export default [
       {
         name: 'Layout Gallery',
         nameCn: '布局展示',
-        path: 'gallery'
+        path: 'gallery',
+        pathCn: 'gallery-cn'
       },
       {
         name: 'Page Sticky',
         nameCn: '粘性页面',
-        path: 'page-sticky'
+        path: 'page-sticky',
+        pathCn: 'page-sticky-cn'
       },
       {
         name: 'Page Scroller',
         nameCn: '滚动页面',
-        path: 'page-scroller'
+        path: 'page-scroller',
+        pathCn: 'page-scroller-cn'
       }
     ]
   },
