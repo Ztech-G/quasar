@@ -914,77 +914,92 @@ export default [
         name: 'Upgrade guide',
         nameCn: '升级指导',
         badge: 'NEW!',
-        path: 'upgrade-guide'
+        path: 'upgrade-guide',
+        pathCn: 'upgrade-guide-cn'
       },
       {
         name: 'The quasar.config file',
         nameCn: 'quasar.config文件',
-        path: 'quasar-config-file'
+        path: 'quasar-config-file',
+        pathCn: 'quasar-config-file-cn'
       },
       {
         name: 'Convert project to CLI with Vite',
         nameCn: '使用Vite将项目转换成CLI',
-        path: 'convert-to-quasar-cli-with-vite'
+        path: 'convert-to-quasar-cli-with-vite',
+        pathCn: 'convert-to-quasar-cli-with-vite-cn'
       },
       {
         name: 'Browser Compatibility',
         nameCn: '浏览器兼容性',
-        path: 'browser-compatibility'
+        path: 'browser-compatibility',
+        pathCn: 'browser-compatibility-cn'
       },
       {
         name: 'Supporting TypeScript',
         nameCn: '支持TypeScript',
-        path: 'supporting-ts'
+        path: 'supporting-ts',
+        pathCn: 'supporting-ts-cn'
       },
       {
         name: 'Directory Structure',
         nameCn: '目录结构',
-        path: 'directory-structure'
+        path: 'directory-structure',
+        pathCn: 'directory-structure-cn'
       },
       {
         name: 'Commands List',
         nameCn: '命令列表',
-        path: 'commands-list'
+        path: 'commands-list',
+        pathCn: 'commands-list-cn'
       },
       {
         name: 'CSS Preprocessors',
         nameCn: 'CSS预处理器',
-        path: 'css-preprocessors'
+        path: 'css-preprocessors',
+        pathCn: 'css-preprocessors-cn'
       },
       {
         name: 'Routing',
         nameCn: '路由',
-        path: 'routing'
+        path: 'routing',
+        pathCn: 'routing-cn'
       },
       {
         name: 'Lazy Loading - Code Splitting',
         nameCn: '懒加载 - 代码拆分',
-        path: 'lazy-loading'
+        path: 'lazy-loading',
+        pathCn: 'lazy-loading-cn'
       },
       {
         name: 'Handling Assets',
         nameCn: '处理资源',
-        path: 'handling-assets'
+        path: 'handling-assets',
+        pathCn: 'handling-assets-cn'
       },
       {
         name: 'Boot Files',
         nameCn: 'Boot文件',
-        path: 'boot-files'
+        path: 'boot-files',
+        pathCn: 'boot-files-cn'
       },
       {
         name: 'Prefetch Feature',
         nameCn: '预加载特性',
-        path: 'prefetch-feature'
+        path: 'prefetch-feature',
+        pathCn: 'prefetch-feature-cn'
       },
       {
         name: 'API Proxying',
         nameCn: 'API代理',
-        path: 'api-proxying'
+        path: 'api-proxying',
+        pathCn: 'api-proxying-cn'
       },
       {
         name: 'Handling Vite',
         nameCn: '处理Vite',
-        path: 'handling-vite'
+        path: 'handling-vite',
+        pathCn: 'handling-vite-cn'
       },
       {
         name: 'Handling process.env',
