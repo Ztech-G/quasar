@@ -1,6 +1,6 @@
 ---
 title: 使用布局和页面进行路由管理
-desc: How to connect the Vue Router with your Quasar layouts and pages.
+desc: 如何将 Vue Router 与 Quasar 布局和页面连接起来
 scope:
   tree:
     l: src
@@ -8,25 +8,26 @@ scope:
     - l: layouts
       c:
       - l: User.vue
-        e: our QLayout definition
+        e: 我们的 QLayout 定义
     - l: pages
       c:
       - l: Posts.vue
-        e: page for /user/feed route
+        e: /user/feed 路由的页面
       - l: Profile.vue
-        e: page for /user/profile route
+        e: /user/profile 路由的页面
 ---
-You can benefit from Vue Router's capabilities while structuring your routes with a Quasar Layout. The information below is just a recommendation and not mandatory to follow. Quasar allows you full freedom. Take the lines below only as an example.
 
-[QLayout](/layout/layout) is the component used to encapsulate pages, so that multiple pages will share the same header, drawers and so on. However, you can also configure per page header/footer/drawers, but they all must be children of the QLayout component. In order to understand how this works, you need a little bit of reading on [Vue Router nested routes](https://router.vuejs.org/guide/essentials/nested-routes.html).
+你可以在使用 Quasar 布局构建路由时充分利用 Vue Router 的功能。以下信息仅作为建议，不是强制要求。Quasar 给予你完全的自由。请将以下内容仅作为示例参考。
 
-To make it more clear, let's take an example. We have one layout ('user') and two pages ('user-feed' and 'user-profile'). We want to configure the website/app routes like this: `/user/feed` and `/user/profile`.
+[QLayout](/layout/layout) 是用于封装页面的组件，使多个页面可以共享相同的页眉、抽屉等。不过，你也可以为每个页面配置独立的页眉/页脚/抽屉，但它们都必须是 QLayout 组件的子组件。要理解这是如何工作的，你需要阅读一下 [Vue Router 嵌套路由](https://router.vuejs.org/guide/essentials/nested-routes.html)。
 
-## Creating Files
+为了更清楚地说明，让我们举个例子。我们有一个布局（'user'）和两个页面（'user-feed' 和 'user-profile'）。我们想要将网站/应用的路由配置成这样：`/user/feed` 和 `/user/profile`。
 
-**Quasar does not enforce a specific folder structure**. The following is just an example. You can put layouts and pages together in a folder, or put pages in your specific folder structure of choice, or create your own layout and page folders. It doesn't matter for Quasar. All that matters is that you reference them correctly in `/src/router/routes.js`.
+## 创建文件
 
-Let's create the layout and page files. You can use a helper command of Quasar CLI or simply create them yourself.
+**Quasar 不强制要求特定的文件夹结构**。以下仅是一个示例。你可以将布局和页面放在同一个文件夹中，或者将页面放在你选择的特定文件夹结构中，或者创建自己的布局和页面文件夹。这对 Quasar 来说并不重要。重要的是你在 `/src/router/routes.js` 中正确引用它们。
+
+让我们创建布局和页面文件。你可以使用 Quasar CLI 的辅助命令或者直接创建它们。
 
 ```bash
 $ quasar new layout User
