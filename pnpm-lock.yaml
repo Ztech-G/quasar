@@ -9355,9 +9355,9 @@ snapshots:
       eslint: 9.28.0(jiti@1.21.7)
       eslint-visitor-keys: 3.4.3
 
-  '@eslint-community/eslint-utils@4.7.0(eslint@9.29.0(jiti@1.21.7))':
+  '@eslint-community/eslint-utils@4.9.0(eslint@9.28.0(jiti@1.21.7))':
     dependencies:
-      eslint: 9.29.0(jiti@1.21.7)
+      eslint: 9.28.0(jiti@1.21.7)
       eslint-visitor-keys: 3.4.3
 
   '@eslint-community/eslint-utils@4.9.0(eslint@9.29.0(jiti@1.21.7))':
@@ -10245,7 +10245,7 @@ snapshots:
 
   '@typescript-eslint/utils@8.34.0(eslint@9.28.0(jiti@1.21.7))(typescript@5.6.3)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.7.0(eslint@9.28.0(jiti@1.21.7))
+      '@eslint-community/eslint-utils': 4.9.0(eslint@9.28.0(jiti@1.21.7))
       '@typescript-eslint/scope-manager': 8.34.0
       '@typescript-eslint/types': 8.34.0
       '@typescript-eslint/typescript-estree': 8.34.0(typescript@5.6.3)
@@ -10256,7 +10256,7 @@ snapshots:
 
   '@typescript-eslint/utils@8.34.0(eslint@9.29.0(jiti@1.21.7))(typescript@5.6.3)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.7.0(eslint@9.29.0(jiti@1.21.7))
+      '@eslint-community/eslint-utils': 4.9.0(eslint@9.29.0(jiti@1.21.7))
       '@typescript-eslint/scope-manager': 8.34.0
       '@typescript-eslint/types': 8.34.0
       '@typescript-eslint/typescript-estree': 8.34.0(typescript@5.6.3)
@@ -10899,7 +10899,7 @@ snapshots:
       js-yaml: 4.1.0
       json5: 2.2.3
       lazy-val: 1.0.5
-      minimatch: 10.0.1
+      minimatch: 10.0.3
       plist: 3.1.0
       resedit: 1.7.2
       semver: 7.7.2
