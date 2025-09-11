@@ -19,7 +19,7 @@ api.compatibleWith(
 
 ### Notable breaking changes
 
-* Minimum Node.js version is now 18 (mainly due to Vite 6)
+* Minimum Node.js version is now 20 (mainly due to Vite 7)
 * We have shifted towards an ESM style for the whole Quasar project folder, so many default project files now require ESM code (although using `.cjs` as an extension for these files is supported, but you will most likely need to rename the extension should you not wish to change anything). One example is the `/quasar.config.js` file which now it's assumed to be ESM too (so change from `.js` to `.cjs` should you still want a CommonJs file).
 * The "test" cmd was removed due to latest updates for @quasar/testing-* packages. See [here](https://testing.quasar.dev/packages/testing/)
 * The "clean" cmd has been re-designed. Type "quasar clean -h" in your upgraded Quasar project folder for more info.
@@ -36,10 +36,10 @@ api.compatibleWith(
 
 Some of the work below has already been backported to the old @quasar/app-vite v1, but posting here for reader's awareness.
 
-* feat(app-vite): upgrade to Vite 6
+* feat(app-vite): upgrade to Vite 7
 * feat(app-vite): ability to run multiple quasar dev/build commands simultaneously (example: can run "quasar dev -m capacitor" and "quasar dev -m ssr" and "quasar dev -m capacitor -T ios" simultaneously)
 * feat(app-vite): Better TS typings overall
-* refactor(app-vite): port CLI to ESM format (major effort! especially to support Vite 6 and SSR)
+* refactor(app-vite): port CLI to ESM format (major effort! especially to support Vite 7 and SSR)
 * feat(app-vite): support for quasar.config file in multiple formats (.js, .mjs, .ts, .cjs)
 * feat(app-vite): Improve quasarConfOptions, generate types for it, improve docs (fix: #14069) (#15945)
 * feat(app-vite): reload app if one of the imports from quasar.config file changes
@@ -91,13 +91,13 @@ $ pnpm create quasar@latest
 $ bun create quasar@latest
 ```
 <br>
-When asked to "Pick Quasar App CLI variant", answer with: "Quasar App CLI with Vite 6 (v2)".
+When asked to "Pick Quasar App CLI variant", answer with: "Quasar App CLI with Vite".
 :::
 
 Preparations:
 
 * If using the global installation of Quasar CLI (`@quasar/cli`), make sure that you have the latest one. This is due to the support of quasar.config file in multiple formats.
-* Again, we highlight that the minimum supported version of Node.js is now v18 (always use the LTS versions of Node.js - the higher the version the better).
+* Again, we highlight that the minimum supported version of Node.js is now v20 (always use the LTS versions of Node.js - the higher the version the better).
 
 * Edit your `/package.json` on the `@quasar/app-vite` entry and assign it `^2.0.0`:
   ```diff /package.json
@@ -273,7 +273,7 @@ Preparations:
   + import { defineStore } from '#q-app/wrappers'
 
   - import { ssrMiddleware } from 'quasar/wrappers'
-  + import { defineSsrMiddleware }from '#q-app/wrappers'
+  + import { defineSsrMiddleware } from '#q-app/wrappers'
 
   - import { ssrCreate } from 'quasar/wrappers'
   + import { defineSsrCreate } from '#q-app/wrappers'
@@ -590,13 +590,14 @@ As you can see, you can now specify multiple preload scripts should you need the
 :::
 
 ```diff
-function createWindow () {
+- function createWindow () {
++ async function createWindow () {
    // ...
 -  mainWindow.loadURL(process.env.APP_URL)
 +  if (process.env.DEV) {
-+    mainWindow.loadURL(process.env.APP_URL)
++    await mainWindow.loadURL(process.env.APP_URL)
 +  } else {
-+    mainWindow.loadFile('index.html')
++    await mainWindow.loadFile('index.html')
 +  }
 ```
 
@@ -615,7 +616,7 @@ const currentDir = fileURLToPath(new URL('.', import.meta.url))
 
 let mainWindow
 
-function createWindow () {
+async function createWindow () {
   /**
    * Initial window options
    */
@@ -635,9 +636,9 @@ function createWindow () {
   })
 
   if (process.env.DEV) {
-    mainWindow.loadURL(process.env.APP_URL)
+    await mainWindow.loadURL(process.env.APP_URL)
   } else {
-    mainWindow.loadFile('index.html')
+    await mainWindow.loadFile('index.html')
   }
 
   if (process.env.DEBUGGING) {
@@ -676,7 +677,25 @@ app.on('activate', () => {
 The distributables (your production code) will be compiled to ESM form.
 :::
 
-Most changes refer to editing your `/src-ssr/server.js` file. Since you can now use HTTPS while developing your app too, you need to make the following changes to the file:
+```diff /src-ssr/middlewares/*
+- import { ssrMiddleware } from 'quasar/wrappers'
++ import { defineSsrMiddleware } from '#q-app/wrappers'
+
+- export default ssrMiddleware({
++ export default defineSsrMiddleware(({
+  app,
+  port,
+  resolve,
+  publicPath,
+  folders,
+  render,
+  serve
+}) => {
+  // something to do with the server "app"
+})
+```
+
+The other changes refer to editing your `/src-ssr/server.js` file. Since you can now use HTTPS while developing your app too, you need to make the following changes to the file:
 
 ```diff /src-ssr/server.js > listen
 - import { ssrListen } from 'quasar/wrappers'
@@ -763,7 +782,7 @@ Also, the `renderPreloadTag()` function can now take an additional parameter (`s
 - import { ssrRenderPreloadTag } from 'quasar/wrappers'
 + import { defineSsrRenderPreloadTag } from '#q-app/wrappers'
 
-+ export const renderPreloadTag = ssrRenderPreloadTag((file, { ssrContext }) => {
++ export const renderPreloadTag = defineSsrRenderPreloadTag((file, { ssrContext }) => {
 +  // ...
 + })
 ```

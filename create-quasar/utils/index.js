@@ -13,6 +13,11 @@ import logger from './logger.js'
 
 const TEMPLATING_FILE_EXTENSIONS = [ '', '.json', '.js', '.cjs', '.ts', '.vue', '.md', '.html', '.sass' ]
 
+/**
+ * @param {Record<string, any>} scope
+ * @param {promptUser.PromptObject[]} questions
+ * @param {promptUser.Options} opts
+ */
 async function prompts (scope, questions, opts) {
   const options = opts || {
     onCancel: () => {
@@ -136,7 +141,7 @@ function getGitUser () {
     name = exec('git config --get user.name')
     email = exec('git config --get user.email')
   }
-  catch (e) {}
+  catch (_) {}
 
   name = name && JSON.stringify(name.toString().trim()).slice(1, -1)
   email = email && (' <' + email.toString().trim() + '>')
@@ -229,6 +234,14 @@ function lintFolder (scope) {
   )
 }
 
+function formatFolder (scope) {
+  return runCommand(
+    scope.packageManager,
+    [ 'run', 'format' ],
+    { cwd: scope.projectFolder }
+  )
+}
+
 function hasGit () {
   try {
     exec('git --version')
@@ -261,7 +274,7 @@ function initializeGit (projectFolder) {
     exec('git add -A', { cwd: projectFolder })
     exec('git commit -m "Initialize the project 🚀" --no-verify', { cwd: projectFolder })
   }
-  catch (e) {
+  catch (_) {
     logger.warn('Could not initialize Git repository. Please do this manually.')
     return
   }
@@ -292,24 +305,12 @@ function ensureOutsideProject () {
   }
 }
 
-const QUASAR_VERSIONS = [
-  { title: 'Quasar v2 (Vue 3 | latest and greatest)', value: 'v2', description: 'recommended' },
-  { title: 'Quasar v1 (Vue 2)', value: 'v1' }
-]
 const SCRIPT_TYPES = [
   { title: 'Javascript', value: 'js' },
   { title: 'Typescript', value: 'ts' }
 ]
 
 const commonPrompts = {
-  quasarVersion: {
-    type: 'select',
-    name: 'quasarVersion',
-    message: 'Pick Quasar version:',
-    initial: 0,
-    choices: QUASAR_VERSIONS
-  },
-
   scriptType: {
     type: 'select',
     name: 'scriptType',
@@ -376,6 +377,7 @@ export default {
   printFinalMessage,
   installDeps,
   lintFolder,
+  formatFolder,
   ensureOutsideProject,
   initializeGit,
 

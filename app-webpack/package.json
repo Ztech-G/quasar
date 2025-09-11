@@ -1,6 +1,6 @@
 {
   "name": "@quasar/app-webpack",
-  "version": "4.0.8",
+  "version": "4.3.1",
   "description": "Quasar Framework App CLI with Webpack",
   "bin": {
     "quasar": "./bin/quasar"
@@ -79,13 +79,13 @@
     "url": "https://donate.quasar.dev"
   },
   "scripts": {
-    "lint": "eslint --ext .js,.mjs ./ --fix --report-unused-disable-directives"
+    "lint": "eslint --cache --fix"
   },
   "dependencies": {
     "@quasar/babel-preset-app": "^2.0.3",
     "@quasar/render-ssr-error": "workspace:^",
     "@quasar/ssl-certificate": "workspace:^",
-    "@quasar/ssr-helpers": "3.0.1",
+    "@quasar/ssr-helpers": "3.0.2",
     "@rollup/pluginutils": "^5.1.0",
     "@types/chrome": "^0.0.271",
     "@types/compression": "^1.7.5",
@@ -108,7 +108,7 @@
     "dotenv-expand": "^11.0.6",
     "elementtree": "0.1.7",
     "error-stack-parser": "^2.1.4",
-    "esbuild": "^0.24.2",
+    "esbuild": "^0.25.0",
     "express": "^4.21.2",
     "file-loader": "^6.2.0",
     "fs-extra": "^11.2.0",
@@ -151,10 +151,10 @@
   },
   "devDependencies": {
     "@electron/packager": "^18.3.5",
-    "electron-builder": "^25.0.5",
-    "eslint": "^8.57.1",
+    "electron-builder": "^26.0.12",
+    "eslint": "catalog:",
     "eslint-config-quasar": "workspace:*",
-    "pinia": "^2.2.2",
+    "pinia": "^3.0.1",
     "quasar": "workspace:^",
     "ts-loader": "^9.5.1",
     "typescript": "^5.6.2",
@@ -164,8 +164,8 @@
   "peerDependencies": {
     "@electron/packager": ">= 18",
     "electron-builder": ">= 22",
-    "eslint": ">= 8.57.1",
-    "pinia": "^2.0.0",
+    "eslint": "^8.57.1 || ^9.0.0",
+    "pinia": "^2.0.0 || ^3.0.0",
     "quasar": "^2.16.0",
     "typescript": ">= 5.4",
     "vue": "^3.2.29",

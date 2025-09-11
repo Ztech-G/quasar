@@ -1,3 +1,4 @@
+const cloneDeep = require('lodash/cloneDeep.js')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 
@@ -50,7 +51,8 @@ module.exports.QuasarModeDevserver = class QuasarModeDevserver extends AppDevser
       })
 
       // start building & launch server
-      this.#server = new WebpackDevServer(quasarConf.devServer, compiler)
+      // deep clone to avoid webpack-dev-server mutating the original config which causes double compilation
+      this.#server = new WebpackDevServer(cloneDeep(quasarConf.devServer), compiler)
       this.#server.start()
     })
   }

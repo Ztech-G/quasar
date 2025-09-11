@@ -1243,6 +1243,10 @@ export default [
             name: 'Publishing to Store',
             nameCn: '发布到商店',
             path: 'publishing-to-store'
+          },
+          {
+            name: 'Live Updates',
+            path: 'live-updates'
           }
         ]
       },
@@ -1697,6 +1701,10 @@ export default [
           {
             name: 'Publishing to Store',
             path: 'publishing-to-store'
+          },
+          {
+            name: 'Live Updates',
+            path: 'live-updates'
           }
         ]
       },

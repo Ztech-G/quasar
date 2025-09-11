@@ -1,6 +1,6 @@
 {
   "name": "@quasar/ssr-helpers",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Quasar Framework helper package for SSR",
   "author": {
     "name": "Razvan Stoenescu",
@@ -25,6 +25,7 @@
     "access": "public"
   },
   "dependencies": {
+    "source-map": "^0.7.3",
     "serialize-javascript": "^6.0.0"
   }
 }

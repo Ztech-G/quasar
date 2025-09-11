@@ -19,7 +19,7 @@ The `/src-ssr/server.js` file is used for both DEV and PROD, so please be carefu
  */
 
 /**
- * Make sure to yarn add / npm install (in your project root)
+ * Make sure to yarn/npm/pnpm/bun install (in your project root)
  * anything you import here (except for express and compression).
  */
 import express from 'express'
@@ -34,10 +34,24 @@ import {
 
 /**
  * Create your webserver and return its instance.
- * If needed, prepare your webserver to receive
- * connect-like middlewares.
  *
  * Can be async: defineSsrCreate(async ({ ... }) => { ... })
+ *
+ * Param: ({
+ *   port, // on dev: devServer port; on prod: process.env.PORT or quasar.config > ssr > prodPort
+ *   devHttpsOptions, // DEV only, if using HTTPS; if using a custom server, you can use this to handle HTTPS on your own instead of using the devHttpsApp in listen()
+ *   resolve: {
+ *      urlPath, // (url) => path string with publicPath ensured to be included,
+ *      root, // (pathPart1, ...pathPartN) => path string (joins to the root folder),
+ *      public // (pathPart1, ...pathPartN) => path string (joins to the public folder)
+ *   },
+ *   publicPath, // string
+ *   folders: {
+ *     root, // path string of the root folder
+ *     public // path string of the public folder
+ *   },
+ *   render // (ssrContext) => html string
+ * })
  */
 export const create = defineSsrCreate((/* { ... } */) => {
   const app = express()
@@ -56,6 +70,19 @@ export const create = defineSsrCreate((/* { ... } */) => {
 })
 
 /**
+ * Used by Quasar SSR dev server to inject middleware into the webserver.
+ * It uses it to handle Webpack dev server, handle public paths, etc.
+ * The given middleware is compatible with `node:http`'s Server, Express, Connect, etc.
+ *
+ * Can be async: defineSsrInjectDevMiddleware(async ({ app }) => { ... })
+ */
+export const injectDevMiddleware = defineSsrInjectDevMiddleware(({ app }) => {
+  return (middleware) => {
+    app.use(middleware)
+  }
+})
+
+/**
  * You need to make the server listen to the indicated port
  * and return the listening instance or whatever you need to
  * close the server with.
@@ -67,6 +94,28 @@ export const create = defineSsrCreate((/* { ... } */) => {
  * handler for serverless use or whatever else fits your needs.
  *
  * Can be async: defineSsrListen(async ({ app, devHttpsApp, port }) => { ... })
+ *
+ * Param: ({
+ *   app, // Express app or whatever is returned from create()
+ *   devHttpsApp, // DEV only, if using HTTPS; Node HTTPS server instance
+ *   devHttpsOptions, // DEV only, if using HTTPS; if you are using a custom server, you can use this to handle HTTPS on your own
+ *   port, // on dev: devServer port; on prod: process.env.PORT or quasar.config > ssr > prodPort
+ *   resolve: {
+ *      urlPath, // (url) => path string with publicPath ensured to be included,
+ *      root, // (pathPart1, ...pathPartN) => path string (joins to the root folder),
+ *      public // (pathPart1, ...pathPartN) => path string (joins to the public folder)
+ *   },
+ *   publicPath, // string
+ *   folders: {
+ *     root, // path string of the root folder
+ *     public // path string of the public folder
+ *   },
+ *   render, // (ssrContext) => html string
+ *   serve: {
+ *     static, // ({ urlPath = '/', pathToServe = '.', opts = {} }) => void (OR whatever returned by serveStaticContent())
+ *     error // DEV only; ({ err, req, res }) => void
+ *   },
+ * })
  */
 export const listen = defineSsrListen(({ app, devHttpsApp, port }) => {
   const server = devHttpsApp || app
@@ -86,6 +135,28 @@ export const listen = defineSsrListen(({ app, devHttpsApp, port }) => {
  * you can use the "listenResult" param.
  *
  * Can be async: defineSsrClose(async ({ listenResult }) => { ... })
+ *
+ * Param: ({
+ *   app, // Express app or whatever is returned from create()
+ *   devHttpsApp, // DEV only, if using HTTPS
+ *   port, // on dev: devServer port; on prod: process.env.PORT or quasar.config > ssr > prodPort
+ *   resolve: {
+ *      urlPath, // (url) => path string with publicPath ensured to be included,
+ *      root, // (pathPart1, ...pathPartN) => path string (joins to the root folder),
+ *      public // (pathPart1, ...pathPartN) => path string (joins to the public folder)
+ *   },
+ *   publicPath, // string
+ *   folders: {
+ *     root, // path string of the root folder
+ *     public // path string of the public folder
+ *   },
+ *   serve: {
+ *     static, // ({ urlPath = '/', pathToServe = '.', opts = {} }) => void (OR whatever returned by serveStaticContent())
+ *     error // DEV only; ({ err, req, res }) => void
+ *   },
+ *   render, // (ssrContext) => html string
+ *   listenResult // whatever returned from listen()
+ * })
  */
 export const close = defineSsrClose(({ listenResult }) => {
   return listenResult.close()
@@ -103,6 +174,22 @@ const maxAge = process.env.DEV
  *
  * Can be async: defineSsrServeStaticContent(async ({ app, resolve }) => {
  * Can return an async function: return async ({ urlPath = '/', pathToServe = '.', opts = {} }) => {
+ *
+ * Param: ({
+ *   app, // Express app or whatever is returned from create()
+ *   port, // on dev: devServer port; on prod: process.env.PORT or quasar.config > ssr > prodPort
+ *   resolve: {
+ *      urlPath: (url) => path string with publicPath ensured to be included,
+ *      root: (pathPart1, ...pathPartN) => path string (joins to the root folder),
+ *      public: (pathPart1, ...pathPartN) => path string (joins to the public folder)
+ *   },
+ *   publicPath, // string
+ *   folders: {
+ *     root, // path string of the root folder
+ *     public // path string of the public folder
+ *   },
+ *   render: (ssrContext) => html string
+ * })
  */
 export const serveStaticContent = defineSsrServeStaticContent(({ app, resolve }) => {
   return ({ urlPath = '/', pathToServe = '.', opts = {} }) => {
@@ -160,54 +247,6 @@ export const renderPreloadTag = defineSsrRenderPreloadTag((file/* , { ssrContext
 Remember that whatever the `listen()` function returns (if anything) will be exported from your built `dist/ssr/index.js`. You can return your ssrHandler for a serverless architecture should you need it.
 :::
 
-## Parameters
-
-```js
-export function <functionName> ({
-  app, port, isReady, ssrHandler,
-  resolve, publicPath, folders, render, serve
-}) => {
-```
-
-Detailing the Object:
-
-```js
-{
-  app,     // Expressjs app instance (or whatever you return from create())
-
-  port,    // on production: process∙env∙PORT or quasar.config file > ssr > prodPort
-           // on development: quasar.config file > devServer > port
-
-  isReady, // Function to call returning a Promise
-           // when app is ready to serve clients
-
-  ssrHandler, // Prebuilt app handler if your serverless service
-              // doesn't require a specific way to provide it.
-              // Form: ssrHandler (req, res, next)
-              // Tip: it uses isReady() under the hood already
-
-  // all of the following are the same as
-  // for the SSR middlewares (check its docs page);
-  // normally you don't need these here
-  // (use a real SSR middleware instead)
-  resolve: {
-    urlPath(path)
-    root(arg1, arg2),
-    public(arg1, arg2)
-  },
-  publicPath, // String
-  folders: {
-    root,     // String
-    public    // String
-  },
-  render(ssrContext),
-  serve: {
-    static({ urlPath, pathToServe, opts }),
-    error({ err, req, res })
-  }
-}
-```
-
 ## Usage
 
 ::: warning
@@ -215,9 +254,24 @@ Detailing the Object:
 * This is usually not the place to add middlewares (but you can do it). Add middlewares by using the [SSR Middlewares](/quasar-cli-webpack/developing-ssr/ssr-middleware) instead. You can configure SSR Middlewares to run only for dev or only for production too.
 :::
 
-### Replacing express.js
+### Replacing Express
 
-You can replace the default Express.js Node server with any other connect API compatible one. Just make sure to yarn/npm install its package first.
+You can replace the default Express server with any other one such as Connect, Fastify, h3, etc. You need to install the relevant packages, then adapt `create`, `listen`, `close`, etc. accordingly.
+
+#### Example: Connect
+
+Since Express is a Connect-based server, you can use Connect as a simple drop-in replacement:
+
+```tabs
+<<| bash Yarn |>>
+$ yarn add connect
+<<| bash NPM |>>
+$ npm install --save connect
+<<| bash PNPM |>>
+$ pnpm add connect
+<<| bash Bun |>>
+$ bun add connect
+```
 
 ```js src-ssr/server.js
 import { defineSsrCreate } from '#q-app/wrappers'
@@ -227,13 +281,132 @@ import compression from 'compression'
 export const create = defineSsrCreate((/* { ... } */) => {
   const app = connect()
 
-  // place here any middlewares that
-  // absolutely need to run before anything else
+  // Place any middleware that needs to run before anything else
   if (process.env.PROD) {
     app.use(compression())
   }
 
   return app
+})
+```
+
+#### Example: Fastify
+
+Fastify is considerably different from Express, so it requires a more thorough adaptation:
+
+```tabs
+<<| bash Yarn |>>
+$ yarn add fastify @fastify/middie @fastify/compress @fastify/static
+<<| bash NPM |>>
+$ npm install --save fastify @fastify/middie @fastify/compress @fastify/static
+<<| bash PNPM |>>
+$ pnpm add fastify @fastify/middie @fastify/compress @fastify/static
+<<| bash Bun |>>
+$ bun add fastify @fastify/middie @fastify/compress @fastify/static
+```
+
+```js src-ssr/server.js
+import {
+  defineSsrCreate,
+  defineSsrInjectDevMiddleware,
+  defineSsrListen,
+  defineSsrClose,
+  defineSsrServeStaticContent
+} from '#q-app/wrappers'
+import Fastify from 'fastify'
+
+// If using TypeScript, also enable the following:
+/*
+import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
+
+import type { Server } from 'node:http'
+declare module '#q-app' {
+  interface SsrDriver {
+    app: FastifyInstance;
+    listenResult: Server;
+    request: FastifyRequest;
+    response: FastifyReply;
+  }
+}
+*/
+
+export const create = defineSsrCreate(async ({ devHttpsOptions }) => {
+  const app = Fastify({
+    https: devHttpsOptions ?? null,
+  })
+
+  // Place any middleware that needs to run before anything else
+  if (process.env.PROD) {
+    await app.register(import('@fastify/compress'))
+  }
+
+  return app
+})
+
+export const injectDevMiddleware = defineSsrInjectDevMiddleware(async ({ app }) => {
+  await app.register(import('@fastify/middie'))
+
+  return (middleware) => {
+    app.use(middleware)
+  }
+})
+
+export const listen = defineSsrListen(async ({ app, port }) => {
+  await app.listen({ port })
+  return app.server
+})
+
+export const close = defineSsrClose(({ listenResult }) => {
+  return listenResult.close()
+})
+
+const maxAge = process.env.DEV ? 0 : 1000 * 60 * 60 * 24 * 30
+
+export const serveStaticContent = defineSsrServeStaticContent(({ app, resolve }) => {
+  return async ({ urlPath = '/', pathToServe = '.', opts = {} }) => {
+    await app.register(import('@fastify/static'), {
+      root: resolve.public(pathToServe),
+      prefix: resolve.urlPath(urlPath),
+      maxAge: opts.maxAge ?? maxAge,
+      // To avoid conflicts with ./middlewares/render
+      wildcard: false,
+      index: false
+    })
+  }
+})
+
+// renderPreloadTag logic is the same
+```
+
+```js src-ssr/middlewares/render.js
+import { defineSsrMiddleware } from '#q-app/wrappers';
+
+export default defineSsrMiddleware(({ app, resolve, render, serve }) => {
+  app.get(resolve.urlPath('*'), async (req, res) => {
+    res.type('text/html');
+
+    try {
+      return await render({ req, res });
+    } catch (err) {
+      if (err.url) {
+        return res.redirect(err.url, err.code)
+      }
+
+      if (err.code === 404) {
+        return res.status(404).send('404 | Page Not Found')
+      }
+
+      if (process.env.DEV) {
+        serve.error({ err, req, res })
+      } else {
+        res.status(500).send('500 | Internal Server Error')
+
+        if (process.env.DEBUGGING) {
+          console.error(err.stack)
+        }
+      }
+    }
+  })
 })
 ```
 
@@ -270,13 +443,13 @@ export const listen = defineSsrListen(({ app, devHttpsApp, port }) => {
   }
   else { // in production
     // return an object with a "handler" property
-    // that the server script will named-export
+    // that the server script will be named-export
     return { handler: app }
   }
 })
 ```
 
-Please note that the provided `ssrHandler` is a Function of form: `(req, res, next) => void`.
+Please note that the provided `app` is a Function of form: `(req, res, next) => void`.
 Should you require to export a handler of form `(event, context, callback) => void` then you will most likely want to use the `serverless-http` package (see below).
 
 #### Example: serverless-http
@@ -296,7 +469,7 @@ export const listen = defineSsrListen(({ app, devHttpsApp, port }) => {
     })
   }
   else { // in production
-    return { handler: serverless(ssrHandler) }
+    return { handler: serverless(app) }
   }
 })
 ```
@@ -317,7 +490,7 @@ export const listen = defineSsrListen(({ app, devHttpsApp, port }) => {
   }
   else { // in production
     return {
-      handler: functions.https.onRequest(ssrHandler)
+      handler: functions.https.onRequest(app)
     }
   }
 })

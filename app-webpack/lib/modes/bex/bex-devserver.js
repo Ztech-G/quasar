@@ -1,5 +1,6 @@
 const { join } = require('node:path')
 const fse = require('fs-extra')
+const cloneDeep = require('lodash/cloneDeep.js')
 const debounce = require('lodash/debounce.js')
 const chokidar = require('chokidar')
 const webpack = require('webpack')
@@ -174,7 +175,8 @@ module.exports.QuasarModeDevserver = class QuasarModeDevserver extends AppDevser
         })
 
         // start building & launch server
-        this.#webpackServer = new WebpackDevServer(quasarConf.devServer, compiler)
+        // deep clone to avoid webpack-dev-server mutating the original config which causes double compilation
+        this.#webpackServer = new WebpackDevServer(cloneDeep(quasarConf.devServer), compiler)
         this.#webpackServer.start()
 
         this.#webpackWatcherList.push({

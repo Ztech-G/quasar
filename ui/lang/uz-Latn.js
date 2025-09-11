@@ -32,20 +32,38 @@ export default {
     ),
     firstDayOfWeek: 1, // 0-6, 0 - Yakshanba, 1 Dushanba, ...
     format24h: true,
-    pluralDay: 'Kunlar'
+    pluralDay: 'Kunlar',
+    prevMonth: 'Oldingi oy',
+    nextMonth: 'Keyingi oy',
+    prevYear: 'O\'tgan yili',
+    nextYear: 'Keyingi yil',
+    today: 'Bugun',
+    prevRangeYears: range => `Oldingi ${ range } Yillar`,
+    nextRangeYears: range => `Keyingi ${ range } Yillar`
   },
   table: {
     noData: 'Ma\'lumotlar topilmadi',
     noResults: 'Qidiruv bo\'yicha ma\'lumotlar topilmadi',
     loading: 'Yuklanmoqda...',
-    selectedRecords: (rows) =>
-      (rows === 1
-        ? '1 ta malumot  tanlandi.'
-        : (rows === 0 ? 'Hech qanday' : rows) + ' ma\'lumotlar tanlanmadi.'),
+    selectedRecords: (rows) => {
+      if (rows === 0) {
+        return 'Hech qanday ma\'lumotlar tanlanmadi.'
+      }
+      if (rows === 1) {
+        return '1 ta ma\'lumot tanlandi.'
+      }
+      return rows + ' ta ma\'lumotlar tanlandi.'
+    },
     recordsPerPage: 'Saxifadagi qatorlar:',
     allRows: 'Barchasi',
     pagination: (start, end, total) => start + '-' + end + ' jami ' + total,
     columns: 'Ustunlar'
+  },
+  pagination: {
+    first: 'Birinchi sahifa',
+    prev: 'Oldingi sahifa',
+    next: 'Keyingi sahifa',
+    last: 'So\'nggi sahifa'
   },
   editor: {
     url: 'URL',

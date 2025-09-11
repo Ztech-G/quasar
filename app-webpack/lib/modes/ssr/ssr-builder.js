@@ -77,6 +77,7 @@ module.exports.QuasarModeBuilder = class QuasarModeBuilder extends AppBuilder {
         start: 'node index.mjs'
       },
       dependencies: Object.assign(appDeps, {
+        '@quasar/ssr-helpers': cliPkg.dependencies[ '@quasar/ssr-helpers' ],
         compression: cliPkg.dependencies.compression,
         express: cliPkg.dependencies.express
       }),

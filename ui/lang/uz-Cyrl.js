@@ -28,20 +28,38 @@ export default {
     monthsShort: 'Ян_Фев_Март_Апр_Май_Июнь_Июль_Авг_Сен_Окт_Ноя_Дек'.split('_'),
     firstDayOfWeek: 1, // 0-6, 0 - Якшанба, 1 Душанба, ...
     format24h: true,
-    pluralDay: 'Кунлар'
+    pluralDay: 'Кунлар',
+    prevMonth: 'Олдинги ой',
+    nextMonth: 'Кейинги ой',
+    prevYear: 'Ўтган йили',
+    nextYear: 'Кейинги йил',
+    today: 'Бугун',
+    prevRangeYears: range => `Олдинги ${ range } Йиллар`,
+    nextRangeYears: range => `Кейинги ${ range } Йиллар`
   },
   table: {
     noData: 'Маълумот топилмади',
     noResults: 'Қидирув бўйича маълумотлар топилмади',
     loading: 'Юкланмоқда...',
-    selectedRecords: (rows) =>
-      (rows === 1
-        ? '1 та маълумот танланди.'
-        : (rows === 0 ? 'Хеч қандай' : rows) + ' маълумотла танланмади.'),
+    selectedRecords: (rows) => {
+      if (rows === 0) {
+        return 'Хеч қандай маълумотлар танланмади.'
+      }
+      if (rows === 1) {
+        return '1 та маълумот танланди.'
+      }
+      return rows + ' та маълумотлар танланди.'
+    },
     recordsPerPage: 'Сахифадаги қаторлар:',
     allRows: 'Барчаси',
     pagination: (start, end, total) => start + '-' + end + ' жами ' + total,
     columns: 'Устунлар'
+  },
+  pagination: {
+    first: 'Биринчи саҳифа',
+    prev: 'Олдинги саҳифа',
+    next: 'Кейинги саҳифа',
+    last: 'Сўнгги саҳифа'
   },
   editor: {
     url: 'УРЛ',
