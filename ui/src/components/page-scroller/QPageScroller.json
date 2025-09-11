@@ -9,6 +9,7 @@
     "scroll-offset": {
       "type": "Number",
       "desc": "Scroll offset (in pixels) from which point the component is shown on page; Measured from the top of the page (or from the bottom if in 'reverse' mode)",
+      "descCn": "滚动偏移量（以像素为单位），从该点开始显示组件；从页面顶部测量（如果在 'reverse' 模式下，则从页面底部测量）",
       "default": "1000",
       "category": "behavior"
     },
@@ -16,12 +17,14 @@
     "reverse": {
       "type": "Boolean",
       "desc": "Work in reverse (shows when scrolling to the top of the page and scrolls to bottom when triggered)",
+      "descCn": "反向工作（当滚动到页面顶部时显示，触发时滚动到底部）",
       "category": "behavior"
     },
 
     "duration": {
       "type": "Number",
       "desc": "Duration (in milliseconds) of the scrolling until it reaches its target",
+      "descCn": "滚动持续时间（以毫秒为单位），直到达到目标位置",
       "default": "300",
       "category": "behavior"
     },

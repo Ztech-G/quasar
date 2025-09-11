@@ -7,25 +7,30 @@
     "padding": {
       "type": "Boolean",
       "desc": "Applies a default responsive page padding",
+      "descCn": "应用默认响应式页面填充",
       "category": "content"
     },
 
     "style-fn": {
       "type": "Function",
       "desc": "Override default CSS style applied to the component (sets minHeight); Function(offset: Number) => CSS props/value: Object; For best performance, reference it from your scope and do not define it inline",
+      "descCn": "覆盖组件应用的默认 CSS 样式（设置 minHeight）；Function(offset: Number) => CSS props/value: Object；为了最佳性能，从您的作用域引用它，而不是内联定义它",
       "params": {
         "offset": {
           "type": "Number",
-          "desc": "Header + Footer height (in pixels)"
+          "desc": "Header + Footer height (in pixels)",
+          "descCn": "头 + 脚高度（以像素为单位）"
         },
         "height": {
           "type": "Number",
-          "desc": "Value in pixels of container height (if containerized) or window height otherwise"
+          "desc": "Value in pixels of container height (if containerized) or window height otherwise",
+          "descCn": "如果容器化，则为容器高度（以像素为单位），否则为窗口高度"
         }
       },
       "returns": {
         "type": "Object",
-        "desc": "Object with CSS properties to apply to Page DOM element"
+        "desc": "Object with CSS properties to apply to Page DOM element",
+        "descCn": "要应用于 Page DOM 元素的 CSS 属性对象"
       },
       "examples": [ "(offset, height) => ({ minHeight: offset + 'px' })" ],
       "category": "style"

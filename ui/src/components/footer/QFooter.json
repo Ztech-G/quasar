@@ -8,6 +8,7 @@
       "extends": "model-value",
       "type": "Boolean",
       "desc": "Model of the component defining if it is shown or hidden to the user; Either use this property (along with a listener for 'update:modelValue' event) OR use v-model directive",
+      "descCn": "组件的模型，定义它是否对用户可见；可以使用此属性（与 'update:modelValue' 事件的监听器结合使用），也可以使用 v-model 指令",
       "default": "true",
       "required": false,
       "examples": [ "# v-model=\"footerState\"" ]
@@ -16,6 +17,7 @@
     "reveal": {
       "type": "Boolean",
       "desc": "Enable 'reveal' mode; Takes into account user scroll to temporarily show/hide footer",
+      "descCn": "启用 'reveal' 模式；根据用户滚动临时显示/隐藏页脚",
       "category": "behavior"
     },
 
@@ -26,12 +28,14 @@
     "elevated": {
       "type": "Boolean",
       "desc": "Adds a default shadow to the footer",
+      "descCn": "添加默认阴影到页脚",
       "category": "style"
     },
 
     "height-hint": {
       "type": [ "Number", "String" ],
       "desc": "When using SSR, you can optionally hint of the height (in pixels) of the QFooter",
+      "descCn": "当使用 SSR 时，您可以可选地提示 QFooter 的高度（以像素为单位）",
       "default": "50",
       "category": "behavior"
     }
@@ -39,17 +43,20 @@
 
   "slots": {
     "default": {
-      "desc": "Default slot in the devland unslotted content of the component; Suggestion: QToolbar"
+      "desc": "Default slot in the devland unslotted content of the component; Suggestion: QToolbar",
+      "descCn": "组件的默认插槽；建议：QToolbar"
     }
   },
 
   "events": {
     "reveal": {
       "desc": "Emitted when 'reveal' state gets changed",
+      "descCn": "当 'reveal' 状态发生变化时触发",
       "params": {
         "value": {
           "type": "Boolean",
-          "desc": "New 'reveal' state"
+          "desc": "New 'reveal' state",
+          "descCn": "新的 'reveal' 状态"
         }
       }
     },

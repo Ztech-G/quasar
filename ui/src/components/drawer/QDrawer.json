@@ -9,6 +9,7 @@
     "side": {
       "type": "String",
       "desc": "Side to attach to",
+      "descCn": "抽屉要附加到的侧边",
       "values": [ "'left'", "'right'" ],
       "default": "'left'",
       "category": "behavior"
@@ -17,12 +18,14 @@
     "overlay": {
       "type": "Boolean",
       "desc": "Puts drawer into overlay mode (does not occupy space on screen, narrowing the page)",
+      "descCn": "将抽屉放入叠加模式（不占用屏幕空间，缩小页面）",
       "category": "behavior"
     },
 
     "width": {
       "type": "Number",
       "desc": "Width of drawer (in pixels)",
+      "descCn": "抽屉的宽度（以像素为单位）",
       "default": "300",
       "category": "style"
     },
@@ -30,12 +33,14 @@
     "mini": {
       "type": "Boolean",
       "desc": "Puts drawer into mini mode",
+      "descCn": "将抽屉放入迷你模式",
       "category": "behavior"
     },
 
     "mini-width": {
       "type": "Number",
       "desc": "Width of drawer (in pixels) when in mini mode",
+      "descCn": "迷你模式下抽屉的宽度（以像素为单位）",
       "default": "57",
       "category": "style"
     },
@@ -43,12 +48,14 @@
     "mini-to-overlay": {
       "type": "Boolean",
       "desc": "Mini mode will expand as an overlay",
+      "descCn": "迷你模式下抽屉将展开为叠加模式",
       "category": "behavior"
     },
 
     "no-mini-animation": {
       "type": "Boolean",
       "desc": "Disables animation of the drawer when toggling mini mode",
+      "descCn": "禁用切换迷你模式时抽屉的动画",
       "category": "behavior",
       "addedIn": "v2.12"
     },
@@ -60,6 +67,7 @@
     "breakpoint": {
       "type": "Number",
       "desc": "Breakpoint (in pixels) of layout width up to which mobile mode is used",
+      "descCn": "布局宽度的断点（以像素为单位），超过此宽度将使用移动模式",
       "default": "1023",
       "examples": [ "1200" ],
       "category": "behavior"
@@ -68,6 +76,7 @@
     "behavior": {
       "type": "String",
       "desc": "Overrides the default dynamic mode into which the drawer is put on",
+      "descCn": "覆盖抽屉放入的默认动态模式",
       "values": [ "'default'", "'desktop'", "'mobile'" ],
       "default": "'default'",
       "category": "behavior"
@@ -80,57 +89,67 @@
     "elevated": {
       "type": "Boolean",
       "desc": "Adds a default shadow to the header",
+      "descCn": "添加默认阴影到标题",
       "category": "style"
     },
 
     "persistent": {
       "type": "Boolean",
       "desc": "Prevents drawer from auto-closing when app's route changes; Also, an app route change won't hide it",
+      "descCn": "防止抽屉在应用程序路由更改时自动关闭；同时，应用程序路由更改也不会隐藏它",
       "category": "behavior"
     },
 
     "show-if-above": {
       "type": "Boolean",
       "desc": "Forces drawer to be shown on screen on initial render if the layout width is above breakpoint, regardless of v-model; This is the default behavior when SSR is taken over by client on initial render",
+      "descCn": "强制在初始渲染时如果布局宽度超过断点，则显示抽屉，无论 v-model 如何；这是 SSR 被客户端接管时的默认行为",
       "category": "behavior"
     },
 
     "no-swipe-open": {
       "type": "Boolean",
       "desc": "Disables the default behavior where drawer can be swiped into view; Useful for iOS platforms where it might interfere with Safari's 'swipe to go to previous/next page' feature",
+      "descCn": "禁用抽屉可以通过滑动进入视图的默认行为；这在 iOS 平台上可能会与 Safari 的 '滑动切换到上一页/下一页' 功能冲突",
       "category": "behavior"
     },
 
     "no-swipe-close": {
       "type": "Boolean",
       "desc": "Disables the default behavior where drawer can be swiped out of view (applies to drawer content only); Useful for iOS platforms where it might interfere with Safari's 'swipe to go to previous/next page' feature",
+      "descCn": "禁用抽屉可以通过滑动退出视图的默认行为（仅适用于抽屉内容）；这在 iOS 平台上可能会与 Safari 的 '滑动切换到上一页/下一页' 功能冲突",
       "category": "behavior"
     },
 
     "no-swipe-backdrop": {
       "type": "Boolean",
       "desc": "Disables the default behavior where drawer backdrop can be swiped",
+      "descCn": "禁用抽屉背景可以通过滑动的默认行为",
       "category": "behavior"
     }
   },
 
   "slots": {
     "default": {
-      "desc": "Default slot in the devland unslotted content of the component (overridden by 'mini' slot if used and drawer is in mini mode)"
+      "desc": "Default slot in the devland unslotted content of the component (overridden by 'mini' slot if used and drawer is in mini mode)",
+      "descCn": "组件的默认插槽（如果使用了 'mini' 插槽且抽屉处于迷你模式，则会被覆盖）"
     },
 
     "mini": {
-      "desc": "Content to show when in mini mode (overrides 'default' slot)"
+      "desc": "Content to show when in mini mode (overrides 'default' slot)",
+      "descCn": "迷你模式下抽屉的内容（会覆盖 'default' 插槽）"
     }
   },
 
   "events": {
     "on-layout": {
       "desc": "Emitted when drawer toggles between occupying space on page or not",
+      "descCn": "抽屉在页面上占用空间切换时触发",
       "params": {
         "state": {
           "type": "Boolean",
-          "desc": "New state"
+          "desc": "New state",
+          "descCn": "新状态"
         }
       }
     },
@@ -138,27 +157,32 @@
     "click": {
       "extends": "click",
       "desc": "Emitted when user clicks/taps on the component; Useful for when taking a decision to toggle mini mode",
+      "descCn": "用户点击/点击组件时触发；当需要切换迷你模式时有用",
       "passthrough": true
     },
 
     "mouseover": {
       "extends": "click",
       "desc": "Emitted when user moves mouse cursor over the component; Useful for when taking a decision to toggle mini mode",
+      "descCn": "用户将鼠标光标移动到组件上时触发；当需要切换迷你模式时有用",
       "passthrough": true
     },
 
     "mouseout": {
       "extends": "click",
       "desc": "Emitted when user moves mouse cursor out of the component; Useful for when taking a decision to toggle mini mode",
+      "descCn": "用户将鼠标光标移出组件时触发；当需要切换迷你模式时有用",
       "passthrough": true
     },
 
     "mini-state": {
       "desc": "Emitted when drawer changes the mini-mode state (sometimes it is forced to do so)",
+      "descCn": "抽屉在迷你模式状态切换时触发（有时是被迫切换的）",
       "params": {
         "state": {
           "type": "Boolean",
-          "desc": "New state"
+          "desc": "New state",
+          "descCn": "新状态"
         }
       }
     }

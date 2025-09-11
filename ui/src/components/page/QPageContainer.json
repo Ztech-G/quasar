@@ -5,7 +5,8 @@
 
   "slots": {
     "default": {
-      "desc": "Encapsulates a QPage (either directly or through <router-view>)"
+      "desc": "Encapsulates a QPage (either directly or through <router-view>)",
+      "descCn": "封装 QPage（直接或通过 <router-view>）"
     }
   }
 }
